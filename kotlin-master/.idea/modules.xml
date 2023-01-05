@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/kotlin-master.iml" filepath="$PROJECT_DIR$/.idea/modules/kotlin-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/complex/kotlin-master.complex.iml" filepath="$PROJECT_DIR$/.idea/modules/complex/kotlin-master.complex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/complex/kotlin-master.complex.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/complex/kotlin-master.complex.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/complex/kotlin-master.complex.main.iml" filepath="$PROJECT_DIR$/.idea/modules/complex/kotlin-master.complex.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/complex/kotlin-master.complex.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/complex/kotlin-master.complex.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/custom/kotlin-master.custom.iml" filepath="$PROJECT_DIR$/.idea/modules/custom/kotlin-master.custom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/custom/kotlin-master.custom.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/custom/kotlin-master.custom.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/custom/kotlin-master.custom.main.iml" filepath="$PROJECT_DIR$/.idea/modules/custom/kotlin-master.custom.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/custom/kotlin-master.custom.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/custom/kotlin-master.custom.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/grammar/kotlin-master.grammar.iml" filepath="$PROJECT_DIR$/.idea/modules/grammar/kotlin-master.grammar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/grammar/kotlin-master.grammar.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/grammar/kotlin-master.grammar.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/grammar/kotlin-master.grammar.main.iml" filepath="$PROJECT_DIR$/.idea/modules/grammar/kotlin-master.grammar.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/grammar/kotlin-master.grammar.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/grammar/kotlin-master.grammar.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hello/kotlin-master.hello.iml" filepath="$PROJECT_DIR$/.idea/modules/hello/kotlin-master.hello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hello/kotlin-master.hello.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/hello/kotlin-master.hello.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hello/kotlin-master.hello.main.iml" filepath="$PROJECT_DIR$/.idea/modules/hello/kotlin-master.hello.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hello/kotlin-master.hello.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/hello/kotlin-master.hello.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/network/kotlin-master.network.iml" filepath="$PROJECT_DIR$/.idea/modules/network/kotlin-master.network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/network/kotlin-master.network.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/network/kotlin-master.network.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/network/kotlin-master.network.main.iml" filepath="$PROJECT_DIR$/.idea/modules/network/kotlin-master.network.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/network/kotlin-master.network.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/network/kotlin-master.network.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/simple/kotlin-master.simple.iml" filepath="$PROJECT_DIR$/.idea/modules/simple/kotlin-master.simple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/simple/kotlin-master.simple.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/simple/kotlin-master.simple.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/simple/kotlin-master.simple.main.iml" filepath="$PROJECT_DIR$/.idea/modules/simple/kotlin-master.simple.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/simple/kotlin-master.simple.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/simple/kotlin-master.simple.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/storage/kotlin-master.storage.iml" filepath="$PROJECT_DIR$/.idea/modules/storage/kotlin-master.storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/storage/kotlin-master.storage.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/storage/kotlin-master.storage.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/storage/kotlin-master.storage.main.iml" filepath="$PROJECT_DIR$/.idea/modules/storage/kotlin-master.storage.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/storage/kotlin-master.storage.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/storage/kotlin-master.storage.unitTest.iml" />
+    </modules>
+  </component>
+</project>

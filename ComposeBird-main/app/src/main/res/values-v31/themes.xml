@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="JetpackSplashTheme" parent="JetpackSplashTheme.Base">
+        <!--指定 App Icon 的图片，如果指定的是 Animated Vector Drawable 的话，在启动画面展示的同时会执行一个 Icon 动画效果        -->
+        <!-- <item name="windowSplashScreenAnimatedIcon">@drawable/ic_icon_bird_small_animated_rotate</item>-->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_icon_bird_small_animated_translate</item>
+
+        <!-- icon background color-->
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/skyBlue</item>
+
+        <!--放置品牌 Logo-->
+        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_tm_brand</item>
+    </style>
+</resources>

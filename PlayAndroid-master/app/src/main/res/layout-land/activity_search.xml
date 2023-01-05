@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".home.search.SearchActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/searchImgBack"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp_10"
+            android:contentDescription="Back"
+            android:paddingVertical="@dimen/dp_10"
+            android:src="@drawable/img_back"
+            tools:ignore="HardcodedText" />
+
+        <EditText
+            android:id="@+id/searchTxtKeyword"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_30"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/dp_60"
+            android:background="@drawable/edit_gray_radus"
+            android:hint="@string/please_enter_keywords"
+            android:imeOptions="actionSearch"
+            android:importantForAutofill="no"
+            android:maxLines="1"
+            android:paddingStart="@dimen/dp_5"
+            android:singleLine="true"
+            android:textColor="@color/white"
+            android:textColorHint="@color/plain"
+            android:textSize="@dimen/sp_13"
+            tools:ignore="RtlSymmetry,TextFields" />
+
+        <ImageView
+            android:id="@+id/searchTxtRight"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:contentDescription="Search"
+            android:gravity="center"
+            android:paddingVertical="@dimen/dp_10"
+            android:src="@drawable/home_search_button"
+            tools:ignore="HardcodedText" />
+
+    </FrameLayout>
+
+    <com.zj.core.view.custom.FlowLayout
+        android:id="@+id/searchFlowLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_15" />
+
+</LinearLayout>
