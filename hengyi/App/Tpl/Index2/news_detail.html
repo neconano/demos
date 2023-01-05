@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html class=" -webkit-">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="content-language" content="zh-CN">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<title>恒宜科技有限公司</title>
+	<meta name="Keywords" content="{$info['seo_keywords']}">
+	<meta name="Description" content="{$info['seo_description']}">
+	<meta name="author" content="恒宜科技有限公司">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link href="logo.ico" rel="shortcut icon">
+	<link type="text/css" href="__PUBLIC__/new2/css/reset.css" rel="stylesheet">
+	<link type="text/css" href="__PUBLIC__/new2/css/style.css" rel="stylesheet">
+	<link type="text/css" href="__PUBLIC__/new2/css/index.css" rel="stylesheet">
+
+	<link type="text/css" href="__PUBLIC__/new2/css/index-slide.css" rel="stylesheet">
+	<script type="text/javascript" src="__PUBLIC__/new2/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/new2/js/jquery.SuperSlide2.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/new2/js/Lunbo.js"></script>
+</head>
+
+<body>
+		<div class="header" style="position:relative;">
+			<div class="header-left w1200" style="height: 77px;">
+				<div class="f-cb">
+					<a href="/index2.html"><img style="float:left" src="__PUBLIC__/new2/images/index-logo.jpg"></a>
+					<img style="float:right" src="__PUBLIC__/new2/images/index-top-tel.jpg">
+
+					<form action="{:U('Index2/news')}" id="form_search" method="post">
+						<div style="margin:22px 0 0 0;float:right">
+							<input name="keyword" value="{$keyword}" placeholder="请输入关键字" class="search_1">
+							<img style="float:left;cursor: pointer;" src="__PUBLIC__/new2/images/index-top-search.jpg" onclick="do_search()">
+						</div>
+					</form>
+					<script>
+					function do_search(){
+						$('#form_search').submit();
+					}
+					</script>
+							  
+
+				</div>
+			</div>
+		</div>
+		<div class="welcome">
+			<div class="banner-wrap">
+				<div class="header_1">
+					<ul style="margin:0 auto; width:1200px;">
+						<li class="nav_li <php>if(ACTION_NAME == 'index') echo 'active'; </php> "><a href="/index2.html">首页</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'about_us') echo 'active'; </php> "><a href="/about-us.html">关于我们</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'products') echo 'active'; </php> "><a href="/products.html">产品中心</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'news') echo 'active'; </php> "><a href="/news.html">资讯中心</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'partners') echo 'active'; </php> "><a href="/partners.html">合作伙伴</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'honors') echo 'active'; </php> "><a href="/honors.html">荣誉资质</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'jobs') echo 'active'; </php> "><a href="/jobs.html">招贤纳士</a></li>
+					</ul>
+				</div>
+	
+		<div class="bannerbox">
+			<img src="__PUBLIC__/new2/images/product-banner-1.jpg" alt="">
+		</div>
+	</div>
+
+		<style>
+
+			.ul_css{
+				position:relative;min-height: 1100px;
+				background-color: #FFFFFF;
+			}
+			.li_css{
+				height: 200px; width: 100%;
+				border-bottom: #cfcfcf solid 1px;
+			}
+			.li_css_div{
+				height: 150px; width: 100%;
+				margin: 25px 25px;
+			}
+			.li-title{
+				font-size: 18px;font-weight: bold;margin-top:16px;margin-bottom: 24px;
+				width: 490px;overflow: hidden;float: left;height: 24px;  
+			}
+			.li-content{
+				font-size: 16px;line-height: 28px;float: left;width: 590px;overflow: hidden;
+			}
+			.spane-content{
+				width: 1000px;margin: 0 auto;height: 100%;margin-left: 100px; overflow: hidden;
+				margin-bottom: 40px;
+			}
+		</style>
+		<div style="background-color: #f3f4f6;">
+			<ul class="ul_css" style="padding: 0 80px;margin: 0 100px;	width: 1000px;margin: 0 auto">
+
+				<ul class="box-ul">
+					<li class="box-li" style="height: 120px;width: 100%;">
+						<div style="width: 1020px;text-align: center;margin-top: 40px; height:52px;  border-bottom: #afafaf dashed 1px;">
+							<h1>{$info['title']}</h1>
+							<h3 style="float:right;    margin-right: 110px; ">发布日期：{$info['news_date']}</h1>
+						</div>
+					</li>
+				</ul>
+
+						<!-- <style type="text/css">p{line-height: 28px;}</style> -->
+						{$info['content']}
+
+			</ul>
+			
+		</div>
+
+		<include file="Index2:footer" />
+
+	</div>
+
+</body>
+
+</html>

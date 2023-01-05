@@ -1,0 +1,35 @@
+RewriteEngine On
+RewriteRule ^test\.html$ test.php
+
+RewriteRule ^ISmartLab01.html$ index.php?m=index&a=chanpin&id=1[R=301,L]
+RewriteRule ^ISmartLab02.html$ index.php?m=index&a=chanpin&id=2[R=301,L]
+
+RewriteRule ^ISmartOffice01.html$ index.php?m=index&a=chanpin&id=3[R=301,L]
+RewriteRule ^ISmartOffice02.html$ index.php?m=index&a=chanpin&id=4[R=301,L]
+
+RewriteRule ^ISmartEAM01.html$ index.php?m=index&a=chanpin&id=5[R=301,L]
+RewriteRule ^ISmartEAM02.html$ index.php?m=index&a=chanpin&id=6[R=301,L]
+
+RewriteRule ^ISmartPM01.html$ index.php?m=index&a=chanpin&id=7[R=301,L]
+
+RewriteRule ^job.html$ index.php?m=index&a=job&id=8[R=301,L]
+RewriteRule ^about.html$ index.php?m=index&a=about&id=9[R=301,L]
+RewriteRule ^law.html$ index.php?m=index&a=law&id=10[R=301,L]
+RewriteRule ^contact.html$ index.php?m=index&a=contact&id=11[R=301,L]
+
+#RewriteRule ^job.html$ index.php?m=index&a=job&id=7[R=301,L]
+#RewriteRule ^about.html$ index.php?m=index&a=about[R=301,L]
+#RewriteRule ^law.html$ index.php?m=index&a=law[R=301,L]
+#RewriteRule ^contact.html$ index.php?m=index&a=contact[R=301,L]
+
+RewriteRule ^index.html$ index.php?m=index2&a=index&[R=301,L]
+RewriteRule ^index2.html$ index.php?m=index2&a=index&[R=301,L]
+RewriteRule ^about-us.html$ index.php?m=index2&a=about_us&[R=301,L]
+RewriteRule ^products.html$ index.php?m=index2&a=products&[R=301,L]
+RewriteRule ^news.html$ index.php?m=index2&a=news&[R=301,L]
+RewriteRule ^partners.html$ index.php?m=index2&a=partners&[R=301,L]
+RewriteRule ^honors.html$ index.php?m=index2&a=honors&[R=301,L]
+RewriteRule ^jobs.html$ index.php?m=index2&a=jobs&[R=301,L]
+RewriteRule ^jobs-2.html$ index.php?m=index2&a=jobs_2&[R=301,L]
+
+RewriteRule ^news-(\d+).html$ index.php?m=index2&a=news_detail&id=$1[R=301,L]

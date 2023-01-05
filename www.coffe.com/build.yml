@@ -1,0 +1,38 @@
+
+#注册key
+auth_key: '.gKZB123]>(Qrs,M@u&123~"^*tTtFy@LHj123-_/H.~Vn~+R<123uV~(J%]ewdz'
+
+#系统配置
+env_pre: nc_
+session_table: admin_session #session存储表名
+
+# 全局配置
+global:
+    DOMAIN: "www.neco.com" # 单域名可忽略
+    CDN_DIR: "public/cdn" # 压缩生成用于CDN资源，目标目录
+    PRE2CDN_DIR: "public/cdn-ready" # 源目录
+
+# 数据库配置
+mysql:
+    hostname: 127.0.0.1
+    database: caffe
+    username: root
+    password: 
+    hostport: 3306
+    prefix: nf_
+
+# 邮件服务器
+email:
+    smtp_host: smtp.qq.com  # SMTP 服务器
+    smtp_port: 465  # SMTP 服务器的端口号
+    smtp_user: xxx@qq.com  # SMTP 服务器用户名
+    smtp_pass: bleammqirwozbgbc?xxx  # SMTP 服务器密码
+    from_email: xxx@qq.com  # SMTP 服务器
+    from_name: Neconano  # SMTP 服务器
+
+# CND资源转换配置
+feature:
+    hash_assets: true # 是否开启文件名称hash化
+    minify_css: true # 是否开启css文件压缩
+    minify_js: true # 是否开启js压缩
+    minify_html: false # 是否开启html美化

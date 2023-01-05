@@ -1,0 +1,89 @@
+    <case value="feature">
+
+        <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+            <label class="left control-label">{$[type]form.title}：</label>
+            <div class="right">
+            <foreach name="[type]form.options" item="option" key="option_key">
+                <button data-val="{$option_key}" type="button" class="btn btn-form-1 <php> echo in_array($option_key,$[type]form[value]) ? 'btn-primary' : 'btn-default';</php> btn-sm"><input type="hidden" name="{$[type]form.name}[]" value="<php> echo in_array($option_key,$[type]form[value]) ? $option_key : '';</php>">{$option}</button>
+            </foreach>
+            </div>
+        </div>
+    
+        <!-- <input type="text" class="form-control input text" name="{$[type]form.name}" value="{$[type]form.value|default=''}" placeholder="{$[type]form.tip|default=''}" {$[type]form.extra.attr|default=''}> -->
+        
+    </case>
+
+
+    <case value="category">
+
+        <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''} course">
+            <label class="left control-label">{$[type]form.title}：</label>
+            <div class="right">
+                <php>foreach(API('Debug')->search_category_index as $k => $v){</php>
+                    <div class="radio-inline lyui-control lyui-radio">
+                        <label for="target_blank{$k}">
+                            <input type="radio" id="target_blank{$k}" class="radio" name="category" value="{$k}" data-val="{$k}">
+                            <span class="lyui-control-indicator"></span>
+                            <span>{$v}</span>
+                        </label>
+                    </div>
+                <php>}</php>
+            </div>
+        </div>
+
+        <php>foreach(API('Debug')->search_category_index as $k => $v){</php>
+            <div class="erjiradio{$k} erjiradio" style="display:none">
+                <label class="left control-label"></label>
+                <div class="right">
+                    <php>foreach(API('Debug')->search_category[$k] as $key => $vol){</php>
+                    <div class="radio-inline lyui-control lyui-radio">
+                        <label for="target{$k}-{$key}">
+                            <input type="radio" id="target{$k}-{$key}" class="radio target{$k}_{$key}" name="erjiradio" value="{$key}">
+                            <span class="lyui-control-indicator"></span>
+                            <span>{$vol}</span>
+                        </label>
+                    </div>
+                    <php>}</php>
+                </div>
+            </div>
+        <php>}</php>
+
+
+        <script>
+        $(".course input[type=radio]").on('click',function () {
+            var key = $(this).data('val');
+            var dom = $('.erjiradio' + key);
+            $('.erjiradio').hide();
+            dom.show();
+        });
+
+        var category = '<php>echo $[type]form[value][0];</php>';
+        var erjiradio = '<php>echo $[type]form[value][1];</php>';
+
+        function set_cat(category,erjiradio){
+            console.log('#target_blank'+category);
+            console.log('#target'+category+'-'+erjiradio);
+            $('#target_blank'+category).attr("checked", true);
+            $('.erjiradio'+category).show();
+            $('#target'+category+'-'+erjiradio).attr("checked", true);
+        }
+        if(category && erjiradio)
+        set_cat(category,erjiradio);
+        
+        </script>
+
+    </case>
+        
+            
+    <case value="teacher">
+        <div class="form-group item_{$[type]form.name} {$[type]form.extra.class|default=''}">
+            <label class="left control-label">{$[type]form.title}：</label>
+            <div class="right">
+            <foreach name="[type]form.options" item="option" key="option_key">
+                <button data-val="{$option_key}" type="button" class="btn btn-form-1 <php> echo in_array($option_key,$[type]form[value]) ? 'btn-primary' : 'btn-default';</php> btn-sm"><input type="hidden" name="{$[type]form.name}[]" value="<php> echo in_array($option_key,$[type]form[value]) ? $option_key : '';</php>">{$option}</button>
+            </foreach>
+            </div>
+        </div>
+        
+    </case>
+    

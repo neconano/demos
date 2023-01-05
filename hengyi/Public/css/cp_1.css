@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+body, h1, h2, h3, p, dl, dt, dd, ul, li, form {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent
+}
+body, input, select, textarea, li, p, span {
+	font: 12px/1 Tahoma, Arial, Helvetica;
+}
+ul {
+	list-style: none
+}
+img {
+	border: none
+}
+button, input, select, textarea {
+	font-size: 100%;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0
+}
+
+
+body {
+	background: #fff url(../image/bg.jpg) top repeat-x;
+}
+.hd { width:1002px; height:112px; margin:0 auto;background: #fff url(../image/hbg.jpg) top repeat-x; }
+.fl { float: left; margin-left:52px; margin-top:25px;}
+
+.hd_gnlj{float:left; margin-left:22px; margin-top:6px; color:#999999}
+.hd_gnlj a{color:#999999; text-decoration:none}
+.hd_daohang{float:left; width:742px; margin-top:27px;}
+.hd_daohang_d{float:left; width:107px; text-align:center; }
+.hd_daohang_a{font-size:16px; color:#575757; font-family: "微软雅黑"; text-decoration:none}
+.hd_ssk{float:left; margin-left:311px; padding-left:10px; width:196px; height:21px; border:#d6d6d6 solid 1px;color:#e5e1e1;}
+.hd_daohang_d a:hover{font-size:16px; color:#0773cf; font-family: "微软雅黑"; text-decoration:none}
+
+.mid { width:1000px; margin:0 auto; background: #fff url(../image/cp_bg.jpg) top repeat-x; min-height:800px;}
+.b_a { height:22px; width:100%; float:left; color:#890306; font-size:22px; margin-top:59px; font-family: "微软雅黑";}
+.b_b { height:44px; width:100%; float:left; color:#666666; font-size:16px; margin-top:37px; font-family: "微软雅黑";}
+.b_c { height:14px; width:100%; float:left; color:#000000; font-size:14px; margin-top:16px; margin-left:32px; font-family: "微软雅黑";}
+.b_c a{ text-decoration:none; color:#000000;}
+.b_c a:hover{ text-decoration:underline; color:#013562;}
+
+.b_c_hover_1 { background: #fff url(../image/c1.jpg) no-repeat ;}
+.b_c_hover_2 { background: #fff url(../image/c1.jpg) no-repeat ;}
+
+.b_c_hover_3 { background: #fff url(../image/c3.jpg) no-repeat ;}
+.b_c_hover_4 { background: #fff url(../image/c3.jpg) no-repeat ;}
+.b_c_hover_7 { background: #fff url(../image/c3.jpg) no-repeat ;}
+
+.b_c_hover_5 { background: #fff url(../image/c2.jpg) no-repeat ;}
+.b_c_hover_6 { background: #fff url(../image/c2.jpg) no-repeat ;}
+
+.a_a {height:22px; font-size:22px; color:#013562; text-align:center; font-family: "微软雅黑";}
+.a_b {font-size:14px; color:#000000; line-height:24px; margin-top:20px; font-family:"宋体";}
+
+
+

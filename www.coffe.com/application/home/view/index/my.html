@@ -1,0 +1,69 @@
+<extend name="$layout"/>
+
+<block name="style">
+    <style type="text/css">
+        .jianjie p {
+            font-size: 0.26rem;
+        }
+        .jianjie p span {
+            font-size: 0.26rem;
+        }
+    </style>
+</block>
+
+<block name="main">
+
+    <div class="container details_html">
+        <div class="head_top">
+            <div class="details_background" style="background:#eb6e8e">
+                <img class="float_l" src="{$userinfo[headimgurl]}" style="width: 1.6rem;margin-top: 0.4rem;margin-left: 0.12rem;border-radius: 50%;">
+            </div>
+        </div>
+        <div class="new" style="margin-top: -1.6rem;border-radius: 0.2rem;">
+            <div class="jianjie" style="margin-bottom: 1.2rem;border-radius: 0.2rem;">
+
+                <a href="{:U('my',['list_type'=>'coupon'])}">
+                <div class="biaoti" style="height: 1.6rem;">
+                    <p style="border-left:none !important;margin-top: 0rem;">
+                        <img class="img-1" style="width: 1.1rem;margin-top: 0.1rem;float: left;" src="__PUBLIC__/cdn-ready/home/coffe/img/quan.png" />
+                        <label style="float: left;font-size: 0.26rem;margin-top: 0.36rem;color: #333333">我的优惠券</label>
+                        <img class="img-2" style="width: 0.64rem;height: 0.48rem;float: right;margin-top: 0.26rem;" src="__PUBLIC__/cdn-ready/home/coffe/img/arrow2.png" />
+                    </p>
+                </div>
+                </a>
+
+                <a href="{:U('my',['list_type'=>'order'])}">
+                <div class="biaoti" style="height: 1.6rem;">
+                    <p style="border-left:none !important;margin-top: 0rem;">
+                        <img class="img-1" style="width: 1.1rem;margin-top: 0.1rem;float: left;" src="__PUBLIC__/cdn-ready/home/coffe/img/order.png" />
+                        <label style="float: left;font-size: 0.26rem;margin-top: 0.36rem;color: #333333">我的订单</label>
+                        <img class="img-2" style="width: 0.64rem;height: 0.48rem;float: right;margin-top: 0.26rem;" src="__PUBLIC__/cdn-ready/home/coffe/img/arrow2.png" />
+                    </p>
+                </div>
+                </a>
+
+                <a href="{:U('my',['list_type'=>'kudou'])}">
+                <div class="biaoti" style="height: 1.6rem;">
+                    <p style="border-left:none !important;margin-top: 0rem;">
+                        <img class="img-1" style="width: 1.1rem;margin-top: 0.1rem;float: left;" src="__PUBLIC__/cdn-ready/home/coffe/img/bean2.png" />
+                        <label style="float: left;font-size: 0.26rem;margin-top: 0.36rem;color: #333333">我的酷豆</label>
+                        <img class="img-2" style="width: 0.64rem;height: 0.48rem;float: right;margin-top: 0.26rem;" src="__PUBLIC__/cdn-ready/home/coffe/img/arrow2.png" />
+                    </p>
+                </div>
+                </a>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <div class="clear" style="height: 1rem"></div>
+
+
+</block>
+
+
+<block name="script">
+
+
+</block>

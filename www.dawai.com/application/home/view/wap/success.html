@@ -1,0 +1,73 @@
+<extend name="$_home_wap_public_layout"/>
+
+<block name="style">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/swiper-3.4.2.min.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/common-wap.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/form.css">
+
+</block>
+
+<block name="script">
+	<script src="__HOME_PUBLIC__/public_wap/js/jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/swiper-3.4.2.jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/common.js"></script>
+
+	<script>
+	$(function(){
+		var wait=10;  
+		timeOut();  
+		function timeOut(){  
+		if(wait === 0){  
+			window.location.href = "/";
+		}else{                    
+			setTimeout(function(){  
+				wait--;  
+				$('.form-success-area a:first-of-type').html('返回首页（'+wait+'s）');  
+				timeOut();  
+			},1000);
+		}  
+		}  
+	});
+	</script>
+
+
+
+</block>
+
+
+
+<block name="main">
+
+		<!--课程信息 start-->
+		<div class="container">
+			<div class="form-info-area">
+				<div class="left">
+					<img src="{$data['img_1']}" alt="">
+				</div>
+				<div class="right">
+					<h3>{$data['title']}</h3>
+					<p>{$data['description']}</p>
+				</div>
+			</div>
+		</div>
+		<!--课程信息 end-->
+		<div class="space-gray"></div>
+
+	<!--提示 start-->
+	<div class="container">
+		<div class="form-success-area">
+			<h2>报名成功！</h2>
+			<p>客服老师会在<b>24小时</b>内联系您，通知您具体上课流程！如您有任何疑问，可随时通过在线客服或客服电话进行咨询。感谢选择大外在线。</p>
+			<div class="btn-group">
+				<a href="/">返回首页（10s）</a>
+				<a href="http://wpa.qq.com/msgrd?v=3&uin=2885327890&site=qq&menu=yes">在线咨询</a>
+			</div>
+		</div>
+	</div>
+	<!--提示 end-->
+	<div class="space-gray"></div>
+				
+</block>
+
+
+

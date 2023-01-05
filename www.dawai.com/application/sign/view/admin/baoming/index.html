@@ -1,0 +1,248 @@
+<div class="builder listbuilder-box">
+    {// 额外功能代码top }
+    <?php if(isset($extra_html['top'])): ?> {$extra_html['top']}
+    <?php endif; ?>
+
+    <!-- Tab导航 -->
+    <notempty name="tab_nav">
+        <div class="builder-tabs">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="nav nav-tabs">
+                        <volist name="tab_nav.tab_list" id="tab">
+                            <li class="<php>if($tab_nav['current_tab'] == $key) echo 'active';</php>"><a href="{$tab.href}">{$tab.title}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-group"></div>
+    </notempty>
+
+    <!-- 顶部工具栏按钮 -->
+    <div class="builder-toolbar">
+        <div class="row">
+            <!-- 工具栏按钮 -->
+            <notempty name="top_button_list">
+                <div class="col-xs-12 col-sm-8 button-list clearfix">
+                    <div class="form-group">
+                        <volist name="top_button_list" id="button">
+                            <?php if(isset($button['type']) && $button['type'] === 'dropdown'): ?>
+                            <div class="btn-group">
+                                <button type="button" class="{$button.class|default=''} dropdown-toggle" data-toggle="dropdown">
+                                        {$button.title|default=''}
+                                        <span class="caret"></span>
+                                    </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <volist name="button.dropdown" id="btn">
+                                        <li><a class="{$btn.class|default=''}" href="{$btn.href|default=''}">{$btn.title}</a></li>
+                                    </volist>
+                                </ul>
+                            </div>
+                            <?php else: ?>
+                            <a {$button.attribute|default='' }>{$button.title|default=''}</a>&nbsp;
+                            <?php endif; ?>
+                        </volist>
+                    </div>
+                </div>
+            </notempty>
+
+            <!-- 搜索框 -->
+            <notempty name="search">
+                <empty name="search_form_items">
+                    <div class="col-xs-12 col-sm-4 clearfix">
+                        <form class="form" method="get" action="{$search.url}">
+                            <div class="form-group">
+                                <div class="input-group search-form">
+                                    <input type="text" name="keyword" class="search-input form-control" value="{:I('get.keyword')}" placeholder="{$search.title|default=''}">
+                                    <span class="input-group-btn"><a class="btn btn-default search-btn"><i class="fa fa-search"></i></a></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </empty>
+            </notempty>
+
+            <div class="col-xs-12">
+
+                <input type="hidden" id="s_cat1" value="">
+                <p>
+                    <button type="button" class="btn btn-sm">课程大类</button>
+                    <button type="button" class="btn btn-primary btn-sm btn_cat cat1" data-cat='cat1'  data-val="">全部</button>
+                    <php>foreach(API('Course')->search_category_index as $k => $v){</php>
+                    <button type="button" class="btn btn-default btn-sm btn_cat cat1 cat1-{$k}" data-cat='cat1' data-id='{$k}' data-val="{$k}">{$v}</button>
+                    <php>}</php>
+                    <button type="button" class="btn btn-warning btn-sm " onclick="do_cat_search()">确定</button>
+                </p>
+
+                <input type="hidden" id="s_cat2" value="">
+                <php>foreach(API('Course')->search_category_index as $k=>$v){</php>
+                <p class="p_cat2" id="p_cat2{$k}" style="display:none">
+                    <button type="button" class="btn btn-sm">课程小类</button>
+                    <button type="button" class="btn btn-primary btn-sm btn_cat cat2 cat2-all" data-cat='cat2' data-val="">全部</button>
+                    <php>foreach(API('Course')->search_category[$k] as $key => $vol){</php>
+                    <button type="button" class="btn btn-default btn-sm btn_cat cat2 cat2-{$key}" data-cat='cat2' data-val="{$key}">{$vol}</button>
+                    <php>}</php>
+                </p>
+                <php>}</php>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 数据列表 -->
+    <div class="builder-container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="builder-table">
+                    <div class="panel panel-default table-responsive" style="overflow:hidden;">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <?php if($hide_left_checkbox === false): ?>
+                                    <th class="list-ids" width="30">
+                                        <div class="checkbox-inline lyui-control lyui-checkbox m-l-xs">
+                                            <label class="checkbox-label">
+                                                    <input type="checkbox" class="check-all" >
+                                                    <span class="lyui-control-indicator"></span>
+                                                </label>
+                                        </div>
+                                    </th>
+                                    <?php endif; ?>
+                                    <volist name="table_column_list" id="column">
+                                        <th width="<?php if ($column['width']) {echo $column['width'];} else {echo 'auto';} ?>">
+                                            {$column.title|htmlspecialchars}
+                                        </th>
+                                    </volist>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <volist name="table_data_list" id="data">
+                                    <tr>
+                                        <?php if($hide_left_checkbox === false): ?>
+                                        <td>
+                                            <div class="checkbox-inline lyui-control lyui-checkbox m-l-xs">
+                                                <label class="checkbox-label">
+                                                        <input class="ids" type="checkbox" value="{$data[$table_data_list_key]|default=''}" name="ids[]">
+                                                        <span class="lyui-control-indicator"></span>
+                                                    </label>
+                                            </div>
+                                        </td>
+                                        <?php endif; ?>
+                                        <?php foreach ($table_column_list as $column) :?>
+                                        <td style="max-width:100px">
+                                            <?php if ($column['name'] === 'right_button') : ?>
+                                                <?php foreach ($data['right_button'] as $rb) : ?>
+                                                    <?php if(isset($rb['type']) && $rb['type'] === 'dropdown'): ?>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="{$rb.class|default=''} dropdown-toggle" data-toggle="dropdown">
+                                                                            {$rb.title|default=''}
+                                                                            <span class="caret"></span>
+                                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <volist name="rb.dropdown" id="btn">
+                                                                <li><a class="{$btn.class}|default=''" href="{$btn.href|default=''}">{$btn.title}</a></li>
+                                                            </volist>
+                                                        </ul>
+                                                    </div>
+                                                    <?php else: ?>
+
+                                                    <php>if($rb['type'] == 'self'){</php>
+                                                        
+                                                        <div class="dropdown">
+                                                            <form action="" method="POST" class="form form-remark-2{$data['id']}" role="form">
+                                                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    <span id='label_{$data[id]}'>{$data['remark_2']|default='未联系'}</span>
+                                                                    <input type="hidden" name="id" value="{$data['id']}">
+                                                                    <input type="hidden" id="remark_2{$data[id]}" name="remark_2" value="">
+                                                                    <input type="hidden" name="dotype" value="remark_2">
+                                                                    <span class="caret"></span>
+                                                            </button>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="position:static;">
+                                                              <li><a onclick="d_set_remark2('{$data[id]}','未联系')" href="#" class="submit ajax-post no-refresh" target-form="form-remark-2{$data['id']}">未联系</a></li>
+                                                              <li><a onclick="d_set_remark2('{$data[id]}','联系中')" href="#" class="submit ajax-post no-refresh" target-form="form-remark-2{$data['id']}">联系中</a></li>
+                                                              <li><a onclick="d_set_remark2('{$data[id]}','沟通中')" href="#" class="submit ajax-post no-refresh" target-form="form-remark-2{$data['id']}">沟通中</a></li>
+                                                              <li><a onclick="d_set_remark2('{$data[id]}','已签约')" href="#" class="submit ajax-post no-refresh" target-form="form-remark-2{$data['id']}">已签约</a></li>
+                                                              <li><a onclick="d_set_remark2('{$data[id]}','放弃')" href="#" class="submit ajax-post no-refresh" target-form="form-remark-2{$data['id']}">放弃</a></li>
+                                                            </ul>
+                                                            </form>
+                                                        </div>
+
+                                                    <php>}else{</php>
+                                                        <a {$rb[ 'attribute']|default='' }>{$rb['title']|default=''}</a>
+                                                    <php>}</php>
+
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                            <?php else: ?> 
+
+                                                <php>if($column['name'] == 'remark'){</php>
+                                                    <form action="{:U('', 'dotype=remark')}" method="POST" class="form form-remark{$data['id']}" role="form">
+                                                        <div class="input-group">
+                                                                <input type="hidden" name="id" value="{$data['id']}">
+                                                                <input type="text" class="form-control" name="remark" value="{$data['remark']}">
+                                                                <span class="input-group-btn">
+                                                            <button type="submit" class="btn btn-primary-outline btn-pill submit ajax-post no-refresh" target-form="form-remark{$data['id']}">提交</button>
+                                                          </span>
+                                                        </div><!-- /input-group -->
+                                                    </form>
+                                                <php>}else{</php>
+                                                    {$data[$column['name']]|default=''}
+                                                <php>}</php>
+                                                            
+                                            <?php endif; ?>
+                                        </td>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                </volist>
+
+                                <empty name="table_data_list">
+                                    <tr class="builder-data-empty">
+                                        <php>$tdcolspan = count($table_column_list)+1</php>
+                                        <td class="text-center empty-info" colspan="{$tdcolspan}">
+                                            <i class="fa fa-database"></i> 暂时没有数据<br>
+                                            <span class="small">本系统由 <a target="_blank" href="{:C('WEBSITE_DOMAIN')}" class="text-muted">{:C('PRODUCT_TITLE')}</a> v{:C('CURRENT_VERSION')} 强力驱动</span>
+                                        </td>
+                                    </tr>
+                                </empty>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <notempty name="table_data_page">
+                        <ul class="pagination">{$table_data_page}</ul>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {// 额外功能代码bottom }
+    <?php if(isset($extra_html['bottom'])): ?> {$extra_html['bottom']}
+    <?php endif; ?>
+
+    <script type="text/javascript" src="__PUBLIC__/cdn-ready/common/js/search_button.js"></script>
+    <script>
+        function do_cat_search(){
+            var s_cat1 = $('#s_cat1').val();
+            var s_cat2 = $('#s_cat2').val();
+            
+            location.href = 'index?s_cat1='+s_cat1+'&s_cat2='+s_cat2;
+        }
+        var s_cat1 = "<php>echo I('s_cat1')</php>";
+        var s_cat2 = "<php>echo I('s_cat2')</php>";
+        if(s_cat1)
+        set_cat1(s_cat1);
+        if(s_cat2)
+        set_cat2(s_cat2);
+
+        function d_set_remark2(id,remark){
+            $('#label_'+id).html(remark);
+            $('#remark_2'+id).val(remark);
+            $('.form-remark-2'+id).removeClass('open');
+        }
+
+    </script>
+
+</div>

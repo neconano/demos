@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+    <title>小蜜蜂--交单公示</title>
+
+    <link href="./css/common.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/mescroll.css">
+    <link rel="stylesheet" href="./css/re.css">
+    <style type="text/css">
+        /* 抢先 隐藏 iframe */
+        body iframe {
+            display: none;
+        }
+
+        .tankuang .kuai {
+            width: calc(100% - 1.5rem);
+            background: #fff;
+            border-radius: 0.2rem;
+            margin: auto;
+            position: relative;
+            top: 10vh;
+            overflow: hidden;
+        }
+
+        .tankuang .kuai p {
+            width: calc(100% - 0.44rem);
+            margin: auto;
+            font-size: 0.26rem;
+            color: #333333;
+            line-height: 0.46rem;
+            margin-top: 0.1rem;
+            height: 6rem;
+            overflow: hidden;
+        }
+
+        .bt123 {
+            display: block;
+            width: 1.2rem;
+            height: 0.54rem;
+            background: #26963e;
+            text-align: center;
+            line-height: 0.54rem;
+            font-size: 0.25rem;
+            color: #ffffff;
+            border-radius: 0.58rem;
+            font-weight: 600;
+            margin: 0 0.2rem 0 0.1rem;
+            margin-top: 0.12rem;
+            box-shadow: 0px 6px 12px 0px rgba(30, 129, 51, 0.28);
+        }
+
+    </style>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/xmfcommon.js"></script>
+</head>
+
+<body class="mescroll-bar">
+    <div class="mescroll-downwarp">
+        <div class="downwarp-content">
+            <p class="downwarp-progress"></p>
+            <p class="downwarp-tip"></p>
+        </div>
+    </div>
+    <div class="container details_html list_html index_html">
+        <div class="bian"></div>
+        <div class="head_top">
+            <div class="top">
+                <a href="/index.html"><img class="return" src="./img/return2.png" id="btn_center"></a>
+                <p>交单公示页</p>
+            </div>
+        </div>
+        <div class="gerenxinxi">
+            <div class="xingxi">
+                <div class="flex">
+                    <p id="sizenum">2</p>
+                    <p>发布产品</p>
+                </div>
+                <div class="flex">
+                    <p id="totalBalance">0</p>
+                    <p>累计投资</p>
+                </div>
+                <div class="flex">
+                    <p id="alreadyRebate">0</p>
+                    <p>累计返利</p>
+                </div>
+            </div>
+            <div class="gongao" onclick="gonggao();">
+                <div class="float_l">公告：</div>
+                <p class="float_l" id="substring">大喇叭，资源共享型互金营销系统...</p>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class=""></div>
+
+        <div class="inline_flex" id="recommendonlyone">
+
+            <div class="index_chp" onclick="gonggao();">
+                    <div class="index_chp_top">
+                        <p class="float_l">国盛证券</p> <span class="float_l">上市控股</span>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="yuqi_sy">
+                        <div class="float_l">
+                            <div>183<span>%</span></div>
+                            <p>加息预期收益</p>
+                        </div>
+                        <div class="float_r" style="padding-top: 0.2rem;">
+                            <p>项目：企业贷1月</p>
+                            <div class="clear"></div>
+                            <p>金额：10000￥ 返利：200￥</p>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="bj_p">
+                        <p class="float_l">手机：</p>
+                        <p class="zhuce_zb" style="width: calc(100% - 2.7rem);float: left;">131XXXX1100</p>
+                        <p class="float_r bt123">查看</p>                    
+                        <div class="clear"></div>
+                    </div>
+            </div>
+            
+        </div>
+
+        <div class="dixian">
+            <p>我是底线</p>
+        </div>
+        <script type="text/javascript" src="./js/mescroll.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                //创建MeScroll对象,内部已默认开启下拉刷新,自动执行up.callback,重置列表数据;
+                var mescroll = new MeScroll("body", {
+                    up: {
+                        callback: getRepayListData, //上拉回调,此处可简写; 相当于 callback: function (page) { getListData(page); }
+                        isBounce: true, //此处禁止ios回弹,解析(务必认真阅读,特别是最后一点): http://www.mescroll.com/qa.html#q10
+                        use: true,
+                        clearEmptyId: "productid", //1.下拉刷新时会自动先清空此列表,再加入数据; 2.无任何数据时会在此列表自动提示空
+                        warpClass: "marb98",
+                        page: {
+                            size: 3
+                        }
+                    }
+                });
+
+
+                /*联网加载列表数据  page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+                function getRepayListData(page) {
+                    //联网加载数据
+                    getProductList(page.num, page.size, function (curPageData) {
+                        //联网成功的回调,隐藏下拉刷新和上拉加载的状态;
+                        //mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+                        console.log("page.num=" + page.num + ", page.size=" + page.size +
+                            ", total=" + curPageData.productList.listtotal + ", list=" +
+                            curPageData.productList.list);
+                        //方法一(推荐): 后台接口有返回列表的总页数 totalPage
+                        //mescroll.endByPage(curPageData.length, totalPage); //必传参数(当前页的数据个数, 总页数)
+
+                        //方法二(推荐): 后台接口有返回列表的总数据量 totalSize
+                        //mescroll.endBySize(curPageData.length, totalSize); //必传参数(当前页的数据个数, 总数据量)
+                        mescroll.endBySize(curPageData.productList.list.length, curPageData.productList
+                            .listtotal); //必传参数(当前页的数据个数, 总数据量)
+
+                        //方法三(推荐): 您有其他方式知道是否有下一页 hasNext
+                        //mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
+
+                        //方法四 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据,如果传了hasNext,则翻到第二页即可显示无更多数据.
+                        //mescroll.endSuccess(curPageData.length);
+
+                        //设置列表数据,因为配置了emptyClearId,第一页会清空dataList的数据,所以setListData应该写在最后;
+                        setRepayDetailData(curPageData);
+
+                    }, function () {
+                        //联网失败的回调,隐藏下拉刷新和上拉加载的状态;
+                        mescroll.endErr();
+                    });
+
+                }
+
+                //设置产品列表数据（处理后台返回的json数据）
+                function setRepayDetailData(curPageDataObj) {
+                    var username = curPageDataObj.productList.resourcesChannelInfo.username; //用户名
+                    var alreadyRebate = curPageDataObj.productList.resourcesChannelInfo.applysuccessstr; //已返利
+                    var totalBalance = curPageDataObj.productList.resourcesChannelInfo.cheatBackDepositAccount.totalbalancestr; //骗单押金
+                    var mobile = curPageDataObj.productList.resourcesChannelInfo.mobile; //手机号
+                    var announcement = curPageDataObj.productList.resourcesChannelInfo.announcement; //公告
+                    var sizenum = curPageDataObj.productList.listtotal; //发布产品数
+                    var setAvatarpath = curPageDataObj.productList.userAvatarpath; //头像
+                    if (curPageDataObj.productList.adUniversal) {
+                        var imageAddress = curPageDataObj.productList.adUniversal.adimgurl; //广告
+                        $(".container .guanggao").show().find("img").attr("src", imageAddress);
+                    }
+                    $("#username").text(username);
+                    $("#alreadyRebate").text(alreadyRebate);
+                    $("#totalBalance").text(totalBalance);
+                    $("#mobile").text(mobile);
+
+
+                    if (announcement != null && announcement != "") {
+                        if (announcement.length >= 16) {
+                            var substring = announcement.substring(0, 15);
+                            $("#substring").text(substring + "...");
+                            $("#announcement").text(announcement);
+                        } else {
+                            $("#announcement").text(announcement);
+                            $("#substring").text(announcement);
+                        }
+                    } else {
+                        $("#announcement").text("暂无公告");
+                        $("#substring").text("暂无公告");
+                    }
+
+                    $("#sizenum").text(sizenum);
+                    $(".gerenxinxi .touxiang").find("img").attr("src", setAvatarpath);
+
+                    /*   var html = "";*/
+
+                    $.each(curPageDataObj.productList.list, function (i, c) {
+                        var bailhtml = "";
+                        var bail = c.bail
+                        if (bail > 0) {
+                            bailhtml += " <div class='float_l ya'>" + " <span>押</span>" + c.bail + "" +
+                                "</div>";
+                        } else {
+                            bailhtml += "";
+                        }
+                        var pbackgroundhtml = "";
+                        var pbackground = c.backgrounddepict;
+                        if (pbackground != null && pbackground != "") {
+                            pbackgroundhtml = "<p class='zhuce_zb'>" + pbackground + "</p>";
+                        } else {
+                            pbackgroundhtml += "";
+                        }
+                        var backgroundList = c.bList; // 背景列表
+                        var backgroundStr = ""; // 显示字符串
+                        for (var j = 0; j < backgroundList.length; j++) {
+                            var back = backgroundList[j]; // 单个背景
+                            var bj;
+                            if (back == "1") {
+                                bj = "国资控股";
+                            }
+                            if (back == "2") {
+                                bj = "国资参股";
+                            }
+                            if (back == "3") {
+                                bj = "上市控股";
+                            }
+                            if (back == "4") {
+                                bj = "上市参股";
+                            }
+                            if (back == "5") {
+                                bj = "风投系";
+                            }
+                            if (back == "6") {
+                                bj = "银行系";
+                            }
+                            if (back == "7") {
+                                bj = "民营系";
+                            }
+                            if (back == "8") {
+                                bj = "知名风投";
+                            }
+                            if (j % 2 == 0) {
+                                backgroundStr += "<div class='float_l biaoqian'>" + bj + "</div>"
+                            } else {
+                                //偶数行代码
+                                backgroundStr += "<div class='float_l biaoqian'>" + bj + "</div>"
+                            }
+                        }
+                        var firstbackmoney = "¥" + c.firstbackmoneystr;
+
+                        var html = "<!--产品列表-->" +
+                            " <div class='each_item'>" +
+                            " <a href='details.html?productno=" + c.productno + "'>" +
+                            " <div class='width'>" +
+                            " <div class='logo'>" +
+                            "<img class='float_l' src='" + c.logo1 + "'>" +
+                            "	" + bailhtml + "" +
+                            "   " + backgroundStr + " " +
+                            "  <div class='clear'></div>" +
+                            "   " + pbackgroundhtml + " " +
+                            " </div>" +
+                            " <div class='shouyi'>" +
+                            "<div class='float_l left'>" +
+                            "  <p>" + c.productBidRebate.totalbenefit + "<span>%</span></p>" +
+                            "  <p>加息预期收益</p>" +
+                            "  </div>" +
+                            " <div class='float_l border'></div>" +
+                            "<div class='float_l right'>" +
+                            "<p>平台利息<span>" + c.productBid.platforminterest + "%</span></p>" +
+                            "<p>最高返利<span>" + firstbackmoney + "</span></p>" +
+                            "</div>" +
+                            "<div class='clear'></div>" +
+                            "</div>" +
+                            "</div>" +
+                            "</a>" +
+                            "</div>"
+                        $("#productid").append(html);
+                    })
+
+                }
+
+                //查询数据
+                function getProductList(pageNum, pageSize, successCallback, errorCallback) {
+                    $.ajax({
+                        type: 'GET',
+                        url: basePath + '/myproduct/product',
+                        data: {
+                            "pageNum": pageNum,
+                            "pageSize": pageSize
+                        },
+                        success: function (data) {
+                            if (data.code == "88") {
+                                successCallback(data.data);
+                            } else {
+                                errorCallback
+                            }
+
+                        },
+                        error: errorCallback
+                    });
+
+                }
+
+
+            })
+        </script>
+        <script>
+            function gonggao() {
+                var announcement = $("#announcement").text();
+                if (announcement != "暂无公告") {
+                    $(".tankuang").fadeIn(300)
+                    // $(".register_frame .reward2 .text2").fadeOut(1)
+                    $(".gonggao_tk").on('click', function () {
+                        $(".tankuang").fadeIn(300)
+                    })
+                    //关闭弹框
+                    $(".guanbi_tk").on("click", function () {
+                        $(".tankuang").fadeOut(300)
+                    })
+                }
+            }
+        </script>
+
+        <div class="foot_nav">
+            <a href="/index.html" class="shouye">首页</a>
+            <a href="/list.html" class="chanpin2">产品列表</a>
+            <a href="/loan_list.html" class="daikuan">贷款</a>
+            <a href="/gppz.html" class="peizi">股票配资</a>
+            <div class="leibiao" style="width: 88%;">
+                <a class="shenbao1">
+                    关于
+                </a>
+                <ul>
+                    <a href="/xmf_about.html?name=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC">
+                        <li>关于我们</li>
+                    </a>
+                    <a href="/query.html">
+                        <li>申报查询</li>
+                    </a>
+                    <a href="javascript:myCenter()" id="myCenter">
+                        <li>我的</li>
+                    </a>
+                    <a href="/zixun.html">
+                        <li>咨询</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <!-- 弹窗 开始 -->
+        <div class="tankuang">
+            <div class="kuai">
+                <div class="tankuang_img">
+                    <img src="./img/tankuang3.png">
+                    <h6>交单截图</h6>
+                </div>
+                <p id="announcement">
+                    <img src="./img/5c7cceeca6677.png">
+                </p>
+                <button class="guanbi_tk">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="marb98" style="visibility: visible; display: none;">
+        <p class="upwarp-progress"></p>
+        <p class="upwarp-tip">加载中..</p>
+    </div>
+</body>
+
+</html>

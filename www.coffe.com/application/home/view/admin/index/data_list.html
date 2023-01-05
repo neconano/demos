@@ -1,0 +1,362 @@
+<extend name="$_admin_public_layout" />
+<block name="style">
+</block>
+<block name="main">
+
+    <form action="" method="get" id="form1" >
+    <div class="form-group " style="float: left;width: 100%;margin-left: 20px;margin-top: 20px;">
+        
+        <label class="left control-label" style="float: left;margin-left:10px">当日时间：</label>
+        <div class="right" style="width: 150px; margin-left: 4px;float: left;">
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                <input type="text" id="start_time" class="form-control input date" name="start_time" value="{$start_time}">
+            </div>
+            <script type="text/javascript">
+                $(function(){
+                    $('#start_time').datetimepicker({
+                        format      : 'yyyy-mm-dd',
+                        autoclose   : true,
+                        minView     : 'month',
+                        todayBtn    : 'linked',
+                        language    : 'zh-CN',
+                        fontAwesome : true
+                    });
+                });
+            </script>
+        </div>
+
+        <label class="left control-label" style="float: left;margin-left:10px">设备：</label>
+        <div class="right" style="width: 150px; margin-left: 4px;float: left;">
+            <select name="device_select" id="device_select" style="width: 150px;" class="form-control lyui-select select">
+                <php>foreach($device_list_kv as $k=>$v){</php>
+                <option value="{$k}" <php>if($device_select == $k) echo 'selected';</php> >{$v}</option>
+                <php>}</php>
+            </select>
+        </div>
+
+        <label class="left control-label" style="float: left;margin-left:10px">通道：</label>
+        <div class="right" style="width: 150px; margin-left: 4px;float: left;">
+            <input type="hidden" id="tune_select" name="tune_select" value="{$tune_select}">
+            <php>foreach($device_tune_list_kv as $k=>$v){</php>
+            <select id="tune_{$k}" style="width: 150px; <php>if($device_select != $k) echo 'display: none;';</php> " class="tune_select form-control lyui-select select">
+                <option value="">全部：</option>
+                <php>foreach($v as $vvv){</php>
+                    <option value="{$vvv[id]}" <php>if($tune_select == $vvv[id]) echo 'selected';</php>>通道{$vvv['goods_type']}/{$vvv['title']}</option>
+                <php>}</php>
+            </select>
+            <php>}</php>
+
+        </div>
+
+        <div class="form-group" style="float: left; margin-left: 10px">
+            <a class="btn btn-success" href="#" onclick="do_submit()">确定</a>&nbsp;
+        </div>
+    </div>
+    </form>
+
+    <div class="dashboard clearfix" style="margin-left: 20px;width: 1000px;">
+        <div class="col-xs-12 m-b-sm text-center p-a-0">
+
+            <div class="col-xs-12 col-sm-3 m-b-sm">
+                <div style="border:1px solid #ddd;height:92px;">
+                    <div class="pull-left"
+                        style="width:40%;height:90px;text-align:center;padding-top:25px;font-size:30px;background: #f8f8f8;">
+                        <i class="fa fa-shopping-bag"></i>
+                    </div>
+                    <div class="pull-left"
+                        style="width:60%;height:90px;text-align:center;padding-top:20px;border-left:1px solid #ddd;">
+                        <div style="font-size:22px;">{$top_info[online_num]}</div>
+                        <div>当前在线设备</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 m-b-sm">
+                <div style="border:1px solid #ddd;height:92px;">
+                    <div class="pull-left"
+                        style="width:40%;height:90px;text-align:center;padding-top:25px;font-size:30px;background: #f8f8f8;">
+                        <i class="fa fa-shopping-bag"></i>
+                    </div>
+                    <div class="pull-left"
+                        style="width:60%;height:90px;text-align:center;padding-top:20px;border-left:1px solid #ddd;">
+                        <div style="font-size:22px;">{$top_info[price]}</div>
+                        <div>当日营业额</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-xs-12 col-sm-3 m-b-sm">
+                <div style="border:1px solid #ddd;height:92px;">
+                    <div class="pull-left"
+                        style="width:40%;height:90px;text-align:center;padding-top:25px;font-size:30px;background: #f8f8f8;">
+                        <i class="fa fa-money"></i>
+                    </div>
+                    <div class="pull-left"
+                        style="width:60%;height:90px;text-align:center;padding-top:20px;border-left:1px solid #ddd;">
+                        <div style="font-size:22px;">{$top_info[cut_price]}</div>
+                        <div>当日优惠额</div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-xs-12 col-sm-3 m-b-sm">
+                <div style="border:1px solid #ddd;height:92px;">
+                    <div class="pull-left"
+                        style="width:40%;height:90px;text-align:center;padding-top:25px;font-size:30px;background: #f8f8f8;">
+                        <i class="fa fa-cart-plus"></i>
+                    </div>
+                    <div class="pull-left"
+                        style="width:60%;height:90px;text-align:center;padding-top:20px;border-left:1px solid #ddd;">
+                        <div style="font-size:22px;">{$top_info[cup_num]}</div>
+                        <div>当日售出杯数</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3 m-b-sm">
+                <div style="border:1px solid #ddd;height:92px;">
+                    <div class="pull-left"
+                        style="width:40%;height:90px;text-align:center;padding-top:25px;font-size:30px;background: #f8f8f8;">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="pull-left"
+                        style="width:60%;height:90px;text-align:center;padding-top:20px;border-left:1px solid #ddd;">
+                        <div style="font-size:22px;">{$top_info[user_num]}</div>
+                        <div>当日消费人数</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="main-content" style="margin-left: 0px;">
+        <div class="wrapper wrapper_add" style="margin-top: 0px;">
+
+            <div style="padding: 15px;">
+
+                <div class="builder-container" style="width: 1200px;">
+
+                    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                    <div id="charts_1" style="width: 600px; height: 400px; float: left; "></div>
+
+                    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                    <div id="charts_2" style="width: 400px; height: 200px; float: left; "></div>
+
+                    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                    <div id="charts_3" style="width: 400px; height: 200px; float: left; "></div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</block>
+<block name="script">
+
+    <script src="__PUBLIC__/libs/echarts.js"></script>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('charts_1'));
+        option = {
+            title: {
+                text: '当日销售汇总'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            yAxis: {
+                type: 'value',
+                min: 0,
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: [
+                    <php>foreach($day_order as $k=>$v){</php>
+                    '{$k}', 
+                    <php>}</php>
+                    ]
+            },
+            legend: {
+                data: ['售出杯数（{$total_cup_day}）', '营业额（{$total_price_day}）']
+            },
+            series: [{
+                    name: '售出杯数（{$total_cup_day}）',
+                    type: 'line',
+                    smooth: true,
+                    data: [
+                    <php>foreach($day_cup_num as $v){</php>
+                    '{$v}', 
+                    <php>}</php>
+                    ]
+                },
+                {
+                    name: '营业额（{$total_price_day}）',
+                    type: 'line',
+                    smooth: true,
+                    data: [
+                    <php>foreach($day_price as $v){</php>
+                    '{$v}', 
+                    <php>}</php>
+                    ]
+                },
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('charts_2'));
+        option = {
+            title: {
+                text: '当月汇总'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            yAxis: {
+                type: 'value',
+                min: 0,
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: [
+                    <php>foreach($month_order as $k=>$v){ $n = $k * 2; </php>
+                    '{$n}', 
+                    <php>}</php>
+                    ]
+            },
+            legend: {
+                data: ['售出杯数（{$total_cup_month}）', '营业额（{$total_price_month}）']
+            },
+            series: [{
+                    name: '售出杯数（{$total_cup_month}）',
+                    type: 'line',
+                    smooth: true,
+                    data: [
+                    <php>foreach($month_cup_num as $v){</php>
+                    '{$v}', 
+                    <php>}</php>
+                    ]
+                },
+                {
+                    name: '营业额（{$total_price_month}）',
+                    type: 'line',
+                    smooth: true,
+                    data: [
+                    <php>foreach($month_price as $v){</php>
+                    '{$v}', 
+                    <php>}</php>
+                    ]
+                },
+            ]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+
+
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('charts_3'));
+        option = {
+            title: {
+                text: '当年汇总'
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            yAxis: {
+                type: 'value',
+                min: 0,
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: [
+                    <php>foreach($year_order as $k=>$v){</php>
+                    '{$k}', 
+                    <php>}</php>
+                    ]
+            },
+            legend: {
+                data: ['售出杯数（{$total_cup_year}）', '营业额（{$total_price_year}）']
+            },
+            series: [{
+                    name: '售出杯数（{$total_cup_year}）',
+                    type: 'line',
+                    smooth: true,
+                    data: [
+                    <php>foreach($year_cup_num as $v){</php>
+                    '{$v}', 
+                    <php>}</php>
+                    ]
+                },
+                {
+                    name: '营业额（{$total_price_year}）',
+                    type: 'line',
+                    smooth: true,
+                    data: [
+                    <php>foreach($year_price as $v){</php>
+                    '{$v}', 
+                    <php>}</php>
+                    ]
+                },
+            ],
+            backgroundColor:'#f4f5f9'
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+    <script>
+        function do_submit(){
+                $('#form1').submit();
+        }
+
+        $("#device_select").change(function(){
+            var id = $("#device_select").val();
+            $(".tune_select").hide();
+
+            var select = $(".tune_select");  
+            for (var i = 0; i < select.length; i++) {
+                select[i].options[0].selected = true; 
+            }
+
+            $("#tune_"+id).show();
+
+        });
+
+        $(".tune_select").change(function(){
+            var id = $(this).val();
+            $("#tune_select").val(id);
+        });
+
+        <php>if($device_select == -1 || $device_select == ''){</php>
+        $("#tune_-1").show();
+        <php>}</php>
+
+    </script>
+
+
+</block>

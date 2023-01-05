@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="NecoFramework" default="ci-build">
+
+    <!--指定配置属性文件-->
+    <property file="build.yml"/>
+    <property name="deploy.environment" value="${env.DEPLOY_ENVIRONMENT}" />
+    <!--继承于phing/build-->
+    <property name="root_dir" value="${phing.dir}" />
+
+
+    <taskdef name="ConvertConfig2iniTask" classname="neco\Phing\ConvertConfig2iniTask" />
+    <taskdef name="ConvertConfigTask" classname="neco\Phing\ConvertConfigTask" />
+    <taskdef name="ConvertStaticTask" classname="neco\Phing\ConvertStaticTask" />
+
+    <!--生成项目配置属性-->
+    <target name="make-properties">
+        <echo msg="neco-framework make properties file ..." />
+        <ConvertConfigTask configFile="./build.yml" destFile="./application/common/config/properties.php" />
+    </target>
+
+    <!--生成项目配置属性-->
+    <target name="make-env">
+        <echo msg="neco-framework make env file ..." />
+        <ConvertConfig2iniTask configFile="./build.yml" destFile="./.env" />
+    </target>
+
+    <!--压缩生成用于CDN资源-->
+    <target name="release-static">
+        <echo msg="neco-framework make compress file ..." />
+        <ConvertStaticTask targetDir="./${global.CDN_DIR}">
+            <fileset dir="./${global.PRE2CDN_DIR}">
+                <include name="**/**.css" />
+                <include name="**/**.js" />
+                <include name="**/**.png" />
+                <include name="**/**.gif" />
+                <include name="**/**.jpg" />
+                <include name="**/**.jpeg" />
+                <include name="**/**.svg" />
+                <include name="**/**.ico" />
+                <include name="**/**.ttf" />
+                <include name="**/**.wof" />
+                <include name="**/**.eot" />
+            </fileset>
+        </ConvertStaticTask>
+    </target>
+
+    <!--构建-->
+    <target name="ci-build" depends="make-properties,release-static,make-env">
+        <echo msg="neco-framework CI Build ..." />
+    </target>
+
+    <!--远程部署-->
+    <target name="remote-deploy">
+        <echo msg="neco-framework remote CI Depoly ..." />
+        <property name="remote-deploy.user" value="${env.${deploy.environment}_DEPLOY_USER}" />
+        <property name="remote-deploy.host" value="${env.${deploy.environment}_DEPLOY_HOST}" />
+        <filesync
+            sourcedir="${root_dir}"
+            destinationdir="${remote-deploy.user}@${remote-deploy.host}:${release_dir}"
+            itemizechanges="true"
+            exclude="*.dist,README.*"
+            verbose="true"
+            checksum="true" />
+    </target>
+
+    <!--本地部署-->
+    <target name="ci-deploy">
+        <echo msg="neco-framework CI Depoly ..." />
+        <copy todir="/home/www/www.nf.u16">
+            <fileset dir="${root_dir}">
+                <exclude name="runtime/" />
+                <exclude name="**.dist" />
+                <exclude name="**/README.*" />
+            </fileset>
+        </copy>
+    </target>
+
+
+</project>

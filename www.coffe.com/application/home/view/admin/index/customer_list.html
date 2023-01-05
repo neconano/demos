@@ -1,0 +1,309 @@
+<div class="builder listbuilder-box">
+    {// 额外功能代码top }
+    <?php if(isset($extra_html['top'])): ?> {$extra_html['top']}
+    <?php endif; ?>
+
+    <!-- Tab导航 -->
+    <notempty name="tab_nav">
+        <div class="builder-tabs">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="nav nav-tabs">
+                        <volist name="tab_nav.tab_list" id="tab">
+                            <li class="<php>if($tab_nav['current_tab'] == $key) echo 'active';</php>"><a href="{$tab.href}">{$tab.title}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-group"></div>
+    </notempty>
+
+    <!-- 顶部工具栏按钮 -->
+    <div class="builder-toolbar">
+        <div class="row">
+            <!-- 工具栏按钮 -->
+            <notempty name="top_button_list">
+                <div class="col-xs-12 col-sm-8 button-list clearfix">
+                    <div class="form-group">
+                        <volist name="top_button_list" id="button">
+                            <?php if(isset($button['type']) && $button['type'] === 'dropdown'): ?>
+                            <div class="btn-group">
+                                <button type="button" class="{$button.class|default=''} dropdown-toggle" data-toggle="dropdown">
+                                        {$button.title|default=''}
+                                        <span class="caret"></span>
+                                    </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <volist name="button.dropdown" id="btn">
+                                        <li><a class="{$btn.class|default=''}" href="{$btn.href|default=''}">{$btn.title}</a></li>
+                                    </volist>
+                                </ul>
+                            </div>
+                            <?php else: ?>
+                            <a {$button.attribute|default='' }>{$button.title|default=''}</a>&nbsp;
+                            <?php endif; ?>
+                        </volist>
+                    </div>
+                </div>
+            </notempty>
+
+            <!-- 搜索框 -->
+            <notempty name="search">
+                <empty name="search_form_items">
+                    <div class="col-xs-12 col-sm-4 clearfix">
+                        <form class="form" method="get" action="{$search.url}">
+                            <div class="form-group">
+                                <div class="input-group search-form">
+                                    <input type="text" name="keyword" class="search-input form-control" value="{:I('get.keyword')}" placeholder="{$search.title|default=''}">
+                                    <span class="input-group-btn"><a class="btn btn-default search-btn"><i class="fa fa-search"></i></a></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </empty>
+            </notempty>
+
+            <div class="col-xs-12">
+
+                <p>
+                    <input type="hidden" id="s_cat1" value="">
+                    <button type="button" class="btn btn-sm">设备</button>
+                    <button type="button" class="btn btn-primary btn-sm btn_cat cat1 cat1-0" data-cat='cat1'  data-val="">全部</button>
+                    <php>foreach($device_list_kv as $k => $v){</php>
+                    <button type="button" class="btn btn-default btn-sm btn_cat cat1 cat1-{$k}" data-cat='cat1' data-id='{$k}' data-val="{$k}">{$v}</button>
+                    <php>}</php>
+                    <button type="button" class="btn btn-warning btn-sm " onclick="do_cat_search()">确定筛选</button>
+                </p>
+                <p>
+                    <button type="button" class="btn btn-sm" style="float: left;height: 34px;">时间</button>
+
+                    <div class="form-group item_star_time " style="float: left;">
+                        <div class="right" style="width: 200px; margin-left: 4px;">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                <input type="text" id="star_time" class="form-control input date" name="star_time" value="">
+                            </div>
+                            <script type="text/javascript">
+                                $(function(){
+                                    $('#star_time').datetimepicker({
+                                        format      : 'yyyy-mm-dd',
+                                        autoclose   : true,
+                                        minView     : 'month',
+                                        todayBtn    : 'linked',
+                                        language    : 'zh-CN',
+                                        fontAwesome : true
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group item_star_time " style="float: left;">
+                        <div class="right" style="width: 200px; margin-left: 4px;">
+                            <div class="input-group">
+                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                <input type="text" id="end_time" class="form-control input date" name="end_time" value="">
+                            </div>
+                            <script type="text/javascript">
+                                $(function(){
+                                    $('#end_time').datetimepicker({
+                                        format      : 'yyyy-mm-dd',
+                                        autoclose   : true,
+                                        minView     : 'month',
+                                        todayBtn    : 'linked',
+                                        language    : 'zh-CN',
+                                        fontAwesome : true
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </div>
+
+                </p>
+
+                <button type="button" class="btn btn-default btn-sm " onclick="reset_search()" style="float: left; height: 34px; margin-left: 4px;">清空</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 数据列表 -->
+    <div class="builder-container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="builder-table">
+                    <div class="panel panel-default table-responsive" style="overflow:hidden;">
+                        <table class="table table-bordered table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <?php if($hide_left_checkbox === false): ?>
+                                    <th class="list-ids" width="30">
+                                        <div class="checkbox-inline lyui-control lyui-checkbox m-l-xs">
+                                            <label class="checkbox-label">
+                                                    <input type="checkbox" class="check-all" >
+                                                    <span class="lyui-control-indicator"></span>
+                                                </label>
+                                        </div>
+                                    </th>
+                                    <?php endif; ?>
+                                    <volist name="table_column_list" id="column">
+                                        <th width="<?php if ($column['width']) {echo $column['width'];} else {echo 'auto';} ?>">
+                                            {$column.title|htmlspecialchars}
+                                        </th>
+                                    </volist>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <volist name="table_data_list" id="data">
+                                    <tr>
+                                        <?php if($hide_left_checkbox === false): ?>
+                                        <td>
+                                            <div class="checkbox-inline lyui-control lyui-checkbox m-l-xs">
+                                                <label class="checkbox-label">
+                                                        <input class="ids" type="checkbox" value="{$data[$table_data_list_key]|default=''}" name="ids[]">
+                                                        <span class="lyui-control-indicator"></span>
+                                                    </label>
+                                            </div>
+                                        </td>
+                                        <?php endif; ?>
+                                        <?php foreach ($table_column_list as $column) :?>
+                                        <td style="max-width:100px">
+                                            <?php if ($column['name'] === 'right_button') : ?>
+                                                <?php foreach ($data['right_button'] as $rb) : ?>
+                                                    <?php if(isset($rb['type']) && $rb['type'] === 'dropdown'): ?>
+                                                    <div class="btn-group">
+                                                        <button type="button" class="{$rb.class|default=''} dropdown-toggle" data-toggle="dropdown">
+                                                                            {$rb.title|default=''}
+                                                                            <span class="caret"></span>
+                                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <volist name="rb.dropdown" id="btn">
+                                                                <li><a class="{$btn.class}|default=''" href="{$btn.href|default=''}">{$btn.title}</a></li>
+                                                            </volist>
+                                                        </ul>
+                                                    </div>
+                                                    <?php else: ?>
+
+                                                    <php>if($rb['type'] == 'self' && $rb['cat'] == '1'){ </php>
+                                                        
+                                                    <php>}else{</php>
+                                                        <a {$rb[ 'attribute']|default='' }>{$rb['title']|default=''}</a>
+                                                    <php>}</php>
+
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                            <?php else: ?> 
+
+                                                <php>if($column['name'] == 'remark'){</php>
+                                                    <form action="{:U('', 'dotype=remark')}" method="POST" class="form form-remark{$data['id']}" role="form">
+                                                        <div class="input-group">
+                                                                <input type="hidden" name="id" value="{$data['id']}">
+                                                                <input type="text" class="form-control" name="remark" value="{$data['remark']}">
+                                                                <span class="input-group-btn">
+                                                            <button type="submit" class="btn btn-primary-outline btn-pill submit ajax-post no-refresh" target-form="form-remark{$data['id']}">提交</button>
+                                                          </span>
+                                                        </div><!-- /input-group -->
+                                                    </form>
+                                                <php>}else{</php>
+                                                    {$data[$column['name']]|default=''}
+                                                <php>}</php>
+                                                            
+                                            <?php endif; ?>
+                                        </td>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                </volist>
+
+                                <empty name="table_data_list">
+                                    <tr class="builder-data-empty">
+                                        <php>$tdcolspan = count($table_column_list)+1</php>
+                                        <td class="text-center empty-info" colspan="{$tdcolspan}">
+                                            <i class="fa fa-database"></i> 暂时没有数据<br>
+                                            <span class="small">本系统由 <a target="_blank" href="{:C('WEBSITE_DOMAIN')}" class="text-muted">{:C('PRODUCT_TITLE')}</a> v{:C('CURRENT_VERSION')} 强力驱动</span>
+                                        </td>
+                                    </tr>
+                                </empty>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <notempty name="table_data_page">
+                        <ul class="pagination">{$table_data_page}</ul>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {// 额外功能代码bottom }
+    <?php if(isset($extra_html['bottom'])): ?> {$extra_html['bottom']}
+    <?php endif; ?>
+
+    <script type="text/javascript" src="__PUBLIC__/cdn-ready/common/js/search_button.js"></script>
+    <script>
+
+
+        function reset_search(){
+            $('#star_time').val('');
+            $('#end_time').val('');
+        }
+
+        function do_cat_search(){
+            var str = '';
+            // var device_id = $('#s_cat1').val();
+            // if(device_id)
+            //     if(str)
+            //     str += '&device_id='+device_id;
+            // else
+            //     str += 'device_id='+device_id;
+
+            var device_ids = '';
+            $('.cat1.btn-primary').each(function(){
+                device_ids += ','+$(this).attr('data-id');
+            });
+            if(device_ids)
+                if(str)
+                str += '&device_ids='+device_ids;
+            else
+                str += 'device_ids='+device_ids;
+
+            var start_time = $('#star_time').val();
+            if(start_time)
+                if(str)
+                str += '&start_time='+start_time;
+                else
+                str += 'start_time='+start_time;
+            var end_time = $('#end_time').val();
+            if(end_time)
+                if(str)
+                str += '&end_time='+end_time;
+                else
+                str += 'end_time='+end_time;
+            location.href = '{:U("")}'+'?'+str;
+        }
+
+        // var s_cat1 = "{$device_id}";
+        // if(s_cat1)
+        //     set_cat1(s_cat1);
+
+        var device_ids = "{$device_ids}";
+        if(device_ids){
+            var list = device_ids.split(',');
+            for(var i = 0; i < list.length; i ++){
+                console.log(i);
+                set_cat1(list[i]);
+            }
+        }
+
+        var start_time = "{$start_time}";
+        if(start_time)
+            $('#star_time').val(start_time);
+
+        var end_time = "{$end_time}";
+        if(end_time)
+            $('#end_time').val(end_time);
+
+    </script>
+
+</div>

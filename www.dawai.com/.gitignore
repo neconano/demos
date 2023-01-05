@@ -1,0 +1,11 @@
+/runtime/
+/vendor/
+/build/
+/uploads/
+/public/cdn/
+/.idea/
+
+
+.env
+build.yml
+properties.php

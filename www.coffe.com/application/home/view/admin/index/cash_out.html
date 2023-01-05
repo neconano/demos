@@ -1,0 +1,82 @@
+<extend name="$_admin_public_layout" />
+<block name="style">
+</block>
+<block name="main">
+
+    <div id="main-content" style="margin-left: 0px;">
+        <div class="wrapper wrapper_add" style="margin-top: 0px;">
+
+            <div style="padding: 15px;">
+
+                <div class="form-group item_shop_id " style="width: 100%;">
+                    <label class="left control-label">微信账户：</label>
+                    <label class="left control-label">{$user_setting['open_id']}</label>
+                </div>
+                <div class="form-group item_shop_id " style="width: 100%;">
+                    <label class="left control-label">保障金：</label>
+                    <label class="left control-label">{$user_setting['deposit']}</label>
+                </div>
+                <div class="form-group item_shop_id " style="width: 100%;">
+                    <label class="left control-label">设备租金：</label>
+                    <label class="left control-label">{$user_setting['rental']}/天</label>
+                </div>
+                <div class="form-group item_shop_id " style="width: 100%;">
+                    <label class="left control-label">手续费比例：</label>
+                    <label class="left control-label">{$user_setting['fee']}%</label>
+                </div>
+                <div class="form-group item_shop_id " style="width: 100%;">
+                    <label class="left control-label">提现频率：</label>
+                    <label class="left control-label">每{$user_setting['rate_pay']}天</label>
+                </div>
+                <div class="form-group item_shop_id " style="width: 100%;">
+                    <label class="left control-label">余额：</label>
+                    <label class="left control-label">{$user_setting['pay_money']}</label>
+                </div>
+                <div class="form-group item_shop_id " style="width: 100%;">
+                    <label class="left control-label">可提金额：</label>
+                    <label class="left control-label"><php>$m = $user_setting['pay_money']-$user_setting['deposit'];echo $m>0?$m:0;</php></label>
+                </div>
+
+
+                <form action="" method="post" id="form1" >
+                    
+                    <div class="form-group item_shop_id ">
+                    <div class="form-group item_shop_id " style="width: 100%;">
+                        <label class="left control-label">提现金额：</label>
+                        <div class="right">
+                            <input type="text" name="money" class="form-control " style="width: 200px" >
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-9 button-list clearfix" style="padding-left: 0px;">
+                        <div class="form-group">
+                            <a class="btn btn-success" href="#" onclick="do_submit()">确定</a>&nbsp;
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+
+</block>
+<block name="script">
+
+    <script>
+        function do_submit(){
+            var r=confirm("确认？")
+            if (r==true)
+            {
+                $('#form1').submit();
+            }
+        }
+    </script>
+
+</block>
+
+
+
+
+
+
+

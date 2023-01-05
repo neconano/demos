@@ -1,0 +1,52 @@
+
+<include file="Index:head" />
+
+<div class="mid">
+	<img src="__PUBLIC__/image/show.jpg" width="1000" height="253">
+    <div style=" height:200px; border-left:1px solid #e8e8e8; ">
+    	<div class="tab_item">
+        	<a target="_self" href="ISmartLab01.html" class="tab_lable_0"><img src="__PUBLIC__/image/show_1.jpg" ></a>
+            <div class="tab_lable_1" id="tab_lable_1">iSmartLab实验室信息化管理软件</div>
+            <div class="tab_lable_2" id="tab_lable_2">实验档案.数据版</div>
+            <div class="tab_lable_2" id="tab_lable_2">协同办公.平台版</div>
+        </div>
+    	<div class="tab_item">
+        	<a target="_self" href="ISmartOffice01.html" class="tab_lable_0"><img src="__PUBLIC__/image/show_2.jpg" ></a>
+            <div class="tab_lable_1">iSmartOffice移动办公平台</div>
+            <div class="tab_lable_2">城市管理综合执法解决方案</div>
+            <div class="tab_lable_2">工业生产安全管理解决方案</div>
+        </div>
+    	<div class="tab_item">
+        	<a target="_self" href="ISmartEAM01.html" class="tab_lable_0"><img src="__PUBLIC__/image/show_3.jpg" ></a>
+            <div class="tab_lable_1">iSmartEAM资产管控系统</div>
+            <div class="tab_lable_2">设备资产管理</div>
+            <div class="tab_lable_2">机群联网管控</div>
+        </div>
+    	<div class="tab_item">
+        	<a target="_self" href="ISmartPM01.html" class="tab_lable_0"><img src="__PUBLIC__/image/show_4.jpg" ></a>
+            <div class="tab_lable_1">iSmartPM工程项目管理套件</div>
+            <div class="tab_lable_2">多维进度图  图档知识库</div>
+            <div class="tab_lable_2">业务流引擎  移动工作台</div>
+        </div>
+    </div>
+</div>
+
+<include file="Index:foot" />
+
+
+<script type="text/javascript">  
+$(document).ready(function(){
+	$('.tab_item').mouseover(function(){
+		$(this).removeClass('tab_item');
+		$(this).addClass('tab_item_hover');
+		$(this).children('.tab_lable_1').css('color', '#215b8d');
+		$(this).children('.tab_lable_2').css('color', '#215b8d');
+	}); 
+	$('.tab_item').mouseout(function(){
+		$(this).removeClass('tab_item_hover');
+		$(this).addClass('tab_item');
+		$(this).children('.tab_lable_1').css('color', '#333333');
+		$(this).children('.tab_lable_2').css('color', '#666666');
+	});
+}); 
+</script>

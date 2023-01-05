@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+    <title>小蜜蜂</title>
+
+    <link href="./css/common.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/date.js"></script>
+    <script type="text/javascript" src="./js/iscroll.js"></script>
+    <script type="text/javascript" src="./js/clibord.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#beginTime').date();
+        });
+    </script>
+    <style>
+        .problem_details_html .details_title{
+        line-height: 0.46rem;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container details_html">
+        <div class="bian"></div>
+        <div class="head_top">
+            <div class="top">
+                <a href="javascript:window.history.back();"><img class="return" src="./img/return2.png" id="btn_center"></a>
+                <p>详情</p>
+            </div>
+        </div>
+        <div class="problem_details_html">
+            <div class="details_title" id="maintitless">怎么样成为资源主的代理（下线）？</div>
+            <div class="details_text" id="content">
+                <!--<p>我们旨在赋能企业改变营销、销售和经营的方式，并提升企业效率。我们为商家、品牌及其他企业提供基本的科技基础设施以及营销平台，让其可借助新技术的力量与用户和客户互动，以更具效率的形式开展运营。</p>
+                <p>我们的业务员包括核心电商、云计算、数字媒体和娱乐以及创新项目。此外，集团已协议收购33%股权的蚂蚁金服，为集团平台的消费者及商家提供支付及金融服务。我们已经建立起围绕自身平台及业务的生态系统，涵盖消费者、商家、品牌、零售商、其他企业、第三方服务提供商及战略联盟伙伴。</p>-->
+                <p class="MsoNormal">
+                    <font face="微软雅黑" style="font-size: 10.5pt;">在大喇叭的资源主列表页，关注你信赖的资源主，然后进入</font><span style="font-size: 10.5pt;">“用户中心”
+                        -“关注管理”-“资源主关注”点击“申请代理”你即可成为对方的代理（下线），若果要获取对方的资源，你还需要线下联系地方，让他帮你手动在后台帮你设置一个资源。</span><br>
+                </p>
+                <style>@font-face{font-family:"Times New Roman";}@font-face{font-family:"宋体";}@font-face{font-family:"Calibri";}@font-face{font-family:"微软雅黑";}p.MsoNormal{mso-style-name:正文;mso-style-parent:"";margin:0pt;margin-bottom:.0001pt;mso-pagination:none;text-align:justify;text-justify:inter-ideograph;font-family:Calibri;mso-fareast-font-family:宋体;mso-bidi-font-family:'Times New Roman';font-size:10.5000pt;mso-font-kerning:1.0000pt;}span.msoIns{mso-style-type:export-only;mso-style-name:"";text-decoration:underline;text-underline:single;color:blue;}span.msoDel{mso-style-type:export-only;mso-style-name:"";text-decoration:line-through;color:red;}@page{mso-page-border-surround-header:no;	mso-page-border-surround-footer:no;}@page Section0{}div.Section0{page:Section0;}</style>
+            </div>
+            <div class="xiangwen" id="lastDiv" style="display: none">
+                <p>您可能想问：</p>
+                <a href="javascript:void(0)" id="lastUrl"><span id="lastTitle"></span></a>
+            </div>
+        </div>
+        <div class="youyong">
+            <p class="float_l">是否对您有帮助：</p>
+            <div id="checks">
+                <input type="checkbox" class="float_l input_check1" id="check1">
+                <label for="check1"></label>
+            </div>
+            <div id="checks2">
+                <input type="checkbox" class="float_l input_check2" id="check2">
+                <label for="check2"></label>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+    <script>
+        var domain = window.location.host;
+        var basePath = "";
+
+        function GetPar(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return decodeURIComponent(r[2]);
+            return null;
+        }
+        $(function () {
+            var id = GetPar("id");
+            if (id == null || id == "") {
+                return false;
+            }
+            $.ajax({
+                type: 'POST',
+                url: basePath + '/menu/frontManage/getCountById',
+                data: {
+                    "id": id
+                },
+                async: false,
+                success: function (data) {
+                    var code = data.code;
+                    if (code == "88") {
+                        var frontManageCount = data.data;
+                        var maintitless = frontManageCount.maintitless; //标题名称
+                        var content = frontManageCount.content; //标题内容
+                        var lastContent = frontManageCount.lastContent; //其他问题
+
+                        $("#maintitless").append(maintitless);
+                        $("#content").append(content);
+                        if (lastContent != null && lastContent != undefined) {
+                            var lastId = lastContent.id;
+                            var lastTitle = lastContent.maintitless; //标题名称
+                            $("#lastTitle").text(lastTitle);
+                            $("#lastUrl").attr("href", "xmf_problem_details.html?id=" + lastId);
+                            document.getElementById("lastDiv").style.display = "block";
+                        }
+
+                    } else if (code == "00") {
+                        alert(data.message)
+                    }
+                },
+                error: function (data) {
+                    alert(data.message);
+                }
+            });
+        });
+    </script>
+
+
+
+
+    <div class=""></div>
+
+
+
+
+
+</body>
+
+</html>

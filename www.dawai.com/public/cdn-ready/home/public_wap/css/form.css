@@ -1,0 +1,227 @@
+.form-info-area{
+	padding: 1rem 0;
+	overflow: hidden
+}
+.form-info-area .left{
+	float: left;
+	width: 40%;
+}
+.form-info-area .left img{
+	width: 100%;
+	-webkit-border-radius: 0.3rem;
+	-moz-border-radius: 0.3rem;
+	border-radius: 0.3rem;
+}
+.form-info-area .right{
+	float: left;
+	width: 60%;
+	padding-left: 1rem;
+	line-height: 1.8rem
+}
+.form-info-area .right h3{
+	display: block;
+	font-size: 1.3rem;
+	line-height: 1.8rem;
+	margin-bottom: 0.8rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+.form-info-area .right em{
+	font-size: 1.3rem;
+	font-weight: bold;
+	color: #fd4a64
+}
+.form-info-area .right strong{
+	display: inline-block;
+	position: relative;
+	font-weight: normal;
+	margin-left: 1rem
+}
+.form-info-area .right strong img{
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto
+}
+.form-info-area .right span{
+	margin-right: 2rem
+}
+.form-input-wrap .dawai-index-default-title{
+	padding: 1rem 0
+}
+.form-input-wrap .dawai-index-default-title img{
+	height: 1.5rem;
+	vertical-align: middle;
+	position: relative;
+	top: 0.3rem
+}
+.form-input-wrap .dawai-index-default-title h3{
+	font-size: 1.5rem;
+	margin-left: 0.5rem
+}
+.form-input-wrap .input-area{
+	width: 100%;
+	height: 4rem;
+	line-height: 4rem;
+	margin: 0 auto 0.8rem;
+	border:0.1rem solid #bfbfbf;
+	-webkit-border-radius: 0.2rem;
+	-moz-border-radius: 0.2rem;
+	border-radius: 0.2rem;
+	position: relative
+}
+.form-input-wrap .input-area input{
+	background: none;
+	border: none;
+	width: 95%;
+	font-size: 1.3rem;
+	padding: 0 0.8rem
+}
+.form-input-wrap .input-area i{
+	display: none;
+	width: 1.4rem;
+	height: 1.4rem;
+	line-height: 1.4rem;
+	text-align: center;
+	color: #fff;
+	background: #f93a6b;
+	position: absolute;
+	top: 50%;
+	right: 0.8rem;
+	margin-top: -0.7rem;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	border-radius: 100%;
+}
+.form-input-wrap .input-area i.active{
+	display: inline-block
+}
+.form-input-wrap .input-area i span{
+	position: absolute;
+	bottom: 2.2rem;
+	right: 0;
+	background: #f93a6b;
+	color: #fff;
+	white-space: nowrap;
+	height: 2.4rem;
+	line-height: 2.4rem;
+	padding: 0 1rem;
+	font-size: 1.2rem;
+	-webkit-border-radius: 0.2rem;
+	-moz-border-radius: 0.2rem;
+	border-radius: 0.2rem;
+}
+.form-input-wrap .input-area i em{
+	position: absolute;
+	bottom:-0.5rem;
+	right: 0.4rem;
+	height: 0;
+	border-top:0.5rem solid #f93a6b;
+	border-left:0.4rem solid transparent;
+	border-right:0.4rem solid transparent;
+	border-bottom: none
+}
+.form-input-wrap .input-group{
+	display: block;
+}
+.form-input-wrap .input-group:after{
+	clear: both;
+	content: "";
+	display: block
+}
+.form-input-wrap .input-area.small{
+	width: 59%;
+	float: left
+}
+.form-input-wrap .input-group .img-area{
+	width: 38%;
+	float: right
+}
+.form-input-wrap .input-group .img-area img{
+	width: 100%;
+	height: 4rem
+}
+.form-input-wrap .input-group .img-area input{
+	border: none;
+	background: none;
+	display: block;
+	width: 100%;
+	height: 4rem;
+	line-height: 4rem;
+	background: #f2f2f2;
+	color: #666;
+	font-size: 1.2rem;
+	-webkit-border-radius: 2rem;
+	-moz-border-radius: 2rem;
+	border-radius: 2rem;
+}
+.form-input-wrap .input-group .img-area input:disabled{
+	opacity: 0.8;
+	color: #999
+}
+.form-input-wrap p{
+	color: #f93a6b;
+	font-size: 1.1rem;
+	margin-bottom: 0.5rem
+}
+.form-input-wrap .btn-submit{
+	display: block;
+	clear: both;
+	border: none;
+	background: none;
+	width: 100%;
+	height: 4rem;
+	margin: 1.8rem auto;
+	color: #fff;
+	font-size: 1.3rem;
+	background: #1569ff;
+	-webkit-border-radius: 2rem;
+	-moz-border-radius: 2rem;
+	border-radius: 2rem;
+}
+.form-success-area{
+	padding: 1rem 0
+}
+.form-success-area h2{
+	font-size: 1.5rem;
+	text-align: center;
+	margin:0.8rem auto 1.5rem
+}
+.form-success-area p{
+	font-size: 1.3rem;
+	color: #444;
+	line-height: 2.5rem
+}
+.form-success-area p b{
+	font-size: 1.5rem;
+	color: #f93a6b
+}
+.form-success-area .btn-group{
+	padding: 2rem 0;
+	overflow: hidden
+}
+.form-success-area .btn-group a{
+	display: inline-block;
+	float: left;
+	width: 45%;
+	height: 4rem;
+	line-height: 4rem;
+	background: #1569ff;
+	color: #fff;
+	font-size: 1.3rem;
+	text-align: center;
+	border:0.1rem solid transparent;
+	-webkit-border-radius: 2rem;
+	-moz-border-radius: 2rem;
+	border-radius: 2rem;
+}
+.form-success-area .btn-group a:last-of-type{
+	float: right;
+	background: none;
+	border: 0.1rem solid #1569ff;
+	color: #1569ff;
+}

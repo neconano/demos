@@ -1,0 +1,82 @@
+<include file="Root:head" />
+
+<script type="text/javascript" src="__PUBLIC__/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="__PUBLIC__/ckfinder/ckfinder.js"></script>
+<script src="__PUBLIC__/My97DatePicker/WdatePicker.js"></script>
+
+<div id="main-content">
+  <h2>Welcome</h2>
+  <p id="page-intro">
+    <php>echo date('Y-m-d H:i:s')</php>
+  </p>
+  <div class="clear"></div>
+  <div class="content-box">
+    <div class="content-box-header">
+      <h3>发布资讯</h3>
+      <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+      <div class="tab-content default-tab" id="tab1">
+        <div class="notification attention png_bg"></div>
+
+        <form action="" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{$new['id']}" />
+          <fieldset>
+            <p>
+              <label>标题</label>
+              <input class="text-input medium-input " type="text" id="title" name="title" value="<php>echo $new['title']</php>"
+              />
+            </p>
+            <p>
+              <label>封面图片</label>
+              <img src="{$new['face_img']}" height="200">
+              <input type="file" id="face_img" name="face_img" >
+            </p>
+            <p>
+              <label>资讯日期</label>
+              <input class="text-input medium-input " type="text" name="news_date" value="<php>echo $new['news_date']</php>"  onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+            </p>
+            <p>
+              <label>搜索引擎关键字</label>
+              <input class="text-input medium-input " type="text" name="seo_keywords" value="<php>echo $new['seo_keywords']</php>"
+              />
+            </p>
+            <p>
+              <label>搜索引擎描介绍</label>
+              <input class="text-input medium-input " type="text" name="seo_description" value="<php>echo $new['seo_description']</php>"
+              />
+            </p>
+
+            <p>
+              <label>内容</label>
+              <textarea id="content" name="content">{$new[content]}</textarea>
+
+              <script type="text/javascript">
+                var editor = CKEDITOR.replace('content');
+                // var editor = CKEDITOR.replace('content',{
+                //   customConfig : '__PUBLIC__/ckfinder/custom_config.js'
+                // });
+
+                CKFinder.setupCKEditor(editor, '__PUBLIC__/ckfinder/');
+              </script>
+
+            </p>
+            <p>
+              <input class="button" type="submit" value="Submit" />
+            </p>
+          </fieldset>
+          <div class="clear"></div>
+        </form>
+      </div>
+      </form>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <div id="footer">
+    <small>
+      &#169; Copyright © 2003-2018 hengyi.ln.cn All Rights Reserved </div>
+</div>
+</div>
+</body>
+
+</html>

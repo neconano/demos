@@ -1,0 +1,158 @@
+<extend name="$_admin_public_layout" />
+
+<block name="style">
+    <include file="$_stylebuilder_layout" />
+    <!-- layui -->
+    <script src="/public/nf/wemall/layui/layui.js"></script>
+</block>
+
+<block name="main">
+    <div class="panel builder formbuilder-box">
+        <div class="panel-body">
+            <ul class="nav-tabs nav">
+
+                <php>foreach($lesson_type_list as $v){</php>
+                <li <php>if(I('lesson_type') == $v){</php> class="active" <php>}</php> ><a href="{:U('course/lesson/schedule_manage','lesson_type='.$v.'&lesson_id='.I('lesson_id'))}" ><php>echo API('Course')->lesson_type_index[$v]</php></a></li>
+                <php>}</php>
+
+            </ul>
+            <div class="tab-content">
+
+                <div id="tab1" class="tab-pane active">
+                    <div class="form-group"></div>
+                    
+                    <div id='widget_0'>
+                        <button class="btn btn-primary btn-sm" onclick="new_widget_0()">新增课程大类</button>
+                    </div>
+
+                    <div id='widget_1'>
+                            <php>foreach($w_1_list as $v){</php>
+                                {$v}
+                            <php>}</php>
+                    </div>
+
+                    <div id='new_widget_0'>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <script>
+
+    var lesson_type =  '<php> echo I("lesson_type")</php>'  ;
+    var lesson_id =  '<php> echo I("lesson_id")</php>'  ;
+
+    function new_widget_0(){
+        $.ajax({
+            url: "",
+            data: {dotype:'new_widget_0',lesson_id:lesson_id},
+            dataType: 'html',
+            type: 'get',
+            success: function (data) {
+                $('#new_widget_0').html(data);
+            }
+        })
+    }
+
+
+    function add_widget_0(){
+        var title = $('#title_w_0').val();
+        var total_hour = $('#total_hour_w_0').val();
+        $.ajax({
+            url: "",
+            data: {dotype:'add_widget_0',lesson_type:lesson_type,title:title,total_hour:total_hour,lesson_id:lesson_id},
+            dataType: 'html',
+            type: 'get',
+            success: function (data) {
+                $('#widget_1').append(data);
+                $('#new_widget_0').html('');
+            }
+        })
+    }
+
+
+    function save_widget_1(id){
+        var title = $('#title_w_1_'+id).val();
+        var total_hour = $('#total_hour_w_1_'+id).val();
+        $.ajax({
+            url: "",
+            data: {dotype:'save_widget_1',id:id,title:title,total_hour:total_hour},
+            dataType: 'json',
+            type: 'get',
+            success: function (data) {
+                layui.use('form', function() { layer.msg(data.msg); });
+            }
+        })
+    }
+
+    function del_widget(w_id,id){
+        $.ajax({
+            url: "",
+            data: {dotype:'del_widget_'+w_id,id:id},
+            dataType: 'json',
+            type: 'get',
+            success: function (data) {
+                if(data.status)
+                $('#widget_'+w_id+'_'+id).remove();
+                else
+                layui.use('form', function() { layer.msg(data.msg); });
+            }
+        })
+    }
+    
+
+
+    function new_widget_2(pid){
+        $.ajax({
+            url: "",
+            data: {dotype:'new_widget_2',pid:pid},
+            dataType: 'html',
+            type: 'get',
+            success: function (data) {
+                $('.new_widget_2').html('');
+                $('#new_widget_2_'+pid).html(data);
+            }
+        })
+    }
+
+
+    function add_widget_2(pid){
+        var title = $('#title_w_2').val();
+        $.ajax({
+            url: "",
+            data: {dotype:'add_widget_2',title:title,pid:pid},
+            dataType: 'html',
+            type: 'get',
+            success: function (data) {
+                $('#widget_2_'+pid).append(data);
+                $('.new_widget_2').html('');
+            }
+        })
+    }
+
+    function save_widget_3(id){
+        var title = $('#title_w_3_'+id).val();
+        $.ajax({
+            url: "",
+            data: {dotype:'save_widget_3',title:title,id:id},
+            dataType: 'json',
+            type: 'get',
+            success: function (data) {
+                layui.use('form', function() { layer.msg(data.msg); });
+            }
+        })
+    }
+
+
+    </script>
+    
+
+
+</block>

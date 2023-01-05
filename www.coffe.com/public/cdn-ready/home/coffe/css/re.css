@@ -1,0 +1,88 @@
+.img-1 {
+  width: 2rem;
+  height: 1.6rem;
+  padding-top: 0.16rem;
+  float: left;
+}
+
+.img-2 {
+  width: 1.2rem;
+  height: 1rem;
+  padding-top: 0.2rem;
+  float: left;
+  margin-top: 0.34rem;
+  margin-left: 0.46rem;
+}
+
+.img-3 {
+  width: 0.4rem;
+  height: 0.46rem;
+  padding-top: 0rem;
+  float: right;
+  margin-top: 0rem;
+  margin-left: 0rem;
+}
+
+.label-1 {
+  width: 100%;
+  float: left;
+  text-align: center;
+  font-size: 14px;
+}
+
+.index_html .index_chp .index_chp_top2 {
+  border-bottom: solid 1px #bfbfbf;
+  width: calc(100% - 0.4rem);
+  margin: auto;
+  padding-top: 0.24rem;
+  padding-bottom: 0.24rem;
+}
+
+.index_html .index_chp .index_chp_top2 p {
+  font-size: 0.28rem;
+  color: #333333;
+  margin-right: 0.06rem;
+}
+
+.swich .box {
+  width: 60px;
+  height: 30px;
+  background: #ccc;
+  border-radius: 20px;
+  transition: all .5s ease;
+  border: solid 1px #ccc;
+}
+
+.swich input {
+  display: none;
+}
+
+.swich .box span {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 15px;
+  background: #fff;
+  transform: translateX(0px);
+  transition: all .5s ease;
+}
+
+.swich-on .box {
+  background: #6bba2d;
+  transition: all .5s ease;
+}
+
+.swich-on .box span {
+  transform: translateX(30px);
+  transition: all .5s ease;
+}
+
+.input-1{
+  border: solid 1px #888888;
+  text-align: center;
+  float: left;
+  margin-top: 0.6rem;
+  height: 0.6rem;
+  width: 4rem;
+  margin-left: 0.6rem;
+}

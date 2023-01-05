@@ -1,0 +1,52 @@
+<extend name="$layout" />
+
+<block name="style">
+    <link rel="stylesheet" href="__PUBLIC__/libs/jiaoben5589/css/ft-carousel.css" />
+    <link href="__PUBLIC__/cdn-ready/home/coffe/css/re.css" rel="stylesheet" type="text/css">
+
+</block>
+
+
+<block name="main">
+
+    <div class="container list_html index_html">
+
+        <div style="height: 3rem;">
+            <div class="ft-carousel" id="carousel_1">
+                <ul class="carousel-inner">
+                    <php>foreach($ads_list as $v){</php>
+                        <li class="carousel-item"><img src="{$v['file_name']|get_cover}" /></li>
+                    <php>}</php>
+                </ul>
+            </div>
+        </div>
+
+        <div class="list" id="investproduct">
+            <php>foreach($list as $v){</php>
+                <a href="{:U('order',['tune_id'=>$v['id']])}">
+                <div class="each_item" style="margin-top: 0.3rem;min-height: 1.6rem;">
+                    <img class="img-1" src="{$v['img']|get_cover}" />
+                    <div style="float: left; width: 2.4rem;margin-top: 0.2rem;">
+                        <label class="label-1" style="font-size: 0.26rem;color: #333333">{$v['title']}</label>
+                        <label class="label-1" style="color:#888888;" >{$v['title_en']}</label>
+                        <label class="label-1" style="color:#eb6d8e;margin-top: 0.2rem;font-size: 24px" >¥ {$v['price']}</label>
+                    </div>
+                    <img class="img-2" src="__PUBLIC__/cdn-ready/home/coffe/img/car.png" style="width: 1.1rem;height: 0.9rem;margin-left: 0.06rem;" />
+                </div>
+                </a>
+            <php>}</php>
+        </div>
+
+    </div>
+
+    <div class="clear" style="height: 1rem"></div>
+
+</block>
+
+<block name="script">
+    <script src="__PUBLIC__/libs/jiaoben5589/js/ft-carousel.min.js"></script>
+    <script type="text/javascript">
+        $("#carousel_1").FtCarousel();
+    </script>
+
+</block>

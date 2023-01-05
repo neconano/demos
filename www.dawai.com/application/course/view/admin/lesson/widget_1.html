@@ -1,0 +1,36 @@
+
+              
+              
+<div style="margin-top:10px" id="widget_1_{$info[id]}">
+
+    <div class="row" style="margin-top:10px">
+        <label class="col-sm-1 control-label" style="padding-top: 6px;">课程大类</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="title_w_1_{$info[id]}" value="{$info[title]}">
+        </div>
+        <label class="col-sm-1 control-label" style="padding-top: 6px;">课时数</label>
+        <div class="col-xs-3">
+            <input type="text" class="form-control" id="total_hour_w_1_{$info[id]}" value="{$info[hour]}">
+        </div>
+
+        <div class="col-xs-3">
+            <button type="button" class="btn btn-success do_form btn-sm" onclick="save_widget_1({$info[id]})">提交</button>
+            <button type="button" class="btn btn-primary do_form btn-sm" onclick="new_widget_2({$info[id]})">新增内容</button>
+            <button type="button" id="delete_form" class="btn btn-danger btn-sm" onclick="del_widget(1,{$info[id]})">删除</button>
+        </div>
+    </div>
+
+</div>
+          
+<div id='widget_2_{$info[id]}'>
+        <php>foreach($w_2_list as $v){</php>
+            {$v}
+        <php>}</php>
+</div>
+
+
+<div id='new_widget_2_{$info[id]}' class="new_widget_2">
+    
+</div>
+
+

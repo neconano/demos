@@ -1,0 +1,379 @@
+<extend name="$_admin_public_layout"/>
+<block name="style">
+    <include file="$_stylebuilder_layout" />
+    <link rel="stylesheet" type="text/css" href="/public/libs/summernote/summernote.css">
+    <style type="text/css" media="screen">
+        .note-editor .modal-body .form-group {
+            margin: 0;
+        }
+    </style>
+</block>
+
+<block name="main">
+    <div class="panel builder formbuilder-box">
+        <div class="panel-body">
+            <form action="{:url('add')}" method="post" class="form-horizontal form form-builder">
+                <div class="form-group">
+                    <label class="left control-label">课程标题：</label>
+                    <div class="right">
+                        <input type="text" class="form-control input" placeholder="请输入标题" name="title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">课程图片：</label>
+                    <div class="right row">
+                        <div id="_upload_box_9" class="wu-example">
+                            <!--用来存放文件信息-->
+                            <div id="_upload_list_9" class="uploader-list col-xs-12 img-box">
+                                <div id="_upload_preview_9" class="col-sm-3 file-item thumbnail hidden">
+                                    <i class="fa fa-times-circle remove-picture"></i>
+                                    <img>
+                                </div>
+                            </div>
+                            <div class="btns col-xs-12">
+                                <input type="hidden" id="_upload_input_9" name="img_1" value="">
+                                <div id="_upload_9" class="btn btn-primary-outline btn-pill webuploader-container"><div class="webuploader-pick">上传图片</div><div id="rt_rt_1bnhmsv4m1ce6do71f05qjbpga1" style="position: absolute; top: 6px; left: 17.5px; width: 56px; height: 20px; overflow: hidden; bottom: auto; right: auto;"><input type="file" capture="camera" name="file" class="webuploader-element-invisible" multiple="multiple" accept="image/gif,image/jpg,image/jpeg,image/bmp,image/png"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label></div></div>
+                                <button id="ctlBtn" class="btn btn-default hidden">开始上传</button>
+                                <span class="check-tips text-muted small">课程图片</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">课程描叙：</label>
+                    <div class="right">
+                        <input type="text" class="form-control input" placeholder="请输入课程描叙" name="description">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">课程价格：</label>
+                    <div class="right">
+                        <input type="text" class="form-control input" name="cost" placeholder="课程价格" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">课程原价：</label>
+                    <div class="right">
+                        <input type="text" class="form-control input" name="prime_cost" placeholder="课程原价" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">课程特色：</label>
+                    <div class="right">
+                        <volist name="feature" id="data">
+                            <button data-val="{$data.id}"  type="button" class="btn btn-default"><input type="hidden" name="feature[]" value="">{$data.title}</button>
+                        </volist>
+                    </div>
+                </div>
+
+                <div class="form-group course">
+                    <label class="left control-label">课程分类：</label>
+                    <div class="right">
+                        <php>foreach(API('Course')->search_category_index as $k => $v){</php>
+                            <div class="radio-inline lyui-control lyui-radio">
+                                <label for="target_blank{$k}">
+                                    <input type="radio" id="target_blank{$k}" class="radio" name="category" value="{$k}" data-val="{$k}">
+                                    <span class="lyui-control-indicator"></span>
+                                    <span>{$v}</span>
+                                </label>
+                            </div>
+                        <php>}</php>
+                    </div>
+                </div>
+                <php>foreach(API('Course')->search_category_index as $k => $v){</php>
+                <div class="erjiradio{$k} erjiradio hidden">
+                    <label class="left control-label"></label>
+                    <div class="right">
+                        <php>foreach(API('Course')->search_category[$k] as $key => $vol){</php>
+                        <div class="radio-inline lyui-control lyui-radio">
+                            <label for="target{$k}-{$key}">
+                                <input type="radio" id="target{$k}-{$key}" class="radio" name="erjiradio" value="$key" checked="">
+                                <span class="lyui-control-indicator"></span>
+                                <span>{$vol}</span>
+                            </label>
+                        </div>
+                        <php>}</php>
+                    </div>
+                </div>
+                <php>}</php>
+
+
+
+
+                <div class="form-group">
+                    <label class="left control-label">授课方式：</label>
+                    <div class="right">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" data-val="2" id="checkbox2" name="lesson_type[]" value="1"> 在线直播
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" data-val="3" id="checkbox3" name="lesson_type[]" value="2"> 线下课程
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">有效日期：</label>
+                    <div class="right">
+                       <input style="height:34px;padding: 6px 12px;background-color: #fff;border: 1px solid #ccc;
+                        border-radius: 4px; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);box-shadow: inset 0 1px 1px rgba(0,0,0,.075);" id="meeting" name="end_time" type="date" value=""/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">课时总数：</label>
+                    <div class="right">
+                        <input type="text" class="form-control input" placeholder="请输入课时总数"  name="total_hour">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">适合人群：</label>
+                    <div class="right">
+                        <input type="text" class="form-control input" placeholder="适合人群"  name="suit_people">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">课程简介：</label>
+                    <div class="right">
+                        <textarea name="book_description" rwos="5" id="_summernote_8" class="form-control" style="display: none;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">学习目标：</label>
+                    <div class="right">
+                        <textarea name="study_target" rwos="5" id="_summernote_9" class="form-control" style="display: none;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">推荐教材：</label>
+                    <div class="right row">
+                        <div id="_upload_box_10" class="wu-example">
+                            <!--用来存放文件信息-->
+                            <div id="_upload_list_10" class="uploader-list col-xs-12 img-box">
+                                <div id="_upload_preview_10" class="col-sm-3 file-item thumbnail hidden">
+                                    <i class="fa fa-times-circle remove-picture"></i>
+                                    <img>
+                                </div>
+                            </div>
+                            <div class="btns col-xs-12">
+                                <input type="hidden" id="_upload_input_10" name="book_1" value="">
+                                <div id="_upload_10" class="btn btn-primary-outline btn-pill webuploader-container"><div class="webuploader-pick">上传图片</div><div id="rt_rt_1bnhmsv4m1ce6do71f05qjbpga1" style="position: absolute; top: 6px; left: 17.5px; width: 56px; height: 20px; overflow: hidden; bottom: auto; right: auto;"><input type="file" capture="camera" name="file" class="webuploader-element-invisible" multiple="multiple" accept="image/gif,image/jpg,image/jpeg,image/bmp,image/png"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background: rgb(255, 255, 255);"></label></div></div>
+                                <button id="ctlBtn" class="btn btn-default hidden">开始上传</button>
+                                <span class="check-tips text-muted small">教材图片</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="left control-label">授课老师：</label>
+                    <div class="right">
+                        <volist name="teacher" id="data">
+                        <button data-val="{data.id}"  type="button" class="btn btn-default"><input type="hidden" name="teacher[]" value="">{data.title}</button>
+                        </volist>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button style="width: 120px;" class="btn btn-primary submit ajax-post" type="submit" target-form="form">确定</button>
+                    <button style="width: 120px;" class="btn btn-danger return" onclick="javascript:history.back(-1);return false;">取消</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="/public/libs/summernote/summernote.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/public/libs/webuploader/webuploader.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var uploader__upload_9 = WebUploader.create({
+                withCredentials: true,                                                             // 跨域请求提供凭证
+                auto: true,                                                                        // 选完文件后，是否自动上传
+                duplicate: true,                                                                   // 同一文件是否可以重复上传
+                server: '/admin.php/admin/user/upload/dir/image/module_name/admin.html', // 文件接收服务端
+                pick: '#_upload_9',                                       // 选择文件的按钮
+                resize: false,                                                                     // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+                //fileNumLimit: 1,                                                                 // 验证文件总数量, 超出则不允许加入队列
+                fileSingleSizeLimit:0.5*1024*1024, // 验证单个文件大小是否超出限制, 超出则不允许加入队列
+                // 文件过滤
+                accept: {
+                    title: 'Images',
+                    extensions: "gif,jpg,jpeg,bmp,png",
+                    mimeTypes: 'image/gif,image/jpg,image/jpeg,image/bmp,image/png'
+                }
+            });
+
+            // 文件上传过程中创建进度条实时显示。
+            uploader__upload_9.on( 'uploadProgress', function(file, percentage ) {
+                $('#_upload_preview_9').removeClass('hidden');
+                var $li = $( '#_upload_preview_9'),
+                    $percent = $li.find('.progress .progress-bar');
+                // 避免重复创建
+                if ( !$percent.length ) {
+                    $percent = $('<div class="progress"><div class="progress-bar"></div></div>')
+                        .appendTo( $li )
+                        .find('.progress-bar');
+                }
+                $percent.css('width', percentage * 100 + '%');
+            });
+
+            // 完成上传完了，成功或者失败，先删除进度条。
+            uploader__upload_9.on('uploadComplete', function(file) {
+                $( '#_upload_preview_9' ).find('.progress').remove();
+            });
+
+            // 文件上传成功，给item添加成功class, 用样式标记上传成功。
+            uploader__upload_9.on('uploadSuccess', function(file , response) {
+                $('#_upload_preview_9').addClass('upload-state-done');
+                if (eval('response').status == 0) {
+                    $.alertMessager(response.message);
+                } else {
+                    $( '#_upload_input_9').attr('value', response.id);
+                    $( '#_upload_preview_9 img').attr('src', response.url);
+                }
+            });
+
+            // 上传错误
+            uploader__upload_9.on("error",function (type){
+                if (type=="Q_TYPE_DENIED") {
+                    $.alertMessager('该文件格式不支持');
+                } else if(type=="F_EXCEED_SIZE") {
+                    $.alertMessager("文件大小不允许超过0.5MB");
+                } else if(type=="Q_EXCEED_NUM_LIMIT") {
+                    $.alertMessager("超过允许的文件数量");
+                } else {
+                    $.alertMessager(type);
+                }
+            });
+
+            // 文件上传失败，显示上传出错。
+            uploader__upload_9.on('uploadError', function(file) {
+                $.alertMessager('上传接口出错');
+                var $li = $('#_upload_preview_9'),
+                    $error = $li.find('div.error');
+                // 避免重复创建
+                if (!$error.length) {
+                    $error = $('<div class="error"></div>').appendTo($li);
+                }
+                $error.text('上传失败');
+            });
+
+            // 删除图片
+            $(document).on('click', '#_upload_list_9 .remove-picture', function() {
+                $('#_upload_input_9' ).val('') //删除后覆盖原input的值为空
+                $('#_upload_preview_9').addClass('hidden');
+            });
+        });
+
+        $(function(){
+            var uploader__upload_10 = WebUploader.create({
+                withCredentials: true,                                                             // 跨域请求提供凭证
+                auto: true,                                                                        // 选完文件后，是否自动上传
+                duplicate: true,                                                                   // 同一文件是否可以重复上传
+                server: '/admin.php/admin/user/upload/dir/image/module_name/admin.html', // 文件接收服务端
+                pick: '#_upload_10',                                       // 选择文件的按钮
+                resize: false,                                                                     // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+                //fileNumLimit: 1,                                                                 // 验证文件总数量, 超出则不允许加入队列
+                fileSingleSizeLimit:0.5*1024*1024, // 验证单个文件大小是否超出限制, 超出则不允许加入队列
+                // 文件过滤
+                accept: {
+                    title: 'Images',
+                    extensions: "gif,jpg,jpeg,bmp,png",
+                    mimeTypes: 'image/gif,image/jpg,image/jpeg,image/bmp,image/png'
+                }
+            });
+
+            // 文件上传过程中创建进度条实时显示。
+            uploader__upload_10.on( 'uploadProgress', function(file, percentage ) {
+                $('#_upload_preview_10').removeClass('hidden');
+                var $li = $( '#_upload_preview_10'),
+                    $percent = $li.find('.progress .progress-bar');
+                // 避免重复创建
+                if ( !$percent.length ) {
+                    $percent = $('<div class="progress"><div class="progress-bar"></div></div>')
+                        .appendTo( $li )
+                        .find('.progress-bar');
+                }
+                $percent.css('width', percentage * 100 + '%');
+            });
+
+            // 完成上传完了，成功或者失败，先删除进度条。
+            uploader__upload_10.on('uploadComplete', function(file) {
+                $( '#_upload_preview_10' ).find('.progress').remove();
+            });
+
+            // 文件上传成功，给item添加成功class, 用样式标记上传成功。
+            uploader__upload_10.on('uploadSuccess', function(file , response) {
+                $('#_upload_preview_10').addClass('upload-state-done');
+                if (eval('response').status == 0) {
+                    $.alertMessager(response.message);
+                } else {
+                    $( '#_upload_input_10').attr('value', response.id);
+                    $( '#_upload_preview_10 img').attr('src', response.url);
+                }
+            });
+
+            // 上传错误
+            uploader__upload_10.on("error",function (type){
+                if (type=="Q_TYPE_DENIED") {
+                    $.alertMessager('该文件格式不支持');
+                } else if(type=="F_EXCEED_SIZE") {
+                    $.alertMessager("文件大小不允许超过0.5MB");
+                } else if(type=="Q_EXCEED_NUM_LIMIT") {
+                    $.alertMessager("超过允许的文件数量");
+                } else {
+                    $.alertMessager(type);
+                }
+            });
+
+            // 文件上传失败，显示上传出错。
+            uploader__upload_10.on('uploadError', function(file) {
+                $.alertMessager('上传接口出错');
+                var $li = $('#_upload_preview_10'),
+                    $error = $li.find('div.error');
+                // 避免重复创建
+                if (!$error.length) {
+                    $error = $('<div class="error"></div>').appendTo($li);
+                }
+                $error.text('上传失败');
+            });
+
+            // 删除图片
+            $(document).on('click', '#_upload_list_10 .remove-picture', function() {
+                $('#_upload_input_10' ).val('') //删除后覆盖原input的值为空
+                $('#_upload_preview_10').addClass('hidden');
+            });
+        });
+
+
+        /**
+         * 点选下拉
+         */
+        $(".course input[type=radio]").on('click',function () {
+            var key = $(this).data('val');
+            var dom = $('.erjiradio' + key);
+            $('.erjiradio').addClass('hidden');
+            dom.removeClass('hidden');
+        });
+        $(".btn").on('click',function () {
+            if ($(this).hasClass('btn-info')){
+                $(this).find('input').val('');
+                $(this).removeClass('btn-info');
+            }else {
+                $(this).find('input').val($(this).data('val'));
+                $(this).addClass('btn-info');
+            }
+        })
+
+        $(function(){
+            $('#_summernote_8').summernote({
+                height: 300,
+            });
+        });
+        $(function(){
+            $('#_summernote_9').summernote({
+                height: 300,
+            });
+        });
+
+    </script>
+
+</block>

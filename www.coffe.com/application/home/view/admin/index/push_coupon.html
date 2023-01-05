@@ -1,0 +1,117 @@
+<extend name="$_admin_public_layout" />
+<block name="style">
+</block>
+<block name="main">
+
+    <div id="main-content" style="margin-left: 0px;">
+        <div class="wrapper wrapper_add" style="margin-top: 0px;">
+
+            <div style="padding: 15px;">
+
+                <div class="builder-container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="builder-table">
+                                <div class="panel panel-default table-responsive">
+                                    <table class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="100">用户数</th>
+                                                <th>用户ids</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{$ids_count}</td>
+                                                <td>{$ids_list}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <php>if($customer){</php>
+                            <div class="form-group item_shop_id ">
+                                <label class="left control-label">优惠券列表：</label>
+                            </div>
+                            <div class="builder-table">
+                                <div class="panel panel-default table-responsive">
+                                    <table class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="100">名称</th>
+                                                <th width="100">折扣比例</th>
+                                                <th width="100">开始时间</th>
+                                                <th width="100">结束时间</th>
+                                                <th width="100">状态</th>
+                                                <th width="100">是否使用</th>
+                                                <th width="100">使用时间</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <php>foreach($customer['coupon_list'] as $v){</php>
+                                            <tr>
+                                                <td>{$v['coupon_content']['title']}</td>
+                                                <td>{$v['rebate']}</td>
+                                                <td>{$v['start_time']|date="Y-m-d",###}</td>
+                                                <td>{$v['end_time']|date="Y-m-d",###}</td>
+                                                <td style="background-color: <php>if($v['status']) echo 'green;'; else echo 'red;'; </php> color: white;" >{$v['coupon_status']}</td>
+                                                <td style="background-color: <php>if($v['is_used'] == 0) echo 'green;'; else echo 'red;'; </php> color: white;" >{$v['is_used_name']}</td>
+                                                <td>{$v['use_time_name']}</td>
+                                            </tr>
+                                            <php>}</php>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <php>}</php>
+
+                        </div>
+                    </div>
+                </div>
+
+                <form action="" method="post" id="form1" >
+                    <input type="hidden" name="ids_list" value="{$ids_list}" >
+                    <div class="form-group item_shop_id ">
+                        <label class="left control-label">选择优惠券：</label>
+                        <div class="right">
+                            <select name="coupon_id" class="form-control lyui-select select">
+                                <php>foreach($coupon_list_kv as $k=>$v){</php>
+                                    <option value="{$k}">{$v}</option>
+                                <php>}</php>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-9 button-list clearfix" style="padding-left: 0px;">
+                        <div class="form-group">
+                            <a class="btn btn-success" href="#" onclick="do_submit()">确定</a>&nbsp;
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+
+</block>
+<block name="script">
+
+    <script>
+        function do_submit(){
+            var r=confirm("确认？")
+            if (r==true)
+            {
+                $('#form1').submit();
+            }
+        }
+    </script>
+
+</block>
+
+
+
+
+
+
+

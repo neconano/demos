@@ -1,0 +1,21 @@
+    <script >
+        //调用微信JS api 支付
+        function jsApiCall()
+        {
+            WeixinJSBridge.invoke(
+                'getBrandWCPayRequest', <?= $json ?>,
+                function(res){
+                    WeixinJSBridge.log(res);
+                    if (res.err_msg == "get_brand_wcpay_request:ok") {
+                        alert('支付成功');
+                        window.history.back();
+                    }else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                        alert("亲，您喝不成了");
+                    }else{
+                        alert(JSON.stringify(res));
+                        alert(res.err_msg);
+                    }
+                }
+            );
+        }
+    </script>

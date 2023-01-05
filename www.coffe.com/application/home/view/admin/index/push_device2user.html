@@ -1,0 +1,83 @@
+<extend name="$_admin_public_layout" />
+<block name="style">
+</block>
+<block name="main">
+
+    <div id="main-content" style="margin-left: 0px;">
+        <div class="wrapper wrapper_add" style="margin-top: 0px;">
+
+            <div style="padding: 15px;">
+
+                <div class="builder-container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="builder-table">
+                                <div class="panel panel-default table-responsive">
+                                    <table class="table table-bordered table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th width="100">设备数</th>
+                                                <th>设备ids</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{$ids_count}</td>
+                                                <td>{$ids_list}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <form action="" method="post" id="form1" >
+                    
+                    <input type="hidden" name="ids_list" value="{$ids_list}" >
+                    <div class="form-group item_shop_id ">
+                        <label class="left control-label">选择管理：</label>
+                        <div class="right">
+                            <select name="uid" class="form-control lyui-select select" style="width: 200px" >
+                                <php>foreach($user_kv as $k=>$v){</php>
+                                    <option value="{$k}">{$v}</option>
+                                <php>}</php>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-9 button-list clearfix" style="padding-left: 0px;">
+                        <div class="form-group">
+                            <a class="btn btn-success" href="#" onclick="do_submit()">确定</a>&nbsp;
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+
+</block>
+<block name="script">
+
+    <script>
+        function do_submit(){
+            var r=confirm("确认？")
+            if (r==true)
+            {
+                $('#form1').submit();
+            }
+        }
+    </script>
+
+</block>
+
+
+
+
+
+
+

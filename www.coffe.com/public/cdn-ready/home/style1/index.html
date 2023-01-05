@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+    <title>小蜜蜂首页</title>
+
+    <link href="./css/common.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/mescroll.css">
+    <link rel="stylesheet" href="./css/re.css">
+
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/xmfcommon.js"></script>
+    <script type="text/javascript" src="./js/mescroll.min.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+</head>
+
+<body class="mescroll-bar">
+    <div class="mescroll-downwarp">
+        <div class="downwarp-content">
+            <p class="downwarp-progress"></p>
+            <p class="downwarp-tip"></p>
+        </div>
+    </div>
+    <div class="container list_html index_html">
+        <div class="banner">
+            <img src="./img/banner.png">
+        </div>
+        <div class="leiji_sj">
+            <div class="leiji">
+                <div class="float_l">
+                    <div class="p1">累计投资</div>
+                    <div class="lj_tz">
+                        <font id="investoramount" style="font-size: 30px">0元</font>
+                    </div>
+                </div>
+                <div class="float_l">
+                    <div class="p1">累计返利</div>
+                    <div class="lj_fl">
+                        <font id="alreadyRebate" style="font-size: 30px">0元</font>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="gonggao" onclick="tankuang()">
+                <p class="float_l" id="substring">大喇叭，资源共享型互金营销系统，已上线...</p>
+                <a class="float_l">更多</a>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="recommendtitle">
+            <div class="index_title">推荐产品</div>
+
+            <div class="inline_flex inline_flex2" id="recommend" href="list.html">
+            </div>
+            <div class="inline_flex" id="recommendonlyone">
+                <!--推荐产品列表一个-->
+                <div class="index_chp" style="margin-top: -0.3rem;"> <a href="details.html?productno=CP20190306110351939077">
+                        <div class="index_chp_top">
+                            <p class="float_l">国盛证券</p> <span class="float_l">上市控股</span>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="yuqi_sy">
+                            <div class="float_l">
+                                <div>183<span>%</span></div>
+                                <p>加息预期收益</p>
+                            </div>
+                            <div class="float_r" style="padding-top: 0.2rem;">
+                                <p>期限2个月</p>
+                                <div class="clear"></div>
+                                <p>金额：2万- 5000</p>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="bj_p">
+                            <p class="float_l">背景：</p>
+                            <p class="zhuce_zb">“国盛金控”持牌的证券公司，2012年A股上市，股票代码:002670，总市值260亿，注册资本19亿</p>
+                            <div class="clear"></div>
+                        </div>
+                    </a> </div>
+            </div>
+        </div>
+        <div class="index_gg">
+            <img src="./img/ads1-1.png">
+            <p>广告</p>
+        </div>
+
+        <div class="index_title">投资流程</div>
+
+        <div class="huadong">
+            <div class="huadong_block">
+                <a href="/index.html#">
+                    <img src="./img/index_list1.png">
+                    <div>注册投资</div>
+                </a>
+            </div>
+            <div class="huadong_block">
+                <a href="/index.html#">
+                    <img src="./img/index_list2.png">
+                    <div>投资申报</div>
+                </a>
+            </div>
+            <div class="huadong_block">
+                <a href="/index.html#">
+                    <img src="./img/index_list3.png">
+                    <div>等待返利</div>
+                </a>
+            </div>
+        </div>
+
+        <div class="index_title">
+            <div class="float_l index_label_nav">
+                <a class="on h4">网贷类（17）<div></div></a>
+                <a class="h4">证券类（9）<div></div></a>
+                <div class="clear"></div>
+            </div>
+            <style>
+                .index_label_nav .h4 {
+                    font-size: 0.26rem !important;
+                    color: #333333 !important;
+                    float: left;
+                    background: none !important;
+                    padding-right: 0 !important;
+                    margin: 0 0.2rem;
+                    line-height: 0.6rem;
+                    padding-top: 0.1rem;
+                }
+
+                .index_label_nav .on {
+                    color: #1e8133 !important;
+                }
+
+                .index_label_nav .on div {
+                    height: 3px;
+                    width: 1.1rem;
+                    background: #1e8133;
+                    margin: auto;
+                }
+            </style>
+            <script>
+                $(".index_label_nav .h4").click(
+                    function () {
+                        var k = $(this).index()
+                        $(".index_label_nav .h4").removeClass("on")
+                        $(this).addClass("on")
+                    }
+                )
+            </script>
+
+            <a href="/list.html" class="float_r">更多</a>
+            <div class="clear"></div>
+        </div>
+
+        <div class="list" id="investproduct">
+            <!--产品列表-->
+            <div class="each_item"> <a href="/details.html?productno=CP20190305185304620345">
+                    <div class="width">
+                        <div class="logo"> <img class="float_l" src="./img/rBMV6lvdgSCACTpuAAAQ5CHrqGs507.png">
+                            <div class="float_l biaoqian">上市控股</div>
+                            <div class="clear"></div>
+                            <p class="zhuce_zb">2015年在美国纽交所上市，股票代码：YRD，当前市值8.5亿美金</p>
+                        </div>
+                        <div class="shouyi">
+                            <div class="float_l left">
+                                <p>22.07<span>%</span></p>
+                                <p>加息预期收益</p>
+                            </div>
+                            <div class="float_l border"></div>
+                            <div class="float_l right">
+                                <p>平台利息<span>9.9%</span></p>
+                                <p>最高返利<span>¥2万</span></p>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </a></div>
+        </div>
+
+        <div class="dixian">
+            <p>我是底线</p>
+        </div>
+
+        <div class="foot_nav">
+            <a href="/index.html" class="shouye2">首页</a>
+            <a href="/list.html" class="chanpin1">产品列表</a>
+            <a href="/loan_list.html" class="daikuan">交单公示</a>
+            <div class="leibiao" style="width: 88%;">
+                <a class="shenbao1">
+                    关于
+                </a>
+                <ul>
+                    <a href="/xmf_about.html?name=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC">
+                        <li>关于我们</li>
+                    </a>
+                    <a href="/query.html">
+                        <li>申报查询</li>
+                    </a>
+                    <a href="/zixun.html">
+                        <li>咨询</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹窗 开始 -->
+    <div class="tankuang">
+        <div class="kuai">
+            <div class="tankuang_img">
+                <img src="./img/tankuang3.png">
+                <h6>资源主公告</h6>
+            </div>
+            <p id="announcement">大喇叭，资源共享型互金营销系统，已上线，有互金推广资源、有流量者可以试试大喇叭，我这页面所有数据都是测试数据，用于系统功能展示，切勿投资</p>
+            <button class="guanbi_tk">关闭</button>
+        </div>
+    </div>
+    <!-- 弹窗 结束 -->
+    <script>
+        // 弹框
+        $(function () {
+            $(".gonggao_tk").on('click', function () {
+                $(".tankuang").fadeIn(300)
+            })
+            //关闭弹框
+            $(".guanbi_tk").on("click", function () {
+                $(".tankuang").fadeOut(300)
+            })
+        })
+
+        function tankuang() {
+            var announcement = $("#announcement").text();
+            if (announcement != "暂无公告") {
+                $(".tankuang").fadeIn(300)
+                $(".gonggao_tk").on('click', function () {
+                    $(".tankuang").fadeIn(300)
+                })
+                //关闭弹框
+                $(".guanbi_tk").on("click", function () {
+                    $(".tankuang").fadeOut(300)
+                })
+            }
+        }
+    </script>
+
+    <div class="marb98" style="visibility: visible; display: none;">
+        <p class="upwarp-progress"></p>
+        <p class="upwarp-tip">加载中..</p>
+    </div>
+</body>
+
+</html>

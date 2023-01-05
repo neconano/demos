@@ -1,0 +1,188 @@
+<extend name="$_home_wap_public_layout"/>
+
+<block name="style">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/swiper-3.4.2.min.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/common-wap.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/detail.css">
+		
+</block>
+
+<block name="script">
+	<script src="__HOME_PUBLIC__/public_wap/js/jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/swiper-3.4.2.jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/common.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/detail.js"></script>
+		
+</block>
+
+
+
+<block name="main">
+	
+<!--课程介绍 start-->
+<div class="container">
+		<div class="dawai-detail-info">
+			<img src="{$info['img_1']}" alt="">
+			<h2>{$info['title']}</h2>
+			<p>{$info['description']}</p>
+			<ul>
+				<li>
+					<b>课时：</b>
+					<span>{$info['total_hour']}</span>
+					<notempty name="info['end_time']">
+					<b>有效期至：</b>
+					<span>{$info['end_time']}</span>
+					</notempty>
+				</li>
+				<li>
+					<b>特色：</b>
+					<php>foreach($info['feature_list'] as $v){</php>
+						<i>{$v}</i>
+					<php>}</php>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!--课程介绍 end-->
+	<div class="space-gray"></div>
+	<!--tab切换1级 start-->
+	<div class="container dawai-detail-tab">
+		<div class="swiper-container swiper-container-detail1">
+			<div class="swiper-pagination swiper-pagination-detail1"></div>
+			<div class="swiper-wrapper">
+				<!--课程介绍 start-->
+				<div class="swiper-slide">
+					<div class="detail-info">
+						<h3><img src="__HOME_PUBLIC__/public_wap/images/icon-info-1.png" alt="">课程参数</h3>
+						<div class="info-area">
+							<b>授课方式：</b>
+							<span>{$info[lesson_type_list][0]} <php>if($info[lesson_type_list][1]) echo '+' . $info[lesson_type_list][1]; </php>  <php>if($info[lesson_type_list][2]) echo '+' . $info[lesson_type_list][2]; </php> </span>
+						</div>
+						<div class="info-area">
+							<b>课时总数：</b>
+							<span>{$info[total_hour]}</span>
+						</div>
+						
+						<div class="info-area">
+							<b>面向学员：</b>
+							<p>{$info[suit_people]}</p>
+						</div>
+					</div>
+					<div class="detail-info">
+						<h3><img src="__HOME_PUBLIC__/public_wap/images/icon-info-2.png" alt="">课程简介</h3>
+						<div class="info-area">
+							<p class="full">{$info[coures_content]}</p>
+						</div>
+					</div>
+					<div class="detail-info">
+						<h3><img src="__HOME_PUBLIC__/public_wap/images/icon-info-3.png" alt="">学习目标</h3>
+						<div class="info-area">
+							<p class="full">{$info[study_target]}</p>
+						</div>
+					</div>
+					<notempty name="info['book_description']">
+					<div class="detail-info">
+						<h3><img src="__HOME_PUBLIC__/public_wap/images/icon-info-4.png" alt="">推荐教材</h3>
+						<div class="info-area">
+								<php>if($info[book_1]){</php>
+								<img src="{$info[book_1]}" alt="">
+								<php>}else{</php>
+									{$info[book_description]}
+								<php>}</php>
+						</div>
+					</div>
+					</notempty>
+					<notempty name="info['teacher_list']">
+					<div class="detail-info">
+						<h3><img src="__HOME_PUBLIC__/public_wap/images/icon-info-5.png" alt="">授课教师</h3>
+						<php>foreach($info['teacher_list'] as $v){</php>
+						<div class="info-area">
+							<div class="left">
+								<img class="touxiang" src="{$v['avatar']}" alt="">
+							</div>
+							<div class="right">
+								<h4>{$v['title']}</h4>
+								<p>{$v['description']}</p>
+							</div>
+						</div>
+						<php>}</php>
+					</div>
+					</notempty>
+
+				</div>
+				<!--课程介绍 end-->
+				<!--课程安排 start-->
+				<div class="swiper-slide">
+					<div class="detail1-content">
+						<em><b>课时总数：</b>{$info[total_hour]}&emsp; <!--<b>有效日期至：</b>2018.8.8--></em>
+						<!--tab切换2级 start-->
+						<div class="swiper-container swiper-container-detail2">
+							<div class="swiper-pagination swiper-pagination-detail2"></div>
+							<div class="swiper-wrapper">
+								<!--循环 start-->
+								<notempty name="info.lesson_schedule.up">
+								<div class="swiper-slide">
+									<volist name="info.lesson_schedule.up" id="schedule">
+									<div class="detail2-content">
+										<div class="content-header">
+											<h3>{$schedule.title}</h3>
+											<notempty name="schedule.hour">
+												<span>课时数：{$schedule.hour}</span>
+											</notempty>
+											<i></i>
+										</div>
+										<volist name="schedule.childen" id="childen">
+										<div class="content-list">
+											<ul><li>{$childen.title}</li></ul>
+										</div>
+										</volist>
+									</div>
+									</volist>
+								</div>
+								</notempty>
+								<notempty name="info.lesson_schedule.down">
+								<div class="swiper-slide">
+									<volist name="info.lesson_schedule.down" id="schedule">
+									<div class="detail2-content">
+										<div class="content-header">
+											<h3>{$schedule.title}</h3>
+											<notempty name="schedule.hour">
+												<span>课时数：{$schedule.hour}</span>
+											</notempty>
+											<i></i>
+										</div>
+										<volist name="schedule.childen" id="childen">
+										<div class="content-list">
+											<ul><li>{$childen.title}</li></ul>
+										</div>
+										</volist>
+									</div>
+									</volist>
+								</div>
+
+								</notempty>
+								<!--循环 end-->
+							</div>
+						</div>
+						<!--tab切换2级 end-->
+					</div>
+				</div>
+				<!--课程安排 end-->
+				<div class="swiper-slide">
+					<div class="img-area">
+						<img src="__HOME_PUBLIC__/public_wap/images/img-question.png" alt="" width="100%">
+					</div>
+				</div>
+				<!--循环 end-->
+			</div>
+		</div>
+	</div>
+	<!--tab切换1级 end-->
+	<!--底部锁定 start-->
+	<div class="detail-fixed-area">
+		<a href="{:U('home/wap/sign','lesson_id='.I('id'))}">立即报名</a>
+		<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2885327890&site=qq&menu=yes">在线咨询</a>
+	</div>
+	<!--底部锁定 end-->
+	
+</block>

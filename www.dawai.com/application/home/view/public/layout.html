@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>大外在线-官方网站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="author" content="{:C('WEB_SITE_TITLE')}">
+    <meta name="keywords" content="{$meta_keywords}">
+    <meta name="description" content="{$meta_description}">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="{:C('WEB_SITE_TITLE')}">
+    <meta name="format-detection" content="telephone=no,email=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="apple-touch-icon" type="image/x-icon" href="__ROOT__/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="__ROOT__/logo.png">
+    <block name="style"></block>
+</head>
+<body>
+
+    <!--头部 start-->
+    <div class="dawai-index-header">
+        <div class="left">
+            <a href="/"><img src="__HOME_PUBLIC__/public/images/icon-logo.png" alt="logo"></a>
+            <ul>
+                <li>
+                    <a href="http://www.speexx.cn/" rel="nofollow" target="_blank">speexx项目</a>
+                </li>
+                <li>
+                    <a onclick="javascript:alert('页面筹备中')">学历教育</a>
+                </li>
+                <li>
+                    <a href="{:U('home/index/hot_course','cat1=is_hot')}" target="_blank">热门课程</a>
+                </li>
+                <li>
+                    <a href="{:U('home/index/zhibo_course','cat1=is_live')}" target="_blank">直播课程</a>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+            <span title="扫描二维码">
+                <div class="erweima-area">
+                    <img src="__HOME_PUBLIC__/public/images/img-erweima.jpg" alt="">
+                    <i></i><em></em>
+                </div>
+            </span>
+            <a title="在线QQ咨询" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2885327890&site=qq&menu=yes"></a>
+        </div>
+    </div>
+    <!--头部 end-->
+    
+    <block name="main"></block>
+
+
+
+
+    <!--底部 start-->
+    <div class="dawai-default-footer">
+        <div class="container">
+            <div class="left">
+                <img src="__HOME_PUBLIC__/public/images/icon-logo-f.png" alt="">
+                <ul>
+                    <li>
+                        <!--<a>-->
+                            <!--<div class="footer-tips">-->
+                                <!--0411-1234567-->
+                                <!--<em></em>-->
+                            <!--</div>-->
+                        <!--</a>-->
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2885327890&site=qq&menu=yes"></a>
+                    </li>
+                    <li>
+                        <a>
+                            <div class="footer-tips">
+                                <img src="__HOME_PUBLIC__/public/images/img-erweima.jpg" alt="">
+                                <em></em>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <span>版权所有&nbsp;©&nbsp;大连外国语大学&nbsp;<a style="color:#fff" href="http://www.miitbeian.gov.cn" target="_blank">辽ICP备12015802号-2</a></span>
+            </div>
+        </div>
+    </div>
+    <!--底部 end-->
+
+
+    <block name="script"></block>
+        
+</body>
+</html>

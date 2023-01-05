@@ -1,0 +1,359 @@
+<extend name="$_home_wap_public_layout"/>
+
+<block name="style">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/swiper-3.4.2.min.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/common-wap.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/index.css">
+</block>
+
+<block name="script">
+	<script src="__HOME_PUBLIC__/public_wap/js/jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/swiper-3.4.2.jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/common.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/index.js"></script>
+</block>
+
+
+
+<block name="main">
+
+	<!--banner&导航 start-->
+	<div class="dawai-index-banner">
+		<div class="banner-area">
+			<div class="swiper-container swiper-container-banner">
+				<div class="swiper-wrapper">
+
+					<php>foreach($top_ads as $v){</php>
+					<div class="swiper-slide">
+						<a href="{$v['url']}"><img src="{$v['cover_wap']}" alt=""></a>
+					</div>
+					<php>}</php>
+						
+				</div>
+				<div class="swiper-pagination swiper-pagination-banner"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="dawai-index-nav">
+		<ul>
+			<php>foreach(API('Course')->search_category_index as $k => $v){</php>
+			<li><a href="{:U('home/wap/listpage','category='.$k)}">{$v}</a></li>
+			<php>}</php>
+				
+			<li><a href="http://www.speexx.cn/" rel="nofollow=">speexx项目</a></li>
+			<li><a onclick="javascript:alert('网站筹备中')">学历教育</a></li>
+			<li><a href="http://wpa.qq.com/msgrd?v=3&uin=2885327890&site=qq&menu=yes">在线咨询</a></li>
+		</ul>
+	</div>
+	<!--banner&导航 end-->
+	<div class="space-gray"></div>
+	<!--热门课程 start-->
+	<div class="container">
+		<div class="dawai-index-hot">
+			<div class="dawai-index-default-title">
+				<img src="__HOME_PUBLIC__/public_wap/images/icon-title-1.png" alt="">
+				<h3>热门课程</h3>
+			</div>
+			<div class="swiper-container swiper-container-index">
+				<div class="swiper-wrapper">
+					<!--循环 start-->
+
+					<php>foreach($hot_course as $v){</php>
+
+					<div class="swiper-slide">
+						<div class="index-list-content">
+							<a href="{:U('home/wap/detail','id='.$v['id'])}">
+								<div class="img-area">
+									<img src="{$v['img_1']}" alt="">
+								</div>
+								<div class="text-area">
+									<h4>{$v['title']}</h4>
+								</div>
+								<div class="tips-area">
+									<php>if($v['lesson_flag']){</php>
+									<em>{$v['lesson_flag']}</em>
+									<php>}</php>
+									<span>{$v['sign_num']}人已报名</span>
+								</div>
+							</a>
+						</div>
+					</div>
+
+
+					<php>}</php>
+						
+					<!--循环 end-->
+				</div>
+			</div>
+			<div class="swiper-button-prev swiper-button-prev-index"></div>
+			<div class="swiper-button-next swiper-button-next-index"></div>
+		</div>
+	</div>
+	<!--热门课程 end-->
+	<div class="space-gray"></div>
+	<!--最新课程 start-->
+	<div class="container">
+		<div class="dawai-index-hot">
+			<div class="dawai-index-default-title">
+				<img src="__HOME_PUBLIC__/public_wap/images/icon-title-2.png" alt="">
+				<h3>最新课程</h3>
+			</div>
+			<div class="swiper-container swiper-container-index2">
+				<div class="swiper-wrapper">
+					<!--循环 start-->
+
+					<php>foreach($new_course as $v){</php>
+						
+					<div class="swiper-slide">
+						<div class="index-list-content">
+							<a href="{:U('home/wap/detail','id='.$v['id'])}">
+								<div class="img-area">
+									<img src="{$v['img_1']}" alt="">
+								</div>
+								<div class="text-area">
+									<h4>{$v['title']}</h4>
+								</div>
+								<div class="tips-area">
+									<php>if($v['lesson_flag']){</php>
+									<em>{$v['lesson_flag']}</em>
+									<php>}</php>
+									<span>{$v['sign_num']}人已报名</span>
+								</div>
+							</a>
+						</div>
+					</div>
+
+					<php>}</php>
+						
+					<!--循环 end-->
+				</div>
+			</div>
+			<div class="swiper-button-prev swiper-button-prev-index2"></div>
+			<div class="swiper-button-next swiper-button-next-index2"></div>
+		</div>
+	</div>
+	<!--最新课程 end-->
+
+
+	<!--直播课程 start-->
+	<div class="bg-gray">
+		<div class="dawai-index-live">
+			<div class="dawai-index-default-title">
+				<img src="__HOME_PUBLIC__/public_wap/images/icon-title-3.png" alt="">
+				<h3>直播课程</h3>
+			</div>
+			<div class="swiper-container swiper-container-index3">
+				<div class="swiper-wrapper">
+					<!--循环 start-->
+
+					<php>$i = 0 ;foreach($zhibo_ads as $v){ $i++; </php>
+						
+					<div class="swiper-slide">
+						<a href="{:U('home/wap/detail','id='.$v['course']['id'])}">
+							<img src="{$v['cover_wap']}" alt="">
+							<div class="content">
+								<h4>{$v['course']['title']}</h4>
+								<em>直播时间：<br>{$v['zhibo_time']}</em>
+								<p>{$v['course']['description']}</p>
+								<i>{$v['flag']}</i><span>{$v['course']['sign_num']}人已报名</span>
+							</div>
+						</a>
+					</div>
+
+					<php>}</php>
+						
+					<!--循环 end-->
+				</div>
+				<div class="swiper-pagination"></div>
+			</div>
+			<div class="swiper-button-prev swiper-button-prev-index3"></div>
+			<div class="swiper-button-next swiper-button-next-index3"></div>
+		</div>
+	</div>
+	<!--直播课程 end-->
+
+
+
+	<div class="container">
+		<div class="dawai-index-eng">
+			<div class="dawai-index-default-title">
+				<img src="__HOME_PUBLIC__/public_wap/images/<php>echo API('Course')->category_icon[1];</php>" alt="">
+				<h3><php>echo API('Course')->search_category_index[1];</php></h3>
+				<a href="{:url('home/wap/listpage',['category'=>1])}" target="_blank">more&nbsp;&gt;</a>
+			</div>
+			<div class="index-list-default">
+				<!--循环4条 start-->
+
+				<php>foreach($course_list[1] as $v){</php>
+					
+				<div class="index-list-content">
+					<a href="{:U('home/wap/detail','id='.$v['id'])}">
+						<div class="img-area">
+							<img src="{$v['img_1']}" alt="">
+						</div>
+						<div class="text-area">
+							<h4>{$v['title']}</h4>
+						</div>
+						<div class="tips-area">
+							<php>if($v['lesson_flag']){</php>
+							<em>{$v['lesson_flag']}</em>
+							<php>}</php>
+							<span>{$v['sign_num']}人已报名</span>
+						</div>
+					</a>
+				</div>
+
+				<php>}</php>
+
+				<!--循环 end-->
+			</div>
+		</div>
+	</div>
+	<div class="space-gray"></div>
+	<div class="container">
+		<div class="dawai-index-eng">
+			<div class="dawai-index-default-title">
+				<img src="__HOME_PUBLIC__/public_wap/images/<php>echo API('Course')->category_icon[4];</php>" alt="">
+				<h3><php>echo API('Course')->search_category_index[4];</php></h3>
+				<a href="{:url('home/wap/listpage',['category'=>4])}" target="_blank">more&nbsp;&gt;</a>
+			</div>
+			<div class="index-list-default">
+				<!--循环4条 start-->
+
+				<php>foreach($course_list[4] as $v){</php>
+
+				<div class="index-list-content">
+					<a href="{:U('home/wap/detail','id='.$v['id'])}">
+						<div class="img-area">
+							<img src="{$v['img_1']}" alt="">
+						</div>
+						<div class="text-area">
+							<h4>{$v['title']}</h4>
+						</div>
+						<div class="tips-area">
+							<php>if($v['lesson_flag']){</php>
+							<em>{$v['lesson_flag']}</em>
+							<php>}</php>
+							<span>{$v['sign_num']}人已报名</span>
+						</div>
+					</a>
+				</div>
+
+				<php>}</php>
+
+				<!--循环 end-->
+			</div>
+		</div>
+	</div>
+	<div class="space-gray"></div>
+	<div class="container">
+		<div class="dawai-index-eng">
+			<div class="dawai-index-default-title">
+				<img src="__HOME_PUBLIC__/public_wap/images/<php>echo API('Course')->category_icon[2];</php>" alt="">
+				<h3><php>echo API('Course')->search_category_index[2];</php></h3>
+				<a href="{:url('home/wap/listpage',['category'=>2])}" target="_blank">more&nbsp;&gt;</a>
+			</div>
+			<div class="index-list-default">
+				<!--循环4条 start-->
+
+				<php>foreach($course_list[2] as $v){</php>
+
+				<div class="index-list-content">
+					<a href="{:U('home/wap/detail','id='.$v['id'])}">
+						<div class="img-area">
+							<img src="{$v['img_1']}" alt="">
+						</div>
+						<div class="text-area">
+							<h4>{$v['title']}</h4>
+						</div>
+						<div class="tips-area">
+							<php>if($v['lesson_flag']){</php>
+							<em>{$v['lesson_flag']}</em>
+							<php>}</php>
+							<span>{$v['sign_num']}人已报名</span>
+						</div>
+					</a>
+				</div>
+
+				<php>}</php>
+
+				<!--循环 end-->
+			</div>
+		</div>
+	</div>
+	<div class="space-gray"></div>
+	<div class="container">
+		<div class="dawai-index-eng">
+			<div class="dawai-index-default-title">
+				<img src="__HOME_PUBLIC__/public_wap/images/<php>echo API('Course')->category_icon[5];</php>" alt="">
+				<h3><php>echo API('Course')->search_category_index[5];</php></h3>
+				<a href="{:url('home/wap/listpage',['category'=>5])}" target="_blank">more&nbsp;&gt;</a>
+			</div>
+			<div class="index-list-default">
+				<!--循环4条 start-->
+
+				<php>foreach($course_list[5] as $v){</php>
+
+				<div class="index-list-content">
+					<a href="{:U('home/wap/detail','id='.$v['id'])}">
+						<div class="img-area">
+							<img src="{$v['img_1']}" alt="">
+						</div>
+						<div class="text-area">
+							<h4>{$v['title']}</h4>
+						</div>
+						<div class="tips-area">
+							<php>if($v['lesson_flag']){</php>
+							<em>{$v['lesson_flag']}</em>
+							<php>}</php>
+							<span>{$v['sign_num']}人已报名</span>
+						</div>
+					</a>
+				</div>
+
+				<php>}</php>
+
+				<!--循环 end-->
+			</div>
+		</div>
+	</div>
+	<div class="space-gray"></div>
+	<div class="container">
+		<div class="dawai-index-eng">
+			<div class="dawai-index-default-title">
+				<img src="__HOME_PUBLIC__/public_wap/images/<php>echo API('Course')->category_icon[3];</php>" alt="">
+				<h3><php>echo API('Course')->search_category_index[3];</php></h3>
+				<a href="{:url('home/wap/listpage',['category'=>3])}" target="_blank">more&nbsp;&gt;</a>
+			</div>
+			<div class="index-list-default">
+				<!--循环4条 start-->
+
+				<php>foreach($course_list[3] as $v){</php>
+
+				<div class="index-list-content">
+					<a href="{:U('home/wap/detail','id='.$v['id'])}">
+						<div class="img-area">
+							<img src="{$v['img_1']}" alt="">
+						</div>
+						<div class="text-area">
+							<h4>{$v['title']}</h4>
+						</div>
+						<div class="tips-area">
+							<php>if($v['lesson_flag']){</php>
+							<em>{$v['lesson_flag']}</em>
+							<php>}</php>
+							<span>{$v['sign_num']}人已报名</span>
+						</div>
+					</a>
+				</div>
+
+				<php>}</php>
+
+				<!--循环 end-->
+			</div>
+		</div>
+	</div>
+	<div class="space-gray"></div>
+		
+</block>

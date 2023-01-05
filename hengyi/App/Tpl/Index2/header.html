@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html class=" -webkit-">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="content-language" content="zh-CN">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<title>恒宜科技有限公司</title>
+	<meta name="Keywords" content="大连恒宜,恒宜,恒宜科技,大连恒宜科技有限公司">
+	<meta name="Description" content="大连恒宜科技有限公司主要从事面向行业的物联网应用软件产品开发，公司拥有一支不断进取的科研开发和服务团队，与大连理工大学、吉林大学合作建立了'物联网应用及行业软件研发实验室'，开发了适合国内用户需求特点、具有自主知识产权的'恒宜'系列产品。">
+	<meta name="author" content="恒宜科技有限公司">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link href="logo.ico" rel="shortcut icon">
+	<link type="text/css" href="__PUBLIC__/new2/css/reset.css" rel="stylesheet">
+	<link type="text/css" href="__PUBLIC__/new2/css/style.css" rel="stylesheet">
+	<link type="text/css" href="__PUBLIC__/new2/css/index.css" rel="stylesheet">
+
+	<link type="text/css" href="__PUBLIC__/new2/css/index-slide.css" rel="stylesheet">
+	<script type="text/javascript" src="__PUBLIC__/new2/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/new2/js/jquery.SuperSlide2.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/new2/js/Lunbo.js"></script>
+</head>
+
+<body>
+		<div class="header" style="position:relative;">
+			<div class="header-left w1200" style="height: 77px;">
+				<div class="f-cb">
+					<a href="/"><img style="float:left" src="__PUBLIC__/new2/images/index-logo.jpg"></a>
+					<img style="float:right" src="__PUBLIC__/new2/images/index-top-tel.jpg">
+
+					<form action="{:U('Index2/news')}" id="form_search" method="post">
+						<div style="margin:22px 0 0 0;float:right">
+							<input name="keyword" value="{$keyword}" placeholder="请输入关键字" class="search_1">
+							<img style="float:left;cursor: pointer;" src="__PUBLIC__/new2/images/index-top-search.jpg" onclick="do_search()">
+						</div>
+					</form>
+					<script>
+					function do_search(){
+						$('#form_search').submit();
+					}
+					</script>
+							  
+
+				</div>
+			</div>
+		</div>
+		<div class="welcome">
+			<div class="banner-wrap">
+				<div class="header_1">
+					<ul style="margin:0 auto; width:1200px;">
+						<li class="nav_li <php>if(ACTION_NAME == 'index') echo 'active'; </php> "><a href="/">首页</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'about_us') echo 'active'; </php> "><a href="/about-us.html">关于我们</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'products') echo 'active'; </php> "><a href="/products.html">产品中心</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'news') echo 'active'; </php> "><a href="/news.html">资讯中心</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'partners') echo 'active'; </php> "><a href="/partners.html">合作伙伴</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'honors') echo 'active'; </php> "><a href="/honors.html">荣誉资质</a></li>
+						<li class="nav_li <php>if(ACTION_NAME == 'jobs') echo 'active'; </php> "><a href="/jobs.html">招贤纳士</a></li>
+					</ul>
+				</div>
+	

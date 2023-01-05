@@ -1,0 +1,331 @@
+<extend name="$layout" />
+
+<block name="style">
+    <link rel="stylesheet" href="__PUBLIC__/libs/jiaoben5589/css/ft-carousel.css" />
+    <link href="__PUBLIC__/cdn-ready/home/coffe/css/re.css" rel="stylesheet" type="text/css">
+</block>
+
+<block name="main">
+
+    <div class="container details_html list_html index_html">
+
+        <div class="head_top">
+            <div class="top">
+                <a href="javascript:window.history.back();">
+                    <img class="return" style="top: 0.06rem;width: 0.64rem;height: 0.48rem;" src="__PUBLIC__/cdn-ready/home/coffe/img/arrow.png">
+                </a>
+                <p style="text-align: left;margin-left: 1rem;color: #858585; font-size: 0.28rem !important">再去看看</p>
+            </div>
+        </div>
+
+        <div class="clear" style="height: 0.01rem"></div>
+
+        <div class="list" id="investproduct">
+            <div class="each_item" style="margin-top: 0.3rem;min-height: 1.6rem;">
+                <img class="img-1" src="{$tune_info['img']|get_cover}" />
+                <div style="float: left; width: 2.4rem;margin-top: 0.2rem;">
+                    <label class="label-1" style="font-size: 0.26rem;color: #333333">{$tune_info['title']}</label>
+                    <label class="label-1" style="color:#888888;" >{$tune_info['title_en']}</label>
+                    <label class="label-1" style="color:#eb6d8e;margin-top: 0.2rem;font-size: 24px" >¥ {$tune_info['price']}</label>
+                </div>
+                <a href="#">
+                    <img class="img-2" src="__PUBLIC__/cdn-ready/home/coffe/img/car.png" style="width: 1.1rem;height: 0.9rem;margin-left: 0.06rem;" />
+                </a>
+            </div>
+
+            <div class="index_chp" style="margin-top: 0.3rem;">
+                <div class="index_chp_top">
+                    <p class="float_l">合计:</p>
+                    <p class="float_l" style="float: right;">¥ <label class='total_price' style="font-size: 0.28rem;">{$tune_info['price']}</label></p>
+                    <div class="clear"></div>
+                </div>
+                <div class="index_chp_top">
+                    <p class="float_l">优惠券:</p>
+                    <php>if(!count($coupon_list)){</php>
+                        <input type="hidden" value="10" id="rebate">
+                        <p class="float_l" style="float: right;color:#eb6d8e;">没有可用优惠券</p>
+                    <php>}else{</php>
+                        <p class="float_l" style="float: right;">
+                        <select id="rebate" onchange="count_price()">
+                            <option value="10" my_coupon_id='0'>请选择</option>
+                            <php>foreach($coupon_list as $v){</php>
+                                <option value="{$v['rebate']}" my_coupon_id='{$v[id]}'>{$v['coupon_content']['title']}</option>
+                            <php>}</php>
+                        </select>
+                        </p>
+                    <php>}</php>
+
+                    <div class="clear"></div>
+                </div>
+                <div class="index_chp_top">
+                    <p class="float_l">总优惠金额:</p>
+                    <p class="float_l" style="float: right;">¥ <label class='rebate_price' style="font-size: 0.28rem;">0.00</label></p>
+                    <div class="clear"></div>
+                </div>
+
+                <php>if($is_half_price){</php>
+                <div class="index_chp_top2">
+                    <p class="float_l">半价特权:</p>
+                    <p class="float_l" style="float: right;">
+                        <div class="swich swich-2 swich-on" style="float: right;margin-left: 0.1rem;">
+                            <div class="box">
+                                <span></span>
+                            </div>
+                        </div>
+                    </p>
+                    <div class="clear"></div>
+                </div>
+                <php>}</php>
+
+                <div class="index_chp_top2" style="border: none;">
+                    <p class="float_l">酷豆:</p>
+                    <p class="float_l" style="float: right;">
+                        <div class="swich swich-3" style="float: right;margin-left: 0.1rem;">
+                            <div class="box">
+                                <span></span>
+                            </div>
+                        </div>
+                        <img class="img-3" style="margin-left: 0.1rem;"
+                            src="__PUBLIC__/cdn-ready/home/coffe/img/bean.png" />
+                        <label style="float: right;font-size: 0.28rem; line-height: 0.46rem">{$bean_num}</label>
+                    </p>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="tijiao" style="margin-top: 0.0rem;background: #eb6e8e;" onclick="show('.popup1')">兑换码支付</button>
+    <button class="tijiao" style="margin-top: 0.2rem;background: #6bba2d" id="make_order" onclick="make_order()">
+        合计:¥ <label class='total_price' style="font-size: 0.36rem;">{$tune_info['price']}</label>
+        微信支付
+    </button>
+    <button class="tijiao" style="margin-top: 0.2rem;background: #6bba2d; display: none" id="make_order_tmp" >
+        提交中...
+    </button>
+
+    <block name="footer">
+    </block>
+
+    <!-- 弹框 start -->
+    <div class="popup popup1">
+        <div class="frame" style="margin: 46% 50%;">
+            <div class="close"></div>
+            <div class="tk_bj">
+                <p style="width:100%">
+                    请输入兑换码
+                </p>
+            </div>
+            <div class="neirong">
+                <div class="touxian" style="border-bottom: none">
+                    <input class="input-1" id="free_code">
+                </div>
+                <div class="fuzhi" style="height: 1rem;">
+                    <button onclick="use_free_code()" style="background: #db758b;">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container details_html gppz_html" style="padding-bottom:0">
+        <div class="tankuang_xz" style="display: none;">
+            <div class="qpzj_input cpxz" style="display: none;height: 8.6rem;">
+                <div class="title">
+                    <p class="float_l">兑换成功，友情赞助</p>
+                    <img src="__PUBLIC__/cdn-ready/home/style1/img/guanbi.png" class="guanbi float_r">
+                    <div class="clear"></div>
+                </div>
+                <div class="text">
+                    <div class="zz"></div>
+                    <img id="deal_picture" src="">
+                </div>
+                <button>我知道了</button>
+            </div>
+        </div>
+    </div>
+
+</block>
+
+<block name="script">
+
+    <div id="jsApiCall"></div>
+
+    <script >
+
+        function showimg(img){
+            $('#deal_picture').attr('src',img)
+            $(".tankuang_xz").fadeIn(100)
+            $(".cpxz").fadeIn(100)
+        }
+        $(function(){
+            //关闭弹框
+            $(".guanbi").on("click",function(){ 
+                $(".tankuang_xz").fadeOut(100)
+                $(".cpxz").fadeOut(100)
+                window.history.back();
+            })
+            //关闭弹框
+            $(".cpxz button").on("click",function(){ 
+                $(".tankuang_xz").fadeOut(100)
+                $(".cpxz").fadeOut(100)
+                window.history.back();
+            })
+        })
+
+
+        var total_price = '{$tune_info[price]}';
+        var total_price_pay = total_price;
+        var rebate = 0;
+        var bean_num = '{$bean_num}';
+
+        var is_half = 0;
+        var free_code = 0;
+        var use_bean = 0;
+        var my_coupon_id = '';
+        var tune_id = '{$tune_id}';
+
+        function count_price(){
+            total_price_pay = total_price;
+            // 半价
+            if(is_half){
+                total_price_pay = total_price_pay/2;
+                total_price_pay = Math.floor(total_price_pay * 100) / 100
+            }
+            var rebate = $('#rebate').val();
+            if(rebate != 10 && use_bean){
+                alert('优惠券和酷豆不能同时使用!');
+                window.location.reload();
+                return;
+            }
+            if(rebate != 10){
+                total_price_pay = total_price_pay*(rebate/10);
+                total_price_pay = Math.floor(total_price_pay * 100) / 100
+                my_coupon_id = $("#rebate").find("option:selected").attr("my_coupon_id");
+            }
+            if(use_bean){
+                total_price_pay = 0;
+            }
+            $('.total_price').html(total_price_pay);
+            $('.rebate_price').html(Math.floor((total_price-total_price_pay) * 100) / 100);
+        }
+
+
+        function use_free_code(){
+            free_code = $('#free_code').val();
+            if(free_code)
+            make_order()
+            else
+            alert('请输入兑换码');
+        }
+
+
+        function make_order(){
+            var data = {};
+            data.tune_id = tune_id;
+            data.my_coupon_id = my_coupon_id;
+            data.use_bean = use_bean;
+            data.free_code = free_code;
+            data.is_half = is_half;
+            // 成功回调
+            $("#make_order").hide();
+            $("#make_order_tmp").show();
+            var callback = function (data) {
+                data = JSON.parse(data);
+                console.log(data);
+                if(data.status){
+                    if(data.flag){
+                        if(free_code){
+                            close('.popup1')
+                            showimg(data.data.free_code_img);
+                            setTimeout(function(){
+                                window.history.back();
+                            },5000);
+                        }else{
+                            alert('支付完成');
+                            window.history.back();
+                        }
+                    }
+                    else{
+                        $("#make_order_tmp").hide();
+                        $("#make_order").show();
+                        $('#jsApiCall').html(data.data);
+                        jsApiCall();
+                    }
+                }else{
+                    alert(data.msg);
+                    window.history.back();
+                }
+            }
+            $.post('', data, callback);
+        }
+
+        var checkbox_checked = false;
+        (function (select) {
+            var box = document.querySelector(select)
+            box.onclick = function () {
+                if(bean_num  < total_price_pay * 10 ){
+                    alert('酷豆不足,10酷豆低值1元，必须低值全价（例：需要消费5元，必须有50酷豆才可使用。）');
+                    return;
+                }
+                console.log(checkbox_checked);
+                this.classList.toggle("swich-on");
+                if(checkbox_checked === false){
+                    checkbox_checked = true;
+                    use_bean = 1;
+                    count_price()
+                }
+                else if(checkbox_checked === true){
+                    checkbox_checked = false;
+                    use_bean = 0;
+                    count_price()
+                }
+            }
+        })(".swich-3");
+
+
+        //显示弹框
+        function show(ObjVal) {
+            $(ObjVal).fadeIn(300);
+        }
+
+        //关闭弹框
+        function close(ObjVal) {
+            $(ObjVal).fadeOut(0);
+        }
+
+        // 复制成功提醒
+        $(function () {
+            $(".close").on("click", function () {
+                close('.popup1')
+            })
+        })
+
+
+        <php>if($is_half_price){</php>
+        var checkbox_2checked = true;
+        is_half = 1;
+        (function (select) {
+            var box = document.querySelector(select)
+            box.onclick = function () {
+                this.classList.toggle("swich-on");
+                if(checkbox_2checked === false){
+                    checkbox_2checked = true;
+                    is_half = 1;
+                    count_price()
+                }
+                else if(checkbox_2checked === true){
+                    checkbox_2checked = false;
+                    is_half = 0;
+                    count_price()
+                }
+            }
+        })(".swich-2");
+        <php>}</php>
+
+        count_price()
+        
+    </script>
+</block>

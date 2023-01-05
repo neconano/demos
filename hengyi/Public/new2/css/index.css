@@ -1,0 +1,185 @@
+.w1200{
+	width: 1200px;
+	margin: 0 auto;
+}
+.nav_li {
+	float: left;
+	width: 150px;
+	text-align: center;
+	line-height: 54px;
+}
+
+.nav_li a {
+	color: #ffffff;
+	font-size: 16px
+}
+
+.nav_li a:hover {
+	text-decoration: underline;
+}
+
+.active {
+	background: #ffffff;
+	color: #1773bc;
+}
+
+.active a {
+	color: #1773bc;
+	font-weight: bolder;
+}
+
+.active a:hover {
+	text-decoration: none;
+}
+.li_span {
+	margin-top: 12px;
+	font-size: 16px;
+	font-weight: bold;
+	float: left;
+	text-align: center;
+	width: 360px;
+	color: #696969;
+}
+
+.news_div {
+	width: 100%;
+	height: 220px;
+	background-image: URL('../images/index-timeline.jpg');
+	background-repeat: repeat-x;
+}
+
+.news_ul {
+	margin: 0 auto;
+	width: 1100px;
+	height: 220px;
+	color: #777777
+}
+
+.news_li {
+	float: left;
+	width: 220px;
+	margin-right: 55px;
+}
+
+.news_span_1 {
+	float: left;
+	width: 220px;
+	font-size: 20px;
+	margin-left: 20px;
+}
+
+.news_span_2 {
+	float: left;
+	margin-top: 21px;
+	margin-bottom: 20px
+}
+
+.news_span_3 {
+	float: left;
+	width: 220px;
+	font-size: 16px;
+	font-weight: bolder;
+	margin-left: 20px;
+	margin-bottom: 8px;
+	height: 40px;
+}
+
+.news_span_4 {
+	float: left;
+	width: 220px;
+	margin-left: 20px;
+}
+
+.news_span_mouseout {
+	color: #000000
+}
+
+.honor_div {
+	width: 100%;
+	font-size: 16px;
+}
+
+.honor_ul {
+	margin: 0 auto;
+	width: 1100px;
+	color: #777777
+}
+
+.honor_li {
+	float: left;
+	width: 270px;
+	height: 390px;
+	margin-right: 4px;
+	background-color: #f7f7f7;
+}
+
+.partner_div {
+	width: 100%;
+	float: left;
+	margin-top: 40px;
+	margin-bottom: 30px;
+}
+
+.Box {
+	position: relative;
+	margin: 0 auto;
+	width: 1100px;
+}
+
+.Box .content {
+	width: 1100px;
+	margin: 0 auto;
+}
+
+.Box .Box_con {
+	position: relative;
+}
+
+.Box .Box_con .conbox {
+	position: relative;
+	overflow: hidden;
+}
+
+.Box .Box_con .conbox ul {
+	position: relative;
+	list-style: none;
+}
+
+.Box .Box_con .conbox ul li {
+	float: left;
+	width: 276px;
+	overflow: hidden;
+}
+
+.Box .Box_con .conbox ul li:first-child {
+	margin-left: 0;
+}
+
+.Box .Box_con .conbox ul li img {
+	display: block;
+	transition: all 0.5s;
+}
+
+.Box .BoxSwitch {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.Box .BoxSwitch span {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: middle;
+	width: 30px;
+	height: 3px;
+	background: #ccc;
+	margin: 0 5px;
+	cursor: pointer;
+}
+
+.Box .BoxSwitch span.cur {
+	background: #1773bc;
+}
+
+
+

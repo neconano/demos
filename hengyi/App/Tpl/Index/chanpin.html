@@ -1,0 +1,50 @@
+
+<include file="Index:head" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/cp_1.css" />
+
+<div class="mid">
+	<div style="width:239px; margin-left:58px; float:left;">
+    	<div class="b_a">产品中心</div>
+        
+    	<div class="b_b" style="margin-top:50px; ">恒宜<label style="color:#890306">ISmartLab</label><br>实验室信息化管理软件</div>
+    	<div class="b_c" id="b_c1" style="margin-top:36px;">• <a target="_self" href="ISmartLab01.html" rel="1">平台版</a></div>
+    	<div class="b_c" id="b_c2" >• <a target="_self" href="ISmartLab02.html" rel="2">数据版</a></div>
+        
+    	<div class="b_b">恒宜<label style="color:#890306">ISmartOffice</label><br>移动办公平台</div>
+    	<div class="b_c" id="b_c3" style="margin-top:36px;">• <a target="_self" href="ISmartOffice01.html" rel="3">城市管理综合执法</a></div>
+    	<div class="b_c" id="b_c4" >• <a target="_self" href="ISmartOffice02.html" rel="4">工业生产安全</a></div>
+
+    	<div class="b_b">恒宜<label style="color:#890306">ISmartEAM</label><br>资产控制系统</div>
+    	<div class="b_c" id="b_c5" style="margin-top:36px;">• <a target="_self" href="ISmartEAM01.html" rel="5">设备资产管理</a></div>
+    	<div class="b_c" id="b_c6" >• <a target="_self" href="ISmartEAM02.html" rel="6">机群联网管控</a></div>
+
+    	<div class="b_b">恒宜<label style="color:#890306">ISmartPM</label><br>工程项目管理套件</div>
+    	<div class="b_c" id="b_c7" style="margin-top:36px;">• <a target="_self" href="ISmartPM01.html" rel="7">工程项目管理套件</a></div>
+        
+    </div>
+	<div style="width:622px; margin-left:33px; margin-top:111px; float:left;">
+    	<div class="a_a">{$new[title]}</div>
+    	<div class="a_b">{$new[content]}</div>
+    </div>
+    
+    
+</div>
+
+<include file="Index:foot" />
+
+
+<script type="text/javascript">  
+$(document).ready(function(){
+	
+	id = <php>echo $new['id']</php>;
+	$('#b_c'+id).addClass('b_c_hover_'+id);
+	
+	$('.b_c a').mouseover(function(){
+		$('#b_c'+$(this).attr('rel')).addClass('b_c_hover_'+$(this).attr('rel'));
+	}); 
+	$('.b_c a').mouseout(function(){
+		if(id != $(this).attr('rel'))
+		$('#b_c'+$(this).attr('rel')).removeClass('b_c_hover_'+$(this).attr('rel'));
+	}); 
+}); 
+</script>

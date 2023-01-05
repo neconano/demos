@@ -1,0 +1,246 @@
+<include file="Index2:header" />
+
+		<div class="bannerbox">
+			<img src="__PUBLIC__/new2/images/index-banner.jpg" alt="">
+		</div>
+	</div>
+
+		<div class="w1200" style="position:relative;">
+			<img src="__PUBLIC__/new2/images/index-product.jpg" alt="" style="margin-left: 40px;">
+			<a style="float:right;margin:30px 0 0 0;margin-right: 60px;" href="/products.html">
+				<img src="__PUBLIC__/new2/images/index-more.jpg" alt="">
+			</a>
+		</div>
+
+		<div class="friend">
+			<div class="mr_frbox">
+				<img class="mr_frBtnL prev" src="__PUBLIC__/new2/images/index-slide-l.jpg" />
+				<div class="mr_frUl">
+					<ul id="mr_fu">
+						<li>
+							<a href="#">
+								<img class="img_i" src="__PUBLIC__/new2/images/p1.jpg" height="230" />
+								<img class="img_hover" src="__PUBLIC__/new2/images/p1-1.jpg" height="230" style="display:none" />
+								<span class="li_span">iSmartLab-智能实验室系统</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img class="img_i" src="__PUBLIC__/new2/images/p2.jpg" height="230" />
+								<img class="img_hover" src="__PUBLIC__/new2/images/p2-1.jpg" height="230" style="display:none" />
+								<span class="li_span">iSmartMMS计量信息化管控系统</span>
+							</a>
+						</li>
+						<li><a href="#"></a>
+							<img class="img_i" src="__PUBLIC__/new2/images/p3.jpg" />
+							<img class="img_hover" src="__PUBLIC__/new2/images/p3-1.jpg" style="display:none" />
+							<span class="li_span">iSmartNDTS-iSmartKAKB失效分析知识库</span>
+						</a></li>
+						<li><a href="#"></a>
+							<img class="img_i" src="__PUBLIC__/new2/images/p4.jpg" />
+							<img class="img_hover" src="__PUBLIC__/new2/images/p4-1.jpg" style="display:none" />
+							<span class="li_span">iSmartNDTS-无损检测信息化系统</span>
+						</a></li>
+						<li><a href="#"></a>
+							<img class="img_i" src="__PUBLIC__/new2/images/p5.jpg" />
+							<img class="img_hover" src="__PUBLIC__/new2/images/p5-1.jpg" style="display:none" />
+							<span class="li_span">iSmartTDM-试验数据挖掘平台</span>
+						</a></li>
+						<li><a href="#"></a>
+							<img class="img_i" src="__PUBLIC__/new2/images/p6.jpg" />
+							<img class="img_hover" src="__PUBLIC__/new2/images/p6-1.jpg" style="display:none" />
+							<span class="li_span">iSmartTPS-试验过程控制解决方案</span>
+						</a></li>
+						<li><a href="#"></a>
+							<img class="img_i" src="__PUBLIC__/new2/images/p7.jpg" />
+							<img class="img_hover" src="__PUBLIC__/new2/images/p7-1.jpg" style="display:none" />
+							<span class="li_span">HST-IMS-热表处理智能制造解决方案</span>
+						</a></li>
+						<li><a href="#"></a>
+							<img class="img_i" src="__PUBLIC__/new2/images/p8.jpg" />
+							<img class="img_hover" src="__PUBLIC__/new2/images/p8-1.jpg" style="display:none" />
+							<span class="li_span">iSmartTrainning-实验培训数字化教程</span>
+						</a></li>
+
+					</ul>
+				</div>
+				<img class="mr_frBtnR next" src="__PUBLIC__/new2/images/index-slide-r.jpg" />
+			</div>
+		</div>
+
+
+		<div class="w1200" style="position:relative;">
+			<img src="__PUBLIC__/new2/images/index-news.jpg" alt="" style="margin-left: 40px;">
+			<a class="div_233-1" href="/news.html">
+				<img src="__PUBLIC__/new2/images/index-more.jpg" alt="">
+			</a>
+		</div>
+
+		<div class="news_div">
+			<ul class="news_ul">
+
+				<php>foreach($news as $v){</php>
+				<li class="news_li">
+					<span class="news_span_1">{$v['news_date']}</span>
+					<span class="news_span_2">
+						<img src="__PUBLIC__/new2/images/index-timeline-1.jpg" alt="">
+					</span>
+					<span class="news_span_3"><a href="/news-{$v['id']}.html" target="_blank" style="color:#696969" ><span>{$v['title']}</span></a></span>
+					<span class="news_span_4">{:msubstr_ec(trim(strip_tags($v[content])), 0,40,'utf-8')}</span>
+				</li>
+				<php>}</php>
+
+			</ul>
+		</div>
+
+		<div class="banner-wrap" style="background-color: #f7f7f7;height: 370px;">
+			<div style="margin:0 auto; width:1100px;">
+				<div style="margin-top:20px;margin-right:58px;float:left">
+					<img src="__PUBLIC__/new2/images/index-building.jpg">
+				</div>
+				<div style="float:lef;">
+					<img style="float:left;margin-top:8px" src="__PUBLIC__/new2/images/about-us.jpg">
+					<span style="float:left;width:470px; height:190px;overflow:hidden; font-size: 14px;line-height: 24px;">
+						大连恒宜科技有限公司成立于2009年，是一支集计算机、企业管理、自控技术、机械工程多学科的复合型研发及服务团队，主要面向制造业用户提供检测、试验与质量控制领域的应用软件及物联网整体解决方案。公司是大连市政府信息资源规划课题的承担单位；与大连理工大学软件学院、吉林大学物理学院合作建立了"物联网应用及行业软件研发试验室"，恒宜科技注重IT技术的集成创新与实际应用，擅长融合专业领域知识进行垂直行业的信息化总体解决方案研发，能够为用户提供管理咨询、项目定制、IT规划与导入培训等全方位的信息化服务。
+					</span>
+					<img style="float:left;" src="__PUBLIC__/new2/images/about-us-narrow.jpg">
+				</div>
+			</div>
+		</div>
+
+
+		<div class="w1200" style="position:relative;">
+			<img src="__PUBLIC__/new2/images/index-honor.jpg" alt="" style="margin-left: 40px;">
+			<a class="div_233-1" href="/honors.html">
+				<img src="__PUBLIC__/new2/images/index-more.jpg" alt="">
+			</a>
+		</div>
+
+		<div class="honor_div">
+			<ul class="honor_ul" style="font-weight:bold;color:#696969">
+				<li class="honor_li">
+					<img style="margin: 10px 0 8px 12px;" src="__PUBLIC__/new2/images/honor-1.jpg" alt="">
+					<span style="float: left;width: 270px;text-align: center;">质量管理体系ISO 9001认证证书</span>
+				</li>
+				<li class="honor_li">
+					<img style="margin: 10px 0 8px 12px;" src="__PUBLIC__/new2/images/honor-2.jpg" alt="">
+					<span style="float: left;width: 270px;text-align: center;">试验数据管理系统V1.0</span>
+				</li>
+				<li class="honor_li">
+					<img style="margin: 10px 0 8px 12px;" src="__PUBLIC__/new2/images/honor-3.jpg" alt="">
+					<span style="float: left;width: 270px;text-align: center;">恒宜IOMS办公管理系统V5.0</span>
+				</li>
+				<li class="honor_li">
+					<img style="margin: 10px 0 8px 12px;" src="__PUBLIC__/new2/images/honor-4.jpg" alt="">
+					<span style="float: left;width: 270px;text-align: center;">理化及无损检测信息管理系统V1.0</span>
+				</li>
+
+			</ul>
+		</div>
+
+
+
+		<div class="partner_div">
+			<div class="Box">
+				<div class="content">
+					<div class="Box_con clearfix">
+
+						<div class="conbox" id="BoxUl">
+							<ul style="width: 1100px; ">
+								<li class="cur">
+									<img src="__PUBLIC__/new2/images/partner-1.jpg" alt="">
+								</li>
+								<li>
+									<img src="__PUBLIC__/new2/images/partner-2.jpg" alt="">
+								</li>
+								<li>
+									<img src="__PUBLIC__/new2/images/partner-3.jpg" alt="">
+								</li>
+								<li>
+									<img src="__PUBLIC__/new2/images/partner-4.jpg" alt="">
+								</li>
+								<li>
+									<img src="__PUBLIC__/new2/images/partner-5.jpg" alt="">
+								</li>
+								<li>
+									<img src="__PUBLIC__/new2/images/partner-6.jpg" alt="">
+								</li>
+								<li>
+									<img src="__PUBLIC__/new2/images/partner-7.jpg" alt="">
+								</li>
+							</ul>
+						</div>
+
+						<p class="BoxSwitch" id="BoxSwitch">
+						</p>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="banner-wrap" style="background-color: #f7f7f7;height: 180px;">
+			<div style="margin:0 auto; width:1100px; font-weight:bold">
+				<img style="margin-top:50px;margin-bottom:20px;" src="__PUBLIC__/new2/images/index-contact-us.jpg">
+				<span style="font-size:14px;float:left;margin-left: 4px;">地址：大连市高新园区火炬路32号创业大厦A座14层</span>
+				<span style="font-size:14px;float:left;margin-left:40px;">电话/传真：0411-39073606</span>
+				<span style="font-size:14px;float:left;margin-left:40px;">E-mail：admin@hengyi.ln.cn</span>
+			</div>
+		</div>
+
+		<include file="Index2:footer" />
+
+
+	</div>
+
+</body>
+
+
+<script type="text/javascript">
+	$(document).ready(function () {
+
+		/* 图片滚动效果 */
+		$(".mr_frbox").slide({
+			titCell: "",
+			mainCell: ".mr_frUl ul",
+			autoPage: true,
+			effect: "leftLoop",
+			autoPlay: true,
+			vis: 3
+		});
+
+		/* 鼠标悬停图片效果 */
+		$("li").mouseout(function (e) {
+			$(this).find('.img_i').show();
+			$(this).find('.img_hover').hide();
+		});
+		$('li').mouseover(function (event) {
+			$(this).find('.img_i').hide();
+			$(this).find('.img_hover').show();
+		});
+
+	});
+
+
+	$(document).ready(function () {
+		/* 鼠标悬停图片效果 */
+		$('.news_li').mouseover(function (event) {
+			$(this).find('span').addClass('news_span_mouseout')
+			$(this).find('img').attr('src', '__PUBLIC__/new2/images/index-timeline-1-1.jpg');
+
+		});
+		$(".news_li").mouseout(function (e) {
+			$(this).find('span').removeClass('news_span_mouseout')
+			$(this).find('img').attr('src', '__PUBLIC__/new2/images/index-timeline-1.jpg');
+		});
+	});
+
+	//滚动元素id，左切换按钮，右切换按钮，切换元素个数id,滚动方式，切换方向，是否自动滚动，滚动距离，滚动时间，滚动间隔，显示个数
+	LbMove('BoxUl', '', '', 'BoxSwitch', true, 'left', true, 276, 1000, 5000, 4);
+</script>
+
+
+</html>

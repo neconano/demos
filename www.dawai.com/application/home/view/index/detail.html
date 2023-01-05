@@ -1,0 +1,278 @@
+<extend name="$_home_public_layout"/>
+<block name="style">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public/css/swiper-3.4.2.min.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public/css/common-pc.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public/css/detail.css">
+</block>
+<block name="script">
+	<script src="__HOME_PUBLIC__/public/js/jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public/js/swiper-3.4.2.jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public/js/common.js"></script>
+	<script src="__HOME_PUBLIC__/public/js/detail.js"></script>
+	<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["weixin","qzone","tsina","sqq","tqq","renren","tqf","bdxc","kaixin001","tieba","douban","mail","fbook","twi","linkedin"],"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{"bdSize":16}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+</block>
+<block name="main">
+<!--头部 start-->
+<!--头部 end-->
+<!--灰色背景 start-->
+<div class="bg-gray">
+	<!--课程信息 start-->
+	<div class="container">
+		<div class="dawai-detail-area">
+			<div class="dawai-default-crumb">
+                <a href="{:url('index')}">首页</a>
+                <font>/</font>
+                <span><a href="{:url('lesson_list',['cat1'=>$lesson_detail['cat'][0]])}"><php>echo API('Course')->search_category_index[$lesson_detail['cat'][0]];</php></a></span>
+                <font>/</font>
+                <span><a href="{:url('lesson_list',['cat1'=>$lesson_detail['cat'][0],'cat2'=>$lesson_detail['cat'][1]])}" ><php>echo API('Course')->search_category[$lesson_detail['cat'][0]][$lesson_detail['cat'][1]];</php></a></span>
+                <font>/</font>
+                <span>{$lesson_detail.title}</span>
+			</div>
+			<div class="dawai-detail-info">
+				<div class="left">
+					<img src="/uploads{$lesson_detail.img_path}" alt="">
+					<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享</a></div>
+				</div>
+				<div class="right">
+					<h2>{$lesson_detail.title}</h2>
+					<p>{$lesson_detail.description}</p>
+					<ul>
+						<!--<li class="small">
+							<span>价格：<b>￥8800</b></span>
+						</li>
+						<li>
+							<strong>￥10000<img src="__HOME_PUBLIC__/public/images/icon-delete.png" alt=""></strong>
+							<span>（8.8折）</span>
+						</li>-->
+						<li class="small">
+							<span>课时：{$lesson_detail.total_hour}</span>
+						</li>
+						<notempty name="lesson_detail.end_time">
+						<li class="small">
+							<span>有效期：{$lesson_detail.end_time}</span>
+						</li>
+						</notempty>
+						<li>
+							<span>特色：</span>
+							<volist name="lesson_detail.feature_data" id="feature">
+								<notempty name="feature">
+							<em>
+								{$feature.title}
+								<div class="ts-tips">
+									{$feature.description}
+									<i></i>
+								</div>
+							</em>
+								</notempty>
+							</volist>
+
+						</li>
+					</ul>
+					<div class="jm-cb"></div>
+					<div class="btn-area">
+						<a href="{:url('sign',['lesson_id'=>$lesson_detail.id])}">立即报名</a>
+						<a href="http://wpa.qq.com/msgrd?v=3&uin=2885327890&site=qq&menu=yes">在线咨询</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--课程信息 end-->
+</div>
+<!--灰色背景 end-->
+<!--中间内容容器 start-->
+<div class="dawai-detail-wrap">
+	<div class="container">
+		<div class="left">
+			<div class="tab-btnarea">
+				<span data-tab="1" class="active">课程介绍</span>
+				<span data-tab="2">课程安排</span>
+				<span data-tab="3">常见问题</span>
+			</div>
+			<!--课程介绍 start-->
+			<div data-tabarea="1" class="content-area active">
+				<div class="detail-info">
+					<h3><img src="__HOME_PUBLIC__/public/images/icon-info-1.png" alt="">课程参数</h3>
+					<div class="info-area">
+						<b class="w50">授课方式：<span>{$lesson_detail[lesson_type_list][0]} <php>if($lesson_detail[lesson_type_list][1]) echo '+' . $lesson_detail[lesson_type_list][1]; </php>  <php>if($lesson_detail[lesson_type_list][2]) echo '+' . $lesson_detail[lesson_type_list][2]; </php> </span></b>
+						<b class="w50">课时总数：<span>{$lesson_detail.total_hour}</span></b>
+					</div>
+					<div class="info-area">
+						<b>面向学员：</b>
+						<p>{$lesson_detail.suit_people}</p>
+					</div>
+					<!--<div class="info-area">
+						<b>授课时间：</b>
+						<p>平日班：<font>7月10日~8月4日</font><font>周一至周五10:00-12:00</font><font>13:00-15:00</font><font>15:30-17:00</font></p>
+					</div>-->
+				</div>
+				<div class="detail-info">
+					<h3><img src="__HOME_PUBLIC__/public/images/icon-info-2.png" alt="">课程简介</h3>
+					<div class="info-area">
+						{$lesson_detail.coures_content}
+						<p class="full"></p>
+					</div>
+				</div>
+				<div class="detail-info">
+					<h3><img src="__HOME_PUBLIC__/public/images/icon-info-3.png" alt="">学习目标</h3>
+					<div class="info-area">
+						{$lesson_detail.study_target}
+					</div>
+				</div>
+				<php>if (preg_match('/([0-9])/',$lesson_detail['teacher'])){</php>
+				<div class="detail-info padding-large">
+					<h3><img src="__HOME_PUBLIC__/public/images/icon-info-5.png" alt="">授课教师</h3>
+					<div class="info-area padding-large">
+						<div class="swiper-container swiper-container-teacher">
+							<div class="swiper-wrapper">
+								<!--教师循环 start-->
+								<volist name="lesson_detail.teacher_data" id="teacher">
+									<notempty name="teacher.teacher_path">
+									<div class="swiper-slide">
+										<img src="/uploads{$teacher.teacher_path}" alt="">
+										<h4>{$teacher.title}</h4>
+										<p class="tech">
+											{$teacher.description}
+										</p>
+									</div>
+									</notempty>
+								</volist>
+								<!--教师循环 end-->
+							</div>
+							<div class="swiper-button-prev swiper-button-prev-teacher"></div>
+							<div class="swiper-button-next swiper-button-next-teacher"></div>
+						</div>
+					</div>
+				</div>
+				<php>}</php>
+				<notempty name="lesson_detail.book_description">
+				<div class="detail-info padding-large">
+					<h3><img src="__HOME_PUBLIC__/public/images/icon-info-4.png" alt="">推荐教材</h3>
+					<div class="info-area padding-large">
+						<p>{$lesson_detail.book_description}</p>
+					</div>
+				</div>
+				</notempty>
+			</div>
+			<!--课程介绍 end-->
+			<!--课程安排 start-->
+			<div data-tabarea="2" class="content-area">
+				<div class="second-tabarea">
+					<notempty name="lesson_detail.lesson_schedule.up">
+					<span data-stab="1" class="active">在线课程</span>
+					</notempty>
+					<notempty name="lesson_detail.lesson_schedule.down">
+					<span data-stab="2">线下课程</span>
+					</notempty>
+				</div>
+				<!--切换内容1 start-->
+				<div data-stabarea="1" class="second-content active">
+					<em>课时总数：{$lesson_detail.total_hour}&emsp;&emsp;&emsp;&emsp;<!--有效日期至：2018.8.8--></em>
+					<!--课程循环 start-->
+					<notempty name="lesson_detail.lesson_schedule.up">
+							<volist name="lesson_detail.lesson_schedule.up" id="schedule">
+								<div class="content-wrap"><!--第一条默认展示-->
+									<div class="content-header">
+										<h3>{$schedule.title}</h3>
+										<notempty name="schedule.hour">
+											<span>课时数：{$schedule.hour}</span>
+										</notempty>
+										<i></i>
+									</div>
+									<volist name="schedule.childen" id="childen">
+									<div class="content-list" >
+										<ul>
+											<li>{$childen.title}</li>
+										</ul>
+									</div>
+									</volist>
+								</div>
+							</volist>
+					</notempty>
+					<!--课程循环 end-->
+				</div>
+				<!--切换内容1 end-->
+				<!--切换内容2 start-->
+				<div data-stabarea="2" class="second-content">
+					<em>课时总数：{$lesson_detail.total_hour}&emsp;&emsp;&emsp;&emsp;<!--有效日期至：2018.8.8--></em>
+					<!--课程循环 start-->
+					<notempty name="lesson_detail.lesson_schedule.down">
+						<volist name="lesson_detail.lesson_schedule.down" id="schedule">
+							<div class="content-wrap"><!--第一条默认展示-->
+								<div class="content-header">
+									<h3>{$schedule.title}</h3>
+									<notempty name="schedule.hour">
+										<span>课时数：{$schedule.hour}</span>
+									</notempty>
+									<i></i>
+								</div>
+								<volist name="schedule.childen" id="childen">
+									<div class="content-list" >
+										<ul>
+											<li>{$childen.title}</li>
+										</ul>
+									</div>
+								</volist>
+							</div>
+						</volist>
+					</notempty>
+					<!--课程循环 end-->
+				</div>
+				<!--切换内容2 end-->
+			</div>
+			<!--课程安排 end-->
+			<!--常见问题 start-->
+			<div data-tabarea="3" class="content-area">
+				<div class="img-area">
+					<img src="__HOME_PUBLIC__/public/images/img-question.png" alt="">
+				</div>
+			</div>
+			<!--常见问题 end-->
+		</div>
+		<div class="right">
+			<h2>相关课程</h2>
+			<volist name="con_lesson" id="con">
+				<div class="right-link-area">
+					<a href="{:url('detail',['id'=>$con.id])}">
+						<img src="/uploads{$con.img_path}" alt="">
+						<em>{$con.title}</em>
+					</a>
+				</div>
+			</volist>
+		</div>
+	</div>
+</div>
+<!--中间内容容器 end-->
+<div class="height40"></div>
+<!--底部 start-->
+
+<!--底部 end-->
+<!--浮动导航 start-->
+<div class="info-fixed-nav">
+	<div class="container">
+		<div class="left">
+			<span data-tab="1" class="active">课程介绍</span>
+			<span data-tab="2">课程安排</span>
+			<span data-tab="3">常见问题</span>
+		</div>
+		<div class="right">
+			<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2885327890&amp;site=qq&amp;menu=yes">在线咨询</a>
+			<a href="{:url('sign',['lesson_id'=>$lesson_detail.id])}">立即报名</a>
+		</div>
+	</div>
+</div>
+<!--浮动导航 end-->
+<!--右侧工具 start-->
+<div class="detail-right-tools">
+	<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2885327890&site=qq&menu=yes"><img src="__HOME_PUBLIC__/public/images/icon-toptips-qq2.png" alt=""></a>
+	<a>
+		<img src="__HOME_PUBLIC__/public/images/icon-toptips-wx2.png" alt="">
+		<div class="erweima-area">
+			<img src="__HOME_PUBLIC__/public/images/img-erweima.jpg" alt="">
+			<i></i><em></em>
+		</div>
+	</a>
+	<a class="btn-backtop"><img src="__HOME_PUBLIC__/public/images/icon-arrow-bt.png" alt=""></a>
+</div>
+<!--右侧工具 end-->
+</block>

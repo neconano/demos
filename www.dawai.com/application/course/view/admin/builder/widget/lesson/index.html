@@ -1,0 +1,21 @@
+<div class="builder listbuilder-box">
+
+
+
+    <php>if($column['name'] == 'remark'){</php>
+    <form action="{:U('', 'dotype=remark')}" method="POST" class="form form-remark{$data['id']}" role="form">
+        <div class="input-group">
+            <input type="hidden" name="id" value="{$data['id']}">
+            <input type="text" class="form-control" name="remark" value="{$data['remark']}">
+            <span class="input-group-btn">
+                                                            <button type="submit" class="btn btn-primary-outline btn-pill submit ajax-post no-refresh" target-form="form-remark{$data['id']}">提交</button>
+                                                          </span>
+        </div><!-- /input-group -->
+    </form>
+    <php>}else{</php>
+    {$data[$column['name']]|default=''}
+    <php>}</php>
+
+
+
+</div>

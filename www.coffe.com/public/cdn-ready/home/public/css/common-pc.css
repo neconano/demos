@@ -1,0 +1,490 @@
+@charset "utf-8";
+/* 芥末网-前端 */
+/* PC端共通样式 */
+html{font-size:14px}
+blockquote,body,button,caption,dd,div,dl,dt,fieldset,figure,form,h1,h2,h3,h4,h5,h6,hr,html,input,legend,li,menu,ol,p,pre,table,td,textarea,th,ul{margin:0;padding:0}
+body,button,dd,div,dl,dt,input,li,ol,p,ul{box-sizing:border-box;-ms-box-sizing:border-box;-o-box-sizing:border-box}
+body,button,input,keygen,legend,select,textarea{font-size:14px;line-height:auto;font-family:Microsoft YaHei,Helvetica Neue,Helvetica,Arial,Roboto,Droid Sans,Droid Sans Fallback,Heiti SC,Hiragino Sans GB,Simsun,sans-self}
+body,html{width:100%;height:100%;color:#333}
+a{outline:0;background:0 0;text-decoration:none;-webkit-tap-highlight-color:transparent}
+em,i{font-style:normal}
+img{outline:0;border:none}
+li,ol,ul{list-style:none outside none}
+a,button,input,textarea{outline:0;-webkit-tap-highlight-color:transparent;-webkit-appearance:none;color: #333}
+select::-ms-expand{display:none}
+input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:none}
+input::-webkit-input-speech-button{display:none}
+textarea{resize:none;-webkit-appearance:none}
+button{border-radius:0}
+select{outline:0;border:none;background:0 0;-webkit-appearance:none;appearance:none;-moz-appearance:none}
+.css{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0)}
+.animation-a{-webkit-transition:all .3s;transition:all .3s}/*a标签动画效果增加此class*/
+.common-Toast{position:fixed;top:50%;left:50%;max-width:60%;width:auto;padding:14px;background:rgba(0, 0, 0, .5);font-style:normal;font-size:18px;text-align:center;color:#fff;z-index:99999;border-radius:5px;display:none}
+.jm-cb{clear:both;display:block}
+.jm-p0{padding:0 !important}
+.jm-m0{margin:0 !important}
+.jm-show{display:inline-block !important}/*显示*/
+.jm-hidden{display:none !important}/*隐藏*/
+.jm-fl{float:left}/*左浮动*/
+.jm-fr{float:right}/*有浮动*/
+.jm-pr,.jm-prz{position:relative}/*相对定位*/
+.jm-prz{zoom:1}
+.jm-oh{overflow:hidden}/*滚动条隐藏*/
+.jm-tal{text-align:left}/*内容左对齐*/
+.jm-tac{text-align:center}/*内容居中对齐*/
+.jm-tar{text-align:right}/*内容右对齐*/
+.jm-taj{text-align:justify;text-justify:inter-ideograph}/*内容两端对齐*/
+.jm-vam,.jm-vama *{vertical-align:middle}/*垂直居中对齐*/
+.jm-toe{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;word-wrap:normal}/*超出省略号*/
+.jm-csp{cursor:pointer}/*光标图标变为手*/
+.jm-usn{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}/*禁止选择，防复制*/
+.container-header{
+	width: 100%;
+	background: #fff;
+	height: 110px;
+	position: relative;
+	-webkit-box-shadow: 0 0 15px 0 rgba(187,187,187,.3);
+	-moz-box-shadow: 0 0 15px 0 rgba(187,187,187,.3);
+	-ms-box-shadow: 0 0 15px 0 rgba(187,187,187,.3);
+	box-shadow: 0 0 15px 0 rgba(187,187,187,.3);
+}
+.container{
+	width: 1200px;
+	margin: auto;
+	position: relative
+}
+.container:after{
+	content: "";
+	clear: both;
+	display: block;
+}
+.container:before{
+	content: "";
+	clear: both;
+	display: block;
+}
+.bg-gray{
+	width: 100%;
+	background: #f5f8fd;
+}
+.height30{
+	height: 30px
+}
+.height40{
+	height: 40px;
+	clear: both
+}
+.dawai-index-header{
+	width: 1200px;
+	height: 110px;
+	margin: auto
+}
+.dawai-index-header .left{
+	width: 85%;
+	float: left;
+	text-align: left
+}
+.dawai-index-header .left img{
+	padding-top:30px;
+	max-height: 50px;
+	float: left
+}
+.dawai-index-header .left ul{
+	float: left;
+	line-height: 110px;
+	margin-left: 85px
+}
+.dawai-index-header .left ul li{
+	float: left;
+	margin-right: 5px
+}
+.dawai-index-header .left ul li a{
+	display: inline-block;
+	height: 35px;
+	line-height: 35px;
+	font-size: 18px;
+	padding: 0 25px;
+	-webkit-border-radius: 17.5px;
+	-moz-border-radius: 17.5px;
+	-ms-border-radius: 17.5px;
+	border-radius: 17.5px;
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+.dawai-index-header .left ul li a:hover{
+	background: #1569ff;
+	color: #fff;
+}
+.dawai-index-header .right{
+	width: 15%;
+	float: right;
+	text-align: right;
+	padding-top: 35px;
+}
+.dawai-index-header .right span{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background: url(../images/icon-toptips-wx1.png) no-repeat center;
+	position: relative;
+	z-index: 2
+}
+.dawai-index-header .right span .erweima-area{
+	display: none;
+	position: absolute;
+	top: 55px;
+	left: -40px;
+	border:1px solid #1569ff;
+	background: #fff;
+	width: 120px;
+	height: 120px;
+	text-align: center
+}
+.dawai-index-header .right span .erweima-area img{
+	padding-top: 5px;
+	width: 110px;
+	height: 110px;
+}
+.dawai-index-header .right span .erweima-area i{
+	position: absolute;
+	top: -8px;
+	left: 50%;
+	height: 0;
+	border-bottom:8px solid #1569ff;
+	border-left:8px solid transparent;
+	border-right:8px solid transparent;
+	border-top:none;
+	margin-left: -8px;
+	z-index: 1
+}
+.dawai-index-header .right span .erweima-area em{
+	position: absolute;
+	top: -7px;
+	left: 50%;
+	height: 0;
+	border-bottom:7px solid #fff;
+	border-left:7px solid transparent;
+	border-right:7px solid transparent;
+	border-top:none;
+	margin-left: -7px;
+	z-index: 2
+}
+.dawai-index-header .right span:hover{
+	background: url(../images/icon-toptips-wx2.png) no-repeat center;
+}
+.dawai-index-header .right span:hover .erweima-area{
+	display: block
+}
+.dawai-index-header .right a{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	background: url(../images/icon-toptips-qq1.png) no-repeat center;
+	position: relative;
+	margin-left: 30px
+}
+.dawai-index-header .right a:hover{
+	background: url(../images/icon-toptips-qq2.png) no-repeat center;
+}
+.dawai-right-tools{
+	width: 120px;
+	height: 330px;
+	background: #fff;
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	z-index: 10;
+	border: 1px solid #e8efff;
+	-webkit-box-shadow: 0 8px 11px 0 rgba(212,224,240,.5);
+	-moz-box-shadow: 0 8px 11px 0 rgba(212,224,240,.5);
+	box-shadow: 0 8px 11px 0 rgba(212,224,240,.5);
+	-webkit-border-radius: 3px 3px 54px 54px;
+	-moz-border-radius: 3px 3px 54px 54px;
+	border-radius: 3px 3px 54px 54px;
+}
+.dawai-right-tools ul{
+	width: 100%;
+	display: block;
+	text-align: center;
+	overflow: hidden;
+	margin: auto
+}
+.dawai-right-tools ul li{
+	width: 100%;
+	line-height: 40px;
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+.dawai-right-tools ul li span{
+	display: block;
+	width: 100px;
+	margin: auto;
+	font-size: 16px;
+	color: #1569ff;
+	cursor: pointer;
+	border-bottom: 1px solid #e8efff;
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+.dawai-right-tools ul li:hover{
+	background-color: #1569ff;
+}
+.dawai-right-tools ul li:hover span{
+	color: #fff;
+	border-bottom: 1px solid transparent
+}
+.dawai-right-tools .contact-area{
+	display: block;
+	margin: auto;
+	width: 100px;
+	padding: 13px 0 8px;
+	border-bottom: 1px solid #e8efff;
+	text-align: center
+}
+.dawai-right-tools .contact-area span{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background: url(../images/icon-right-wx-1.png) no-repeat center;
+	margin-right: 5px;
+	position: relative;
+	cursor: pointer
+}
+.dawai-right-tools .contact-area span .erweima-area{
+	display: none;
+	position: absolute;
+	top: -42px;
+    left: -135px;
+	border:1px solid #1569ff;
+	background: #fff;
+	width: 120px;
+	height: 120px;
+	text-align: center
+}
+.dawai-right-tools .contact-area span .erweima-area img{
+	padding-top: 5px;
+	width: 110px;
+	height: 110px;
+}
+.dawai-right-tools .contact-area span .erweima-area i{
+	position: absolute;
+	top: 50%;
+	right: -8px;
+	height: 0;
+	border-bottom:8px solid transparent;
+	border-left:8px solid #1569ff;
+	border-right:none;
+	border-top:8px solid transparent;
+	margin-top: -8px;
+	z-index: 1
+}
+.dawai-right-tools .contact-area span .erweima-area em{
+	position: absolute;
+	top: 50%;
+	right: -7px;
+	height: 0;
+	border-bottom:7px solid transparent;
+	border-left:7px solid #fff;
+	border-right:none;
+	border-top:7px solid transparent;
+	margin-top: -7px;
+	z-index: 2
+}
+.dawai-right-tools .contact-area span:hover{
+	background: url(../images/icon-right-wx-2.png) no-repeat center;
+}
+.dawai-right-tools .contact-area span:hover .erweima-area{
+	display: block
+}
+.dawai-right-tools .contact-area a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background: url(../images/icon-right-qq-1.png) no-repeat center;
+}
+.dawai-right-tools .contact-area a:hover{
+	background: url(../images/icon-right-qq-2.png) no-repeat center;
+}
+.dawai-right-tools .btn-backtop{
+	display: block;
+	margin: 14px auto 0;
+	cursor: pointer
+}
+.dawai-index-default-title{
+	width: 100%;
+	overflow: hidden;
+	padding-top: 65px;
+	padding-bottom: 30px
+}
+.dawai-index-default-title img{
+	float: left
+}
+.dawai-index-default-title h3{
+	float: left;
+	font-size: 24px;
+	margin-left: 14px
+}
+.dawai-index-default-title a{
+	display: inline-block;
+	width: 95px;
+	height: 35px;
+	margin-right: 10px;
+	line-height: 35px;
+	font-size: 14px;
+	float: right;
+	color: #1569ff;
+	text-align: center;
+	-webkit-box-shadow: 0 2px 8px 0 rgba(212,224,240,.9);
+	-moz-box-shadow: 0 2px 8px 0 rgba(212,224,240,.9);
+	box-shadow: 0 2px 8px 0 rgba(212,224,240,.9);
+	-webkit-border-radius: 17.5px;
+	-moz-border-radius: 17.5px;
+	border-radius: 17.5px;
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+	background: #fff;
+}
+.dawai-index-default-title a img{
+	float: none;
+	margin-left: 5px
+}
+.dawai-index-default-title a:hover{
+	-webkit-transform: scale(1.05);
+	-moz-transform: scale(1.05);
+	transform: scale(1.05);
+}
+.dawai-default-crumb{
+	height: 4rem;
+	line-height: 4rem;
+}
+.dawai-default-crumb a{
+	color: #888
+}
+.dawai-default-crumb font{
+	margin: 0 4px
+}
+.dawai-default-footer{
+	height: 200px;
+	background: #323139
+}
+.dawai-default-footer:after{
+	display: block;
+	content: "";
+	clear: both
+}
+.dawai-default-footer .left{
+	width: 50%;
+	float: left
+}
+.dawai-default-footer .left>img{
+	height: 60px;
+	margin-top: 70px;
+	float: left
+}
+.dawai-default-footer .left ul{
+	width: 300px;
+	height: 75px;
+	line-height: 75px;
+	margin-top: 62.5px;
+	margin-left: 35px;
+	float: left
+}
+.dawai-default-footer .left ul li{
+	width: 60px;
+	line-height: 75px;
+	float: left;
+	text-align: center
+}
+.dawai-default-footer .left ul li a{
+	display: inline-block;
+	vertical-align: middle;
+	width: 38px;
+	height: 38px;
+	line-height: 38px;
+	background: #45454d url(../images/icon-footer-1.png) no-repeat center;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	-ms-border-radius: 100%;
+	border-radius: 100%;
+	position: relative;
+	cursor: pointer
+}
+.dawai-default-footer .left ul li:nth-child(2) a{
+	background: #45454d url(../images/icon-footer-2.png) no-repeat center
+}
+.dawai-default-footer .left ul li:nth-child(3) a{
+	background: #45454d url(../images/icon-footer-3.png) no-repeat center
+}
+.dawai-default-footer .left ul li a:hover{
+	background-color: #5c5c64
+}
+.dawai-default-footer .left ul li a .footer-tips{
+	position: absolute;
+	bottom: 55px;
+	left: -41px;
+	background: #fff;
+	white-space: nowrap;
+	width: 120px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	border-radius: 2px;
+	opacity: 0;
+	pointer-events: none;
+	-webkit-transform: translateY(30px);
+	-moz-transform: translateY(30px);
+	-ms-transform: translateY(30px);
+	transform: translateY(30px);
+	-webkit-transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-ms-transition: all 0.2s linear;
+	transition: all 0.2s linear;
+}
+.dawai-default-footer .left ul li a:hover .footer-tips{
+	opacity: 1;
+	pointer-events: auto;
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-ms-transform: translateY(0);
+	transform: translateY(0);
+}
+.dawai-default-footer .left ul li a .footer-tips em{
+	height: 0;
+	position: absolute;
+	bottom:-8px;
+	left: 50%;
+	margin-left: -7px;
+	border-top:8px solid #fff;
+	border-left:7px solid transparent;
+	border-right:7px solid transparent;
+	border-bottom:none
+}
+.dawai-default-footer .left ul li:nth-child(3) a .footer-tips{
+	height: 120px;
+}
+.dawai-default-footer .left ul li:nth-child(3) a .footer-tips img{
+	width: 110px;
+	height: 110px;
+	margin-top: 5px;
+}
+.dawai-default-footer .right{
+	width: 50%;
+	float: right;
+	text-align: right
+}
+.dawai-default-footer .right span{
+	color: #fff;
+	font-size: 14px;
+	line-height: 200px
+}

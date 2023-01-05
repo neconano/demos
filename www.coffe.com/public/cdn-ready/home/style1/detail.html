@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+    <title>首投不限额1-36月均可；80天内可复投！免费代抢！包抢到标！产品详情页 - 宜人贷</title>
+    <link href="./css/common.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/xmfcommon.js"></script>
+    <script type="text/javascript" src="./js/clibord.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            funcInitParams()
+        });
+
+        //加载信息
+        function funcInitParams() {
+            var Request = new Object();
+            Request = GetRequest();
+            var productno = Request["productno"];
+            var callback = function (data) {
+                if (data.code == "88") {
+                    parseHeadHtmlBydata(data.data); //头部
+                    parseBodyHtmlBydata(data.data); //主体内容
+                    goToInvestParHtml(data.data); //去投资
+                }
+            }
+            var action = basePath + "/productReleaseDetail/detail";
+            $.get(action, {
+                "productno": productno
+            }, callback);
+        }
+
+        //设置头部信息
+        function parseHeadHtmlBydata(data) {
+            document.title = data.productname + "产品详情页  - " + data.pname;
+            var ivtype = "首投";
+            if (data.type == 2) {
+                ivtype = "复投";
+            }
+
+            var blistHtml = "";
+            $.each(data.blist, function (i, c) {
+                blistHtml += "<div class='float_l biao'>" + c + "</div>";
+            });
+
+            var html = "<div class='top'>" +
+                "          <a href='list.html'><img class='return' src='img/return2.png' id='btn_center'></a>" +
+                "          <p>产品详情页-" + data.pname + "</p>" +
+                "      </div>" +
+                "		<div class='details_background'>" +
+                "          <div class='shoutou'>" + ivtype + "</div>" +
+                "          <div class='logo'>" +
+                "              <img class='float_l' src='" + data.logo + "'>" +
+                "              <p class='float_l'>" + data.pname + "</p>" +
+                "				" + blistHtml + "					" +
+                "              <div class='clear'></div>" +
+                "          </div>" +
+                "         <div class='text'>" + data.province + "·" + data.city + "丨 " + data.website + "</div>" +
+                "         <div class='information'>" +
+                "             <div class='flex'>" +
+                "                 <div>" + data.pbalancestr + "</div>" +
+                "                 <p>平台押金</p>" +
+                "             </div>" +
+                "             <div class='flex'>" +
+                "                 <div>" + data.cbalancestr + "</div>" +
+                "                 <p>骗单押金</p>" +
+                "             </div>" +
+                "             <div class='flex'>" +
+                "                 <div>" + data.username + "</div>" +
+                "                 <p>发布人</p>" +
+                "             </div>" +
+                "             <div class='flex'>" +
+                "                 <div>" + data.ytime + "</div>" +
+                "                 <p>营业年限</p>" +
+                "             </div>" +
+                "         </div>" +
+                "     </div>";
+
+            $(".head_top").html(html);
+            var htmlnew = "<p>" + data.productname + "<span> NEW </span></p>";
+            $(".new").html(htmlnew);
+        }
+
+        //设置主体信息
+        function parseBodyHtmlBydata(data) {
+            var html = "";
+            $.each(data.productbids, function (i, c) {
+                var chhtml = "";
+                $.each(c.bidrebetList, function (ii, cc) {
+                    var redenvelopes = "";
+                    if (cc.redenvelopes > 0) {
+                        redenvelopes = "<span>¥" + cc.redenvelopes + "</span>";
+                    }
+                    //¥
+                    var amount = "¥" + cc.bidamountminstr + "-¥" + cc.bidamountmaxstr + "";
+                    if (cc.bidamountminstr == cc.bidamountmaxstr) {
+                        amount = "¥" + cc.bidamountminstr + "";
+                    }
+
+                    //			   String rebateamountMessage = "资源主返利";
+                    // 			   var rebateamount = "¥"+cc.minrebateamountstrxmf+"-¥"+cc.maxrebateamountstrxmf+"";
+                    // 			   if(cc.minrebateamountstrxmf == cc.maxrebateamountstrxmf){
+                    // 				   rebateamount = "¥"+cc.minrebateamountstrxmf+"";
+                    // 			   } 
+
+                    var rebateamountMessage = "定额返利";
+                    var rebateamount = "¥" + cc.rebateamount + "";
+                    if (cc.rebatemode == 1) {
+                        rebateamount = cc.rebateamountstr + "%";
+                        rebateamountMessage = "百分比返利";
+                    }
+
+                    chhtml += "<div class='dang'>" +
+                        "          <h4>" + cc.grade + "档" + redenvelopes + "</h4>" +
+                        "          <div class='display_flex'>" +
+                        "              <div class='flex'>" +
+                        "                  <div class='lv'>" + cc.totalbenefit + "%</div>" +
+                        "                  <p class=''>预期收益</p>" +
+                        "              </div>" +
+                        "              <div class='flex'>" +
+                        "                  <div class='lv'>" + rebateamount + "</div>" +
+                        "                  <p class=''>" + rebateamountMessage + "</p>" +
+                        "              </div>" +
+                        "              <div class='flex'>" +
+                        "                  <div class='lv'>" + amount + "</div>" +
+                        "                  <p class=''>投标金额</p>" +
+                        "              </div>" +
+                        "          </div>" +
+                        "      </div>";
+                });
+                var dateStr = "";
+                if (c.bidcycletype == 1) {
+                    dateStr = c.bidcycle + "" + c.biddetail;
+                }
+                if (c.bidcycletype == 2) {
+                    dateStr = c.biddetailcustom;
+                }
+
+                html += "<div class='block_biao'>" +
+                    "      <h3>" + c.serialno + "号标</h3>" +
+                    "      <h6>" + c.bidname + "</h6>" +
+                    "      <div class='shouyi'>" +
+                    "          <div class='flex'>" +
+                    "              <div class='lv big'>" + c.platformintereststr + "<span>%</span></div>" +
+                    "              <p class=''>平台原收益</p>" +
+                    "          </div>" +
+                    "          <div class='flex'>" +
+                    "              <div class=''>" + c.declarecount + "笔</div>" +
+                    "              <p class=''>成功申报</p>" +
+                    "          </div>" +
+                    "          <div class='flex'>" +
+                    "              <div class=''>" + dateStr + "</div>" +
+                    "              <p class=''>投资期限</p>" +
+                    "          </div>" +
+                    "      </div>" +
+                    "  " + chhtml + "" +
+                    "  </div>";
+            })
+            $("#block_biao_Box ").html(html);
+
+            $("#bidstrategy").html(data.bidstrategy);
+            $("#pbackground").html(data.pbackground);
+            $("#redenvelopes").html(data.redenvelopes);
+            $("#godeclare").attr("href", "declare.html?productno=" + data.productno + "");
+        }
+
+        //去投资处理
+        function goToInvestParHtml(data) {
+            console.log(JSON.stringify(data))
+            if (data.agentregistertype == 1) { //代理注册
+                $(".popup1 .neirong").html(goToInvestParBodyHtmlOne(data));
+                $("#goinvest").attr("onclick", "show('.popup1')");
+            } else if (data.agentregistertype == 2) { //自注册（有密）
+                $(".popup2 .neirong").html(goToInvestParBodyHtmlTwo(data));
+                $("#goinvest").attr("onclick", "show('.popup2')");
+            } else {
+                $("#goinvest").attr("href", data.mlink);
+            }
+        }
+
+        //显示弹框
+        function show(ObjVal) {
+            $(ObjVal).fadeIn(300);
+        }
+
+        function goToInvestParBodyHtmlOne(data) {
+            var html = "<div class='touxian'>" +
+                "     <img class='float_l' src='" + data.useravatarpath + "' />" +
+                "         <div class='float_l'>" +
+                "             <p>" + data.username + "</p>" +
+                "             <p>" + data.mobile + "</p>" +
+                "         </div>" +
+                "         <a class='float_r' href='tel:" + data.mobile + "'>联系ta</a>" +
+                "         <div class='clear'></div>" +
+                "     </div>" +
+                "    <div class='fuzhi'>" +
+                "         <p>产品发布人微信号</p>" +
+                "         <p class='wechat'>" + data.wechat + "</p>" +
+                "         <div class='tishi_fz'>复制成功</div>" +
+                "         <button class='wx_fz' onclick='wxfz1(this)'>复制</button>" +
+                "      </div>";
+            return html;
+        }
+
+        function goToInvestParBodyHtmlTwo(data) {
+            var html = "<div class='vcode'>" +
+                "	          <input type='tel' maxlength='4' ref='vcode' class='code' id='vcode' onkeyup='vcode(this)' onblur='vcode(this)'>" +
+                "	      <div class='labels'>" +
+                "	          <label class='label' for='vcode'></label>" +
+                "	          <label class='label' for='vcode'></label>" +
+                "	          <label class='label' for='vcode'></label>" +
+                "	          <label class='label' for='vcode'></label>" +
+                "	      </div>" +
+                "	      <div class='input_zc'></div>" +
+                "	      <div class='input_tishi'></div>" +
+                "	  </div>" +
+                "	  <div class='touxian'>" +
+                "	      <img class='float_l' src='" + data.useravatarpath + "' />" +
+                "	      <div class='float_l'>" +
+                "	          <p>" + data.username + "</p>" +
+                "	          <p>" + data.mobile + "</p>" +
+                "	      </div>" +
+                "	      <a class='float_r' href='tel:" + data.mobile + "'>联系ta</a>" +
+                "	      <div class='clear'></div>" +
+                "	  </div>" +
+                "	  <div class='fuzhi'>" +
+                "	      <p>产品发布人微信号</p>" +
+                "	      <p class='wechat'>" + data.wechat + "</p>" +
+                "	      <div class='tishi_fz'>复制成功</div>" +
+                "	      <button class='wx_fz' onclick='wxfz2(this)'>复制</NOtton>" +
+                "	   </div>";
+            return html;
+        }
+
+        function wxfz1(objVal) {
+            var clipboard = new ClipboardJS('.wx_fz', {
+                text: function () {
+                    var teContent = $(".popup1 .neirong").find(".wechat").text();
+                    return teContent
+                }
+            });
+
+            clipboard.on('success', function (e) {
+                $(".tishi_fz").fadeIn(0)
+                $(".wx_fz").fadeOut(0)
+                toweixin()
+            });
+
+            clipboard.on('error', function (e) {
+                window.location.replace('weixin://');
+            });
+        }
+
+        function wxfz2(objVal) {
+            var clipboard = new ClipboardJS('.wx_fz', {
+                text: function () {
+                    var teContent = $(".popup2 .neirong").find(".wechat").text();
+                    return teContent
+                }
+            });
+
+            clipboard.on('success', function (e) {
+                $(".tishi_fz").fadeIn(0)
+                $(".wx_fz").fadeOut(0)
+                toweixin()
+            });
+
+            clipboard.on('error', function (e) {
+                window.location.replace('weixin://');
+                console.log(e)
+            });
+        }
+
+        function toweixin() {
+            if (!/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+                if (/ baiduboxapp/i.test(navigator.userAgent)) {
+                    window.location.replace(
+                        'bdbox://utils?action=sendIntent&minver=7.4&params=%7B%22intent%22%3A%22weixin://%23wechat_redirect%23Intent%3Bend%22%7D'
+                    )
+                } else {
+                    window.location.replace('weixin://')
+                }
+            } else {
+                window.location.replace('weixin://')
+            }
+        }
+
+        function vcode(objVal) {
+            $(".input_tishi").text("");
+            var vcode = $("#vcode").val();
+            if (vcode && vcode.length >= 4) {
+                var Request = new Object();
+                Request = GetRequest();
+                var productno = Request["productno"];
+                var callback = function (data) {
+                    $(".input_tishi").text("");
+                    if (data.code == "88") {
+                        window.location.href = data.data;
+                    } else {
+                        $("#vcode").val('');
+                        $(".input_tishi").text("验证错误");
+                    }
+                }
+                var action = basePath + "/productReleaseDetail/goToInvest";
+                $.get(action, {
+                    "productno": productno,
+                    "code": vcode
+                }, callback);
+            }
+        }
+    </script>
+</head>
+
+<body id="contbox">
+    <div class="container details_html">
+        <div class="bian"></div>
+        <div class="head_top">
+            <div class="top"> <a href="/list.html"><img class="return" src="./img/return2.png"
+                        id="btn_center"></a>
+                <p>产品详情页-宜人贷</p>
+            </div>
+            <div class="details_background">
+                <div class="shoutou">首投</div>
+                <div class="logo"> <img class="float_l" src="./img/rBMV6lviPmOALugsAAAte2k2H4E858.png">
+                    <p class="float_l">宜人贷</p>
+                    <div class="float_l biao">上市控股</div>
+                    <div class="clear"></div>
+                </div>
+                <div class="text">北京·朝阳丨 www.yirendai.com</div>
+                <div class="information">
+                    <div class="flex">
+                        <div>0.0</div>
+                        <p>平台押金</p>
+                    </div>
+                    <div class="flex">
+                        <div>0.0</div>
+                        <p>骗单押金</p>
+                    </div>
+                    <div class="flex">
+                        <div>从光头开始</div>
+                        <p>发布人</p>
+                    </div>
+                    <div class="flex">
+                        <div>6年8个月</div>
+                        <p>营业年限</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="new">
+            <p>首投不限额1-36月均可；80天内可复投！免费代抢！包抢到标！<span> NEW </span></p>
+        </div>
+        <div id="block_biao_Box">
+            <div class="block_biao">
+                <h3>1号标</h3>
+                <h6>新手月标</h6>
+                <div class="shouyi">
+                    <div class="flex">
+                        <div class="lv big">9.90<span>%</span></div>
+                        <p class="">平台原收益</p>
+                    </div>
+                    <div class="flex">
+                        <div class="">0笔</div>
+                        <p class="">成功申报</p>
+                    </div>
+                    <div class="flex">
+                        <div class="">1个月</div>
+                        <p class="">投资期限</p>
+                    </div>
+                </div>
+                <div class="dang">
+                    <h4>A档</h4>
+                    <div class="display_flex">
+                        <div class="flex">
+                            <div class="lv">22.07%</div>
+                            <p class="">预期收益</p>
+                        </div>
+                        <div class="flex">
+                            <div class="lv">1.00%</div>
+                            <p class="">百分比返利</p>
+                        </div>
+                        <div class="flex">
+                            <div class="lv">¥5000</div>
+                            <p class="">投标金额</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block_biao">
+                <h3>2号标</h3>
+                <h6>首投不限额，新注册号、半年没投资的老号也可以做。</h6>
+                <div class="shouyi">
+                    <div class="flex">
+                        <div class="lv big">7.00<span>%</span></div>
+                        <p class="">平台原收益</p>
+                    </div>
+                    <div class="flex">
+                        <div class="">0笔</div>
+                        <p class="">成功申报</p>
+                    </div>
+                    <div class="flex">
+                        <div class="">12个月</div>
+                        <p class="">投资期限</p>
+                    </div>
+                </div>
+                <div class="dang">
+                    <h4>A档</h4>
+                    <div class="display_flex">
+                        <div class="flex">
+                            <div class="lv">8.01%</div>
+                            <p class="">预期收益</p>
+                        </div>
+                        <div class="flex">
+                            <div class="lv">1.00%</div>
+                            <p class="">百分比返利</p>
+                        </div>
+                        <div class="flex">
+                            <div class="lv">¥1万-¥100万</div>
+                            <p class="">投标金额</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="block_biao">
+                <h3>3号标</h3>
+                <h6>首投不限额，新注册号、半年没投资的老号也可以做。</h6>
+                <div class="shouyi">
+                    <div class="flex">
+                        <div class="lv big">8.20<span>%</span></div>
+                        <p class="">平台原收益</p>
+                    </div>
+                    <div class="flex">
+                        <div class="">0笔</div>
+                        <p class="">成功申报</p>
+                    </div>
+                    <div class="flex">
+                        <div class="">24个月</div>
+                        <p class="">投资期限</p>
+                    </div>
+                </div>
+                <div class="dang">
+                    <h4>A档</h4>
+                    <div class="display_flex">
+                        <div class="flex">
+                            <div class="lv">9.21%</div>
+                            <p class="">预期收益</p>
+                        </div>
+                        <div class="flex">
+                            <div class="lv">2.00%</div>
+                            <p class="">百分比返利</p>
+                        </div>
+                        <div class="flex">
+                            <div class="lv">¥1万-¥100万</div>
+                            <p class="">投标金额</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="jianjie">
+            <div class="biaoti">
+                <p>平台红包规则</p>
+            </div>
+            <div class="text" id="redenvelopes">1. 投资满1万，送50元京东卡。
+                2. 投资满5万，送200元京东卡。
+                3. 投资满10万，送500元京东卡。
+                4. 投资满30万，送1800元京东卡。
+                5. 投资满50万，送3500元京东卡。
+                6. 投资满100万，送8000元京东卡。</div>
+            <div class="biaoti">
+                <p>投资攻略</p>
+            </div>
+            <div class="text" id="bidstrategy">
+                <p>充值完成后代投资（也可自己买）；</p>
+                <p>平台发标时间为11点；15点，提前充值好，准点抢标，<span style="font-size: 16px;">抢标建议交易密码设置简单点如：111222；</span></p>
+                <p><span style="font-size: 16px;">提前试买两次完成授权及风险测评，完成风险测评后可提供免费代抢服务，代抢统一早上10点前完成充值登陆密码aa123456交易111222提交账户给渠道代抢，基本上发标就能买到</span></p>
+                <p>宜人财富投资自动投标服务；<br>新用户投资可享受新手活动京东卡奖励（具体以平台活动规则为准）<br>首投1-36月（首投高反），复投可1-36月产品（可投保险标）<br>平台目前标量紧缺，本渠道提供包抢服务，只要平台发标基本都能代抢到<br>目前平台标的:利率；12月7%（保险标6%）；24月8.2%；其余标平台目前暂时未发</p>
+                <p><br></p>
+            </div>
+            <div class="biaoti">
+                <p>平台背景</p>
+            </div>
+            <div class="text" id="pbackground">2015年在美国纽交所上市，股票代码：YRD，当前市值8.5亿美金</div>
+        </div>
+        <div class="foot_bottom">
+            <a href="/declare.html?productno=CP20190305185304620345" id="godeclare">去申报</a>
+            <a href="javascipt:void(0)" id="goinvest" onclick="show(&#39;.popup1&#39;)">去投资</a>
+        </div>
+        <div class=""></div>
+    </div>
+
+    <!-- 弹框 start -->
+    <div class="popup popup1">
+        <div class="frame">
+            <div class="close"></div>
+            <div class="tk_bj">
+                <p>本产品需要发布人代投资人注册请联系产品发布人！</p>
+            </div>
+            <div class="neirong">
+                <div class="touxian"> <img class="float_l" src="./img/rBMV6lujGKKADVNsAAc6alRMRWc941.png">
+                    <div class="float_l">
+                        <p>从光头开始</p>
+                        <p>13554752032</p>
+                    </div> <a class="float_r" href="tel:13554752032">联系ta</a>
+                    <div class="clear"></div>
+                </div>
+                <div class="fuzhi">
+                    <p>产品发布人微信号</p>
+                    <p class="wechat">congguangtou</p>
+                    <div class="tishi_fz">复制成功</div> <button class="wx_fz" onclick="wxfz1(this)">复制</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup popup2">
+        <div class="frame">
+            <div class="close"></div>
+            <div class="tk_bj">
+                <p>请联系产品发布人索取查看码验证后方可注册</p>
+            </div>
+            <div class="neirong">
+                <div class="vcode">
+                    <input type="tel" maxlength="4" ref="code" class="code" id="code">
+                    <div class="labels">
+                        <label class="label" for="code"></label>
+                        <label class="label" for="code"></label>
+                        <label class="label" for="code"></label>
+                        <label class="label" for="code"></label>
+                    </div>
+                    <div class="input_zc"></div>
+                    <div class="input_tishi">验证码错误</div>
+                </div>
+                <div class="touxian">
+                    <img class="float_l" src="./img/tk_tx.png">
+                    <div class="float_l">
+                        <p>王宇新</p>
+                        <p>13222222123</p>
+                    </div>
+                    <a class="float_r" href="tel:13222222123">联系ta</a>
+                    <div class="clear"></div>
+                </div>
+                <div class="fuzhi">
+                    <p>产品发布人微信号</p>
+                    <p class="wechat">YSD125456sds</p>
+                    <div class="tishi_fz">复制成功</div>
+                    <button class="wx_fz">复制
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // 弹框1
+        $(function () {
+            $(".dakai_popup1").on('click', function () {
+                $(".popup1").fadeIn(300)
+            })
+
+            //关闭弹框1
+            $(".close").on("click", function () {
+                $(".popup1").fadeOut(300)
+            })
+        })
+
+        // 弹框2
+        $(function () {
+            $(".dakai_popup2").on('click', function () {
+                $(".popup2").fadeIn(300)
+            })
+
+            //关闭弹框2
+            $(".close").on("click", function () {
+                $(".popup2").fadeOut(300)
+            })
+
+        })
+
+        // 复制成功提醒
+        $(function () {
+            $(".wx_fz").on('click', function () {
+                $(".tishi_fz").fadeIn(0)
+                $(".wx_fz").fadeOut(0)
+            })
+
+            $(".close").on("click", function () {
+                $(".tishi_fz").fadeOut(0)
+                $(".wx_fz").fadeIn(0)
+            })
+        })
+    </script>
+    <!-- 弹框 end -->
+
+
+</body>
+
+</html>

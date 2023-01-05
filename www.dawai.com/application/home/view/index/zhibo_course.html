@@ -1,0 +1,60 @@
+<extend name="$_home_public_layout"/>
+
+<block name="style">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public/css/common-pc.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public/css/list.css">
+		
+</block>
+
+<block name="script">
+	<script src="__HOME_PUBLIC__/public/js/jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public/js/common.js"></script>
+</block>
+
+<block name="main">
+
+
+	<!--列表内容 start-->
+	<div class="container">
+			<div class="dawai-list-area">
+				<div class="dawai-default-crumb">
+					<a href="{:url('index')}">首页</a>
+				</div>
+
+
+
+				<!--二级链接 end-->
+				<!--循环列表 start-->
+				<div class="list-content">
+
+
+					<php>foreach($zhibo_ads as $k => $v){</php>
+							
+					<div class="index-list-content">
+						<a href="{:url('detail',['id'=>$v.course.id])}">
+							<div class="img-area">
+								<img src="/uploads{$v['course']['img_path']}" alt="">
+							</div>
+							<div class="text-area">
+								<h4>{$v['course']['title']}</h4>
+							</div>
+							<div class="tips-area">
+								<php>if($v['flag']){</php>
+								<em>{$v['flag']}</em>
+								<php>}</php>
+								<span>{$v['course']['sign_num']}人已报名</span>
+							</div>
+						</a>
+					</div>
+
+					<php>}</php>
+						
+				</div>
+				<!--循环列表 end-->
+			</div>
+		</div>
+		<!--列表内容 end-->
+		<div class="height30"></div>
+	
+
+</block>

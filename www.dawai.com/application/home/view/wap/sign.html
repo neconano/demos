@@ -1,0 +1,151 @@
+<extend name="$_home_wap_public_layout"/>
+
+<block name="style">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/swiper-3.4.2.min.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/common-wap.css">
+	<link rel="stylesheet" href="__HOME_PUBLIC__/public_wap/css/form.css">
+
+</block>
+
+<block name="script">
+	<script src="__HOME_PUBLIC__/public_wap/js/jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/swiper-3.4.2.jquery.min.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/common.js"></script>
+	<script src="__HOME_PUBLIC__/public_wap/js/form.js"></script>
+
+	<script>
+		function do_submit(){
+
+			$('#name_tip').removeClass('active');
+			$('#weixin_tip').removeClass('active');
+			$('#tel_tip').removeClass('active');
+			
+
+			var name = $('#name').val();
+			var weixin = $('#weixin').val();
+			var qq = $('#qq').val();
+			var tel = $('#tel').val();
+            var phonecode=$('#phonecode').val();
+            $.ajax({
+                type: "post",
+                url: "",
+                data: {name:name,weixin:weixin,qq:qq,tel:tel,phonecode:phonecode},
+                dataType:'json',
+                success: function(data) {
+					if(data.status)
+					location.href = "{:U('home/wap/sign_success','id='.I('lesson_id'))}";
+					else{
+						if(data.msg == '姓名')
+							$('#name_tip').addClass('active');
+						else if(data.msg == '联系')
+							$('#weixin_tip').addClass('active');
+						else if(data.msg == '手机')
+							$('#tel_tip').addClass('active');
+						else if(data.msg == '验证码')
+							$('#code_tip').addClass('active');
+						else
+						alert(data.msg)
+
+					}
+                },
+                beforeSend: function() {
+                },
+                complete: function() {
+                }
+            });
+		}
+
+        $(".send-yzm").on('click',function () {
+            var tel = $('#tel').val();
+            if(!/^1(3|4|5|7|8)\d{9}$/.test(tel)){
+                $('#tel_tip').addClass('active');
+                return false;
+            };
+            if (tel){
+                $.ajax({
+                    type: "post",
+                    url: "{:url('home/send_code')}",
+                    data: {tel:tel},
+                    dataType:'json',
+                    success: function(data) {
+                        if(data.status)
+                            alert(data.msg);
+                        else{
+                            alert(data.msg);
+                        }
+                    },
+                    beforeSend: function() {
+                    },
+                    complete: function() {
+                    }
+                });
+            }else {
+                $('#tel_tip').addClass('active');
+            }
+        });
+	</script>
+		
+
+</block>
+
+
+
+<block name="main">
+
+		<!--课程信息 start-->
+		<div class="container">
+			<div class="form-info-area">
+				<div class="left">
+					<img src="{$data['img_1']}" alt="">
+				</div>
+				<div class="right">
+					<h3>{$data['title']}</h3>
+					<p>{$data['description']}</p>
+				</div>
+			</div>
+		</div>
+		<!--课程信息 end-->
+		<div class="space-gray"></div>
+
+		<div class="container">
+				<div class="form-input-wrap">
+					<div class="dawai-index-default-title">
+						<img src="__HOME_PUBLIC__/public_wap/images/icon-title-9.png" alt="">
+						<h3>报名信息</h3>
+					</div>
+					<div class="input-area">
+						<input type="text" placeholder="如何称呼" id="name">
+						<i id="name_tip">!<span>请正确填写信息！<em></em></span></i><!--显示时给i标签增加active类-->
+					</div>
+					<div class="height1"></div>
+					<p>在线联系方式请至少选填一项</p>
+					<div class="input-area">
+						<input type="text" placeholder="微信" id="weixin">
+						<i id="weixin_tip">!<span>请正确填写信息！<em></em></span></i><!--显示时给i标签增加active类-->
+					</div>
+					<div class="input-area">
+						<input type="tel" placeholder="QQ" id="qq">
+						<i id="qq_tip">!<span>请正确填写信息！<em></em></span></i><!--显示时给i标签增加active类-->
+					</div>
+					<div class="height1"></div>
+					<div class="input-area">
+						<input type="tel" placeholder="手机号码" id="tel">
+						<i id="tel_tip">!<span>请正确填写信息！<em></em></span></i><!--显示时给i标签增加active类-->
+					</div>
+					<div class="input-group">
+						<div class="input-area small">
+							<input type="text" placeholder="手机验证码" id="phonecode">
+							<i id="code_tip">!<span>请正确填写信息！<em></em></span></i><!--显示时给i标签增加active类-->
+						</div>
+						<div class="img-area">
+							<input class="send-yzm" type="button" value="获取验证码">
+						</div>
+					</div>
+					<input type="button" class="btn-submit" value="立即报名" onclick="do_submit()">
+				</div>
+			</div>
+			
+</block>
+
+
+

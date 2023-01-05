@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+    <title>小蜜蜂贷款产品详情页</title>
+    <link href="./css/common.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="container loan_details_html">
+        <div id="loanDetailBox">
+            <div class="head_top">
+                <div class="top"> <a href="/loan_list.html"><img class="return" src="./img/return.png"
+                            id="btn_center"></a>
+                    <p>拍拍贷</p>
+                </div>
+                <div class="loan_details_tx"> <img class="float_l" src="./img/rBMV6lxsz_KASolXAAAXU55XlqA210.png">
+                    <p class="float_l">1800人申请，放款1800万元</p>
+                    <div class="clear"></div>
+                </div>
+                <div class="p1">最高借款额度（元）</div>
+                <div class="p2">10000</div>
+                <div class="p3">贷款期限：<span>7天~3个月</span>月息：<span>0.8%~3%</span></div>
+                <div class=""></div>
+            </div>
+            <div class="loan_details">
+                <div class="biaoti">
+                    <p>产品详情</p>
+                </div>
+                <div class="neirong">
+                    <div class="float_l zuo">还款方式：</div>
+                    <div class="float_l you">等额本息，每期还款</div>
+                    <div class="float_l zuo">逾期罚息：</div>
+                    <div class="float_l you">逾期金额*0.5%/天，具体算法随出资方变化，（逾期费用和不超过贷款本金）</div>
+                    <div class="float_l zuo">提前还款：</div>
+                    <div class="float_l you">不支持提前还款</div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="loan_details">
+                <div class="biaoti">
+                    <p>申请条件</p>
+                </div>
+                <div class="neirong">
+                    <p>1. 18~40周岁实名信息+芝麻分600以上</p>
+                    <p>2. 芝麻分大于600</p>
+                    <p>3. 名下在深圳必须有一套房子</p>
+                </div>
+            </div>
+            <div class="loan_details" style="margin-bottom: 1.7rem;">
+                <div class="biaoti">
+                    <p>认证资料</p>
+                </div>
+                <div class="renzheng">
+                    <div class="float_l">
+                        <div class="zhuangtai2"> <img src="./img/loan_details_icon1_1.png">
+                            <p>实名认证</p>
+                        </div>
+                    </div>
+                    <div class="float_l">
+                        <div class="zhuangtai2"> <img src="./img/loan_details_icon2_1.png">
+                            <p>个人资料</p>
+                        </div>
+                    </div>
+                    <div class="float_l">
+                        <div class="zhuangtai2"> <img src="./img/loan_details_icon4_1.png">
+                            <p>芝麻分</p>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dibu">
+            <a href="javascript:void(0)" class="float_l">客服</a>
+            <a href="javascript:applyNow(this)" class="float_r" id="applyNow">立即申请</a>
+            <input type="text" id="applyNowPlink">
+            <div class="clear"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/xmfcommon.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            loanDetail();
+        })
+
+        function loanDetail() {
+            var Request = new Object();
+            Request = GetRequest();
+            var productno = Request["productno"];
+            var callback = function (data) {
+                console.log(JSON.stringify(data))
+                if (data.code == "88") {
+                    var voObj = data.data.vo;
+                    $("#applyNowPlink").val(voObj.prlink);
+                    var loaninteresttype = "日";
+                    if (voObj.interesttype == 2) {
+                        loaninteresttype = "月";
+                    }
+
+                    var isrealnameauth = "";
+                    if (voObj.isrealnameauth == 1) {
+                        isrealnameauth = "<div class='float_l'>" +
+                            "                    <div class='zhuangtai2'>" +
+                            "                        <img src='img/loan_details_icon1_1.png'>" +
+                            "                        <p>实名认证</p>" +
+                            "                    </div>" +
+                            "                </div>";
+                    }
+                    var isphoneauth = "";
+                    if (voObj.isphoneauth == 1) {
+                        isphoneauth = "<div class='float_l'>" +
+                            "                  <div class='zhuangtai2'>" +
+                            "                        <img src='img/loan_details_icon3_1.png'>" +
+                            "                        <p>手机号码</p>" +
+                            "                    </div>" +
+                            "                </div>";
+                    }
+                    var ispersonaldataauth = "";
+                    if (voObj.ispersonaldataauth == 1) {
+                        ispersonaldataauth = "<div class='float_l'>" +
+                            "                    <div class='zhuangtai2'>" +
+                            "                        <img src='img/loan_details_icon2_1.png'>" +
+                            "                        <p>个人资料</p>" +
+                            "                    </div>" +
+                            "                </div>";
+                    }
+                    var issesameauth = "";
+                    if (voObj.issesameauth == 1) {
+                        issesameauth = "<div class='float_l'>" +
+                            "                    <div class='zhuangtai2'>" +
+                            "                        <img src='img/loan_details_icon4_1.png'>" +
+                            "                        <p>芝麻分</p>" +
+                            "                    </div>" +
+                            "                </div>";
+                    }
+                    var isweilidaiauth = "";
+                    if (voObj.isweilidaiauth == 1) {
+                        isweilidaiauth = "<div class='float_l'>" +
+                            "                    <div class='zhuangtai2'>" +
+                            "                        <img src='img/loan_details_icon4_1.png'>" +
+                            "                        <p>微粒贷</p>" +
+                            "                    </div>" +
+                            "                </div>";
+                    }
+
+                    var html = "<div class='head_top'>" +
+                        "	 	            <div class='top'>" +
+                        "                <a href='loan_list.html'><img class='return' src='img/return.png' id='btn_center'></a>" +
+                        "                <p>" + voObj.pname + "</p>" +
+                        "            </div>" +
+                        "            <div class='loan_details_tx'>" +
+                        "                <img class='float_l' src='" + voObj.logo + "'>" +
+                        "                <p class='float_l'>" + voObj.applycount + "人申请，放款" + voObj.lendingamout +
+                        "元</p>" +
+                        "                <div class='clear'></div>" +
+                        "            </div>" +
+                        "            <div class='p1'>最高借款额度（元）</div>" +
+                        "            <div class='p2'>" + voObj.loanamout + "</div>" +
+                        "            <div class='p3'>贷款期限：<span>" + voObj.loantimelimit + "</span>" +
+                        loaninteresttype + "息：<span>" + voObj.loaninterest + "</span></div>" +
+                        "            <div class=''></div>" +
+                        "        </div>" +
+                        "        <div class='loan_details'>" +
+                        "            <div class='biaoti'>" +
+                        "                <p>产品详情</p>" +
+                        "            </div>" +
+                        "            <div class='neirong'>" +
+                        "                <div class='float_l zuo'>还款方式：</div>" +
+                        "                <div class='float_l you'>" + voObj.repaymode + "</div>" +
+                        "                <div class='float_l zuo'>逾期罚息：</div>" +
+                        "                <div class='float_l you'>" + voObj.latecharge + "</div>" +
+                        "                <div class='float_l zuo'>提前还款：</div>" +
+                        "                <div class='float_l you'>" + voObj.prepayment + "</div>" +
+                        "                <div class='clear'></div>" +
+                        "            </div>" +
+                        "        </div>" +
+                        "        <div class='loan_details'>" +
+                        "            <div class='biaoti'>" +
+                        "                <p>申请条件</p>" +
+                        "            </div>" +
+                        "            <div class='neirong'>" +
+                        "                " + voObj.appconditions + "" +
+                        "            </div>" +
+                        "        </div>" +
+                        "        <div class='loan_details' style='margin-bottom: 1.7rem;'>" +
+                        "            <div class='biaoti'>" +
+                        "                <p>认证资料</p>" +
+                        "            </div>" +
+                        "            <div class='renzheng'>" +
+                        "			" + isrealnameauth + "" +
+                        "			" + ispersonaldataauth + "" +
+                        "			" + isphoneauth + "" +
+                        "			" + issesameauth + "" +
+                        "			" + isweilidaiauth + "" +
+                        "                <div class='clear'></div>" +
+                        "            </div>" +
+                        "        </div>";
+                    $("#loanDetailBox").html(html);
+                }
+            }
+            var action = basePath + "/loanProductInfo/detail";
+            var token = getJwtToken();
+            var cookieVla = getXmfCookie();
+            $.get(action, {
+                "productno": productno,
+                "token": token,
+                "xmfcookie": cookieVla
+            }, callback);
+        }
+
+        function applyNow(ObjVal) {
+            localStorage.setItem("xmfyuming", window.location.host); //把当前资源主的域名存进session中
+            var plink = $("#applyNowPlink").val();
+            var token = getJwtToken();
+            if (!isEmpty(token)) { //用户已登录
+                var userInfoAnction = basePath + "/xmfUser/userInfo";
+                var callback = function (data) {
+                    if (data.code == "88") {
+                        window.location.href = plink;
+                    } else if (data.code == "99") {
+                        //重新登录删除token
+                        removeJwtToken();
+                    }
+                }
+                $.post(userInfoAnction, {
+                    "token": token
+                }, callback);
+            } else {
+                removeLoGoOutURL();
+                var prlink = window.location.href;
+                setLoGoOutURL(prlink);
+                window.location.href = "xmf_login.html";
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

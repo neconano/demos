@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport">
+    <title>小蜜蜂申报页面</title>
+
+    <link href="./css/common.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./css/mescroll.css">
+    <link rel="stylesheet" href="./css/re.css">
+
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/date.js"></script>
+    <script type="text/javascript" src="./js/iscroll.js"></script>
+    <script type="text/javascript" src="./js/xmfcommon.js"></script>
+
+    <style>
+    .head_top .text {
+        height: 1.2rem;
+        width: 6.18rem;
+        margin-left: 0.1rem;
+        font-size: 0.28rem;
+        color: #FFFFFFFF;
+        line-height: 0.46rem;
+        opacity: 1;
+        padding-top: 0.3rem;
+    }
+    
+    .gppz_html .qpzj_input .text p {
+        font-size: 0.28rem;
+        color: #5b6889;
+        text-indent: 2em;
+        line-height: 0.36rem;
+        text-align: justify;
+        margin: 0.1rem 0;
+    }
+
+    .gppz_html .qpzj_input {
+        height: 6.9rem;
+        margin-top: calc(50vh - 3.45rem);
+    }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="bian"></div>
+        <div class="head_top">
+            <div class="top" style="padding-top: 0.1rem;"> 
+                <a href="list.html">
+                    <img class="return" src="./img/return.png"id="btn_center">
+                </a>
+                <p>投资申报-宜人贷</p>
+            </div>
+            <div class="shoutou">首投</div>
+            <div class="logo" style="margin-top: 0.5rem;"> <img class="float_l" src="./img/rBMV6lviPmOALugsAAAte2k2H4E858.png">
+                <p class="float_l">宜人贷</p>
+                <div class="clear"></div>
+            </div>
+            <div class="text">
+                1.请如实填写投资信息，填错影响返利概不负责<br>
+                2.如发现填写错误，请联系管理员
+                <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=ce7ad5cdf6a443453f1e268a001ce9d5d67350b5ce264e5e91c9e0d880eabb52"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" ></a>
+                <br>
+                3.请不要将投资信息透露给他人，以免冒领<br>
+                4.请不要重复填写投资信息，违反则不予返利<br>
+            </div>
+        </div>
+        <div class="line"></div>
+
+        <div class="xuan">
+            <div class="block">
+                <p class="float_l">投资人姓名</p>
+                <input class="float_r input" id="investorname" placeholder="必填">
+                <div class="clear"></div>
+            </div>
+            <div class="block">
+                <p class="float_l">投资人手机号</p>
+                <input class="float_r input" id="investormobile" placeholder="必填">
+                <div class="clear"></div>
+            </div>
+
+            <div class="block">
+                <p class="float_l">产品选择</p>
+                <div class="float_r p">
+                    <select id="bidno" onchange="getProductBidRebate(this)">
+                        <option disabled="" selected="" style="display:none;">请选择</option>
+                        <option value="p1551781292110">【产品1】新手月标</option>
+                        <option value="p1551782699907">【产品2】首投不限额，新注册号、半年没投资的老号也可以做。</option>
+                        <option value="p1551782710299">【产品3】首投不限额，新注册号、半年没投资的老号也可以做。</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="block">
+                <p class="float_l">投资金额</p>
+                <input class="float_r input" id="investoramount" style="width: auto;" size="3" placeholder="必填">
+                <div class="clear"></div>
+            </div>
+            <div class="block">
+                <p class="float_l">投资时间</p>
+                <img class="float_r select_img" src="./img/select_img.png">
+                <div class="float_r p">
+                    <input id="investortimestr" class="kbtn" placeholder="请选择">
+                </div>
+                <div class="clear"></div>
+                <div id="datePlugin"></div>
+            </div>
+        </div>
+
+        <div class="title">
+            <div class="float_l shuxian"></div>
+            <p class="float_l">支付宝收款</p>
+            <div class="clear"></div>
+        </div>
+
+        <div class="xuan">
+            <div class="block">
+                <p class="float_l">支付宝账号</p>
+                <input class="float_r input" id="declarezfb" placeholder="必填">
+                <div class="clear"></div>
+            </div>
+            <div class="block">
+                <p class="float_l">支付宝真实姓名</p>
+                <input class="float_r input" id="declarezfbname" placeholder="必填">
+                <div class="clear"></div>
+            </div>
+        </div>
+        <p class="tishi">
+        
+        <label for="weuiAgree" class="weui-agree">
+            <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox"/>
+            <span class="weui-agree__text">
+                确认<label style="color:red">“已仔细阅读上述内容，交单内容无误。”</label>
+            </span>
+        </label>
+        </p>
+
+        <button class="tijiao" style="margin-bottom: 0.4rem;" id="visitorSubmit" onclick="visitorSubmit(this)">提交</button>
+    </div>
+
+    <div class="container details_html list_html index_html">
+
+        <div class="foot_nav">
+            <a href="index.html" class="shouye">首页</a>
+            <a href="list.html" class="chanpin2">产品列表</a>
+            <a href="loan_list.html" class="daikuan">贷款</a>
+            <a href="gppz.html" class="peizi">股票配资</a>
+            <div class="leibiao" style="width: 88%;">
+                <a class="shenbao1">
+                    关于
+                </a>
+                <ul>
+                    <a href="xmf_about.html?name=%E5%85%B3%E4%BA%8E%E6%88%91%E4%BB%AC">
+                        <li>关于我们</li>
+                    </a>
+                    <a href="query.html">
+                        <li>申报查询</li>
+                    </a>
+                    <a href="javascript:myCenter()" id="myCenter">
+                        <li>我的</li>
+                    </a>
+                    <a href="zixun.html">
+                        <li>咨询</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container details_html gppz_html">
+        <div class="tankuang_xz" style="display: none;">
+            <div class="qpzj_input cpxz" style="display: none;">
+                <div class="title">
+                    <p class="float_l">提交成功</p>
+                    <img src="./img/guanbi.png" class="guanbi float_r">
+                    <div class="clear"></div>
+                </div>
+                <div class="text">
+                    <div class="zz"></div>
+                    <p style="margin-top: 0.2rem;">投资人姓名：xxx</p>
+                    <p>投资人手机：xxx </p>
+                    <p>投资产品：xxxx</p>
+                    <p>投资金额：xxxx</p>
+                    <p>投资时间：xxx</p>
+                    <p>------------------------------</p>
+                    <p>支付宝账户：xxx</p>
+                    <p>支付宝姓名：xxx</p>
+                    <p>如发现填写错误，请联系管理员
+                            <a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=ce7ad5cdf6a443453f1e268a001ce9d5d67350b5ce264e5e91c9e0d880eabb52"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="交流群" title="交流群"></a>
+                            <br></p>
+                </div>
+                <button>我知道了</button>
+            </div>
+        </div>
+    </div>
+
+        
+</body>
+
+</html>
+
+<link rel="stylesheet" href="./css/swiper.min.css">
+
+<script type="text/javascript" src="./js/jquery.downCount.js"></script>
+<script type="text/javascript">
+    // 起配资金弹框  
+    $(function(){
+            $(".tankuang_xz").fadeIn(100)
+            $(".cpxz").fadeIn(100)
+        //关闭弹框
+        $(".guanbi").on("click",function(){ 
+            $(".tankuang_xz").fadeOut(100)
+            $(".cpxz").fadeOut(100)
+        })
+        //关闭弹框
+        $(".cpxz button").on("click",function(){ 
+            $(".tankuang_xz").fadeOut(100)
+            $(".cpxz").fadeOut(100)
+        })
+    })
+</script>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#investortimestr').date();
+    });
+
+    //游客申报
+    function visitorSubmit(obj) {
+
+        var weuiAgree = $('#weuiAgree').is(':checked')
+        if(!weuiAgree){ 
+            alert('请勾选确认“已仔细阅读上述内容，交单内容无误。”');
+            return;
+        }
+
+        var investormobile = $("#investormobile").val();
+        var investorname = $("#investorname").val();
+        var investoramount = $("#investoramount").val();
+        var investortime = $("#investortime").val();
+        var declarezfb = $("#declarezfb").val();
+        var declarezfbname = $("#declarezfbname").val();
+        var investortimestr = $("#investortimestr").val();
+        var bidno = $("#bidno").val();
+
+        var data = {};
+        data.investormobile = investormobile;
+        data.investorname = investorname;
+        data.investoramount = investoramount;
+        data.investortime = investortime;
+        data.declarezfb = declarezfb;
+        data.declarezfbname = declarezfbname;
+        data.investortimestr = investortimestr;
+        data.bidno = bidno;
+
+        $("#visitorSubmit").text("提交中...").removeAttr("onclick");
+        var action = basePath + "/declareRecord/visitor";
+        var callback = function (data) {
+            $("#visitorSubmit").text("提交").attr("onclick", "visitorSubmit(this)");
+
+
+
+
+            if (data.code == "88") {
+                alert("申报提交成功,客服审核中");
+                window.location.reload();
+            } else {
+                alert(data.message);
+            }
+        }
+        $.post(action, data, callback);
+    }
+
+</script>

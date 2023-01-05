@@ -1,0 +1,73 @@
+<include file="Index2:header" />
+
+		<div class="bannerbox">
+			<img src="__PUBLIC__/new2/images/product-banner-1.jpg" alt="">
+		</div>
+	</div>
+
+		<style>
+
+			.ul_css{
+				position:relative;min-height: 1100px;
+				background-color: #FFFFFF;
+			}
+			.li_css{
+				height: 200px; width: 100%;
+				border-bottom: #cfcfcf solid 1px;
+			}
+			.li_css_div{
+				height: 150px; width: 1140px;
+				margin: 25px 0 25px 25px;
+			}
+			.li-title{
+				font-size: 18px;font-weight: bold;margin-top:16px;margin-bottom: 24px;
+				width: 490px;overflow: hidden;float: left;height: 24px;
+			}
+			.li-content{
+				font-size: 16px;line-height: 28px;float: left;width: 590px;overflow: hidden;
+			}
+			
+			.li-title-2{
+				font-size: 18px;font-weight: bold;margin-top:16px;margin-bottom: 24px;
+				overflow: hidden;float: left;height: 24px;
+			}
+			.li-content-2{
+				font-size: 16px;line-height: 28px;float: left;overflow: hidden;
+			}
+
+		</style>
+		<div style="background-color: #f3f4f6;">
+			<ul class="w1200 ul_css" >
+
+				<php>foreach($list as $v){</php>
+
+				<li class=" li_css" >
+					<div class=" li_css_div" >
+						<a href="/news-{$v['id']}.html" target="_blank" ><img style="float:left" src="{$v['face_img']}" alt="" height="150" width="330" ></a>
+						<div style="margin-left:40px;float:left;width: 600px;">
+							<span class="li-title"> <a href="/news-{$v['id']}.html" target="_blank" style="color:black">{$v['title']}</a></span>
+							<span class="li-content">{:msubstr_ec(trim(strip_tags($v[content])), 0,110,'utf-8')}</span>
+						</div>
+						<div style="float:right;width: 100px;">
+							<span class="li-title-2" >{$v['news_date']}</span>
+							<span class="li-content-2" > <a href="/news-{$v['id']}.html" target="_blank" style="color:black"> more > </a></span>
+						</div>
+					</div>
+				</li>
+	
+				<php>}</php>
+
+
+			</ul>
+			
+		</div>
+
+
+		<include file="Index2:footer" />
+
+
+	</div>
+
+</body>
+
+</html>

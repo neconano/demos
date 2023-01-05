@@ -1,0 +1,109 @@
+<extend name="$layout"/>
+
+<block name="style">
+    <style type="text/css">
+    .label-1{
+        float: left;font-size: 0.26rem;margin-top: 0.12rem;
+    }
+
+    .label-tip{
+        /* margin-top: 0.1rem; */
+        text-indent: 0rem;
+        background: none;
+        /* border: solid 1px red; */
+        background: #eb6e8e;
+        font-size: 0.2rem;
+        color: white;
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0.03rem 0.12rem 0.02rem 0.12rem;
+        height: auto;
+        line-height: unset;
+        display: inline-block;
+    }
+
+    </style>
+</block>
+
+<block name="main">
+
+    <div class="container details_html">
+        <div class="head_top">
+            <div class="details_background" style="background:#eb6e8e">
+                <img class="float_l" src="{$userinfo[headimgurl]}" style="width: 1.6rem;margin-top: 0.4rem;margin-left: 0.12rem;border-radius: 50%;">
+            </div>
+        </div>
+        <div class="new" style="margin-top: -1.6rem;border-radius: 0.2rem;">
+            <div class="jianjie" style="margin-bottom: 1.2rem;border-radius: 0.2rem;">
+                <div class="biaoti" style="height: 1.6rem;">
+                    <p style="border-left:none !important;margin-top: 0rem;">
+                        <php>if($list_type == 'coupon'){</php>
+                            <img class="img-1" style="width: 1.1rem;margin-top: 0.1rem;float: left;" src="__PUBLIC__/cdn-ready/home/coffe/img/quan.png" />
+                        <php>}</php>
+                        <php>if($list_type == 'order'){</php>
+                            <img class="img-1" style="width: 1.1rem;margin-top: 0.1rem;float: left;" src="__PUBLIC__/cdn-ready/home/coffe/img/order.png" />
+                        <php>}</php>
+                        <php>if($list_type == 'kudou'){</php>
+                            <img class="img-1" style="width: 1.1rem;margin-top: 0.1rem;float: left;" src="__PUBLIC__/cdn-ready/home/coffe/img/bean2.png" />
+                        <php>}</php>
+                        
+                        <label style="float: left;font-size: 0.26rem;margin-top: 0.36rem;">我的{$type_name}</label>
+                    </p>
+                </div>
+
+                <php>if($list_type == 'coupon'){</php>
+                    <php> $i= 0; foreach($coupon_list as $v){ $i++; </php>
+                    <div class="biaoti" style="height: 1rem;">
+                        <p style="border-left:none !important;margin-top: 0rem;width: 100%;">
+                            <i class='label-1' >{$i}.</i>
+                            <label class='label-1'>{$v['coupon_content']['title']}</label>
+                            <label class='label-1' style="float: right;">{$v['status_time']}</label>
+                            <label class='label-1 label-tip' style="float: right;{$v[status_style]}">
+                                <a href="{$v[status_url]}" style="color: white">{$v[status_name]}</a>
+                            </label>
+                        </p>
+                    </div>
+                    <php>}</php>
+                <php>}</php>
+                <php>if($list_type == 'order'){</php>
+                    <php> $i= 0; foreach($order_list as $v){ $i++; </php>
+                    <div class="biaoti" style="height: 1rem;">
+                        <p style="border-left:none !important;margin-top: 0rem;width: 100%;">
+                            <i class='label-1' >{$i}.</i>
+                            <label class='label-1'>{$v['tune_content']['title']}</label>
+                            <label class='label-1' style="float: right;">{$v['status_time']}</label>
+                            <label class='label-1 label-tip' style="float: right;{$v[status_style]}">{$v[status_name]}</label>
+                        </p>
+                    </div>
+                    <php>}</php>
+                <php>}</php>
+                <php>if($list_type == 'kudou'){</php>
+                    <php> $i= 0; foreach($bean_log as $v){ $i++; </php>
+                    <div class="biaoti" style="height: 1rem;">
+                        <p style="border-left:none !important;margin-top: 0rem;width: 100%;">
+                            <i class='label-1' >{$i}.</i>
+                            <label class='label-1'>{$v['order_info']['tune_content']['title']}</label>
+                            <label class='label-1' style="float: right;">{$v['status_time']}</label>
+                            <label class='label-1 label-tip' style="float: right;{$v[status_style]}">{$v[status_name]}</label>
+                        </p>
+                    </div>
+                    <php>}</php>
+                <php>}</php>
+
+
+                
+            </div>
+            
+        </div>
+
+    </div>
+
+    <div class="clear" style="height: 1rem"></div>
+
+</block>
+
+
+<block name="script">
+
+
+</block>
