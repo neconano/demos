@@ -1,0 +1,210 @@
+<resources>
+    <string name="welcome_message">Welcome to my app!</string>
+
+    <plurals name="item_count">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
+    </plurals>
+
+    <string name="app_name">Jetpack-Compose-All-In-One</string>
+    <string name="close_desc">close</string>
+    <string name="dialog_title">Alert</string>
+    <string name="dialog_text">Please confirm to delete</string>
+    <string name="confirm_btn">Confirm Button</string>
+    <string name="title_activity_quote">QuoteActivity</string>
+    <string name="get_quote_btn">Get Quote</string>
+
+    <string name="registration_success">Registration successful!</string>
+    <string name="registration_fail">Registration failed</string>
+    <string name="no_internet_connected">No internet connected!! \n</string>
+    <string name="try_again">Try again\n</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="no_internet">No Internet</string>
+    <string name="empty_login">Please check your email and password again!</string>
+    <string name="login_label">Login</string>
+    <string name="register_label">Register</string>
+    <string name="prev">Prev</string>
+    <string name="next">Next</string>
+
+    <string-array name="l5c1_header_text">
+        <item>Simple Map</item>
+        <item>Inflate Marker On Map</item>
+        <item>Customize Marker On Map</item>
+        <item>Create PolyLine on Map</item>
+        <item>Create Polygon on Map</item>
+        <item>Create Circle on Map</item>
+    </string-array>
+
+    <string-array name="lesson_1_header_text">
+        <item>Row Examples</item>
+        <item>Column Examples</item>
+        <item>Box Examples</item>
+    </string-array>
+
+    <string-array name="lesson_4_header_text">
+        <item>Alert dialog</item>
+        <item>BottomSheet dialog</item>
+        <item>App rating dialog</item>
+        <item>Logout dialog</item>
+    </string-array>
+
+    <string-array name="lesson_3_header_text">
+        <item>Simple List</item>
+        <item>Custom Vertical List</item>
+        <item>Simple Horizontal List</item>
+        <item>Vertical Grid List</item>
+        <item>Horizontal Grid List</item>
+        <item>Expandable List</item>
+        <item>Expandable Animated List</item>
+        <item>Shimmer Animated List</item>
+    </string-array>
+
+    <string-array name="lesson_7_header_text">
+        <item>Constraint Layout Demo 1</item>
+        <item>Constraint Layout Demo 2</item>
+        <item>Constraint Layout Demo 3</item>
+        <item>Constraint Layout Demo 4</item>
+        <item>Constraint Layout Demo 5</item>
+        <item>Constraint Layout Demo 6</item>
+        <item>Constraint Layout Demo 7</item>
+        <item>Constraint Layout Demo 8</item>
+    </string-array>
+
+    <string-array name="lesson_8_animation">
+        <item>Animation Demo 1</item>
+        <item>Animation Demo 2</item>
+        <item>Animation Demo 3</item>
+        <item>Animation Demo 4</item>
+        <item>Animation Demo 5</item>
+        <item>Animation Demo 6</item>
+        <item>Animation Demo 7</item>
+    </string-array>
+
+    <string-array name="lesson_9_ui_test">
+        <item>UI TEST Demo 1</item>
+        <item>UI TEST Demo 2</item>
+    </string-array>
+
+    <string-array name="l2c5_header_text">
+        <item>Simple Progress</item>
+        <item>Custom Progress</item>
+        <item>Linear Progress</item>
+        <item>Custom Linear Progress</item>
+    </string-array>
+
+    <string-array name="l2c8_header_text">
+        <item>Chip Demo 1</item>
+        <item>Chip Demo 2</item>
+        <item>Chip Demo 3</item>
+    </string-array>
+
+    <string-array name="l5c2_header_text">
+        <item>Map type - Normal</item>
+        <item>Map type - Terrain</item>
+        <item>Map type - Satellite</item>
+        <item>Map type - Hybrid</item>
+        <item>Map type - None</item>
+    </string-array>
+
+    <string-array name="feature_flow_example">
+        <item>Flow Demo with multiple consumer</item>
+        <item>State flow vs Shared flow</item>
+    </string-array>
+
+
+    <string-array name="activity_demo_header">
+        <item>When Activity started</item>
+        <item>When Activity closed</item>
+    </string-array>
+
+    <string-array name="shared_pref_demos">
+        <item>Demo 1</item>
+        <item>Demo 2</item>
+    </string-array>
+
+    <string name="l5c3_header_text">Your current location</string>
+    <string name="read_full_article">Read Article</string>
+    <string name="close">Close</string>
+    <string name="additional_info_for_expandable_list">additional info</string>
+    <string name="rate_app_title">Rate this app</string>
+    <string name="rate_app_text">If you enjoy using this app, would you mind taking a moment to rate it? Thank you for your support!</string>
+    <string name="submit_rating">Submit\n\t\t\t</string>
+    <string name="rate_icon">star icon\t\t</string>
+    <string name="rate_app_comment">Tell us your comments</string>
+    <string name="rate_app_submit_toast">Thank you for your comments. Have a great day!</string>
+    <string name="next_random_dog_rx">Rx Java</string>
+    <string name="next_random_dog_coroutines">Coroutines</string>
+    <string name="next_random_dog_flows">Flow</string>
+    <string name="movie_bg_image">Movie background image</string>
+    <string name="movie_name">Dark Knight</string>
+    <string name="rating_value">8.0</string>
+    <string name="rating_label">Ratings</string>
+    <string name="grade_now">Grade now</string>
+    <string name="story_line">StoryLine</string>
+    <string name="movie_poster_image">Movie Poster Image</string>
+    <string name="story_line_description">With the help of allies Lt. Jim Gordon and DA Harvey Dent, Batman has been able to keep a tight lid on crime in Gotham City. But when a vile young criminal calling himself the Joker suddenly throws the town into chaos, the caped Crusader begins to tread a fine line between heroism and vigilantism.</string>
+    <string name="movie_type1">Action</string>
+    <string name="movie_type2">SuperHero</string>
+    <string name="photos">Photos</string>
+    <string name="actors">Actors</string>
+    <string name="not_required_for_accessibility">Not Require for accessibility</string>
+    <string name="music">music\n</string>
+    <string name="search">search\n</string>
+    <string name="home">Home\n</string>
+    <string name="back">back\n</string>
+
+    <string name="about_me">I’m an Android Lead, passionate about building great apps. For me app development is not just about coding, it’s also about creating an awesome user experience.</string>
+    <string name="about_project">Learn step by step UI development using Jetpack compose [beginners to advance]</string>
+    <string name="select_gender">Select your gender</string>
+    <string name="select_your_language">Select your language</string>
+    <string name="string_old_ui">Traditional xml way - Text</string>
+    <string name="compose_text">"Jetpack Compose - Text"</string>
+    <string name="nameText">Full Name</string>
+    <string name="emailText">Email</string>
+    <string name="aboutText">About</string>
+    <string name="save">Save</string>
+    <string name="updateProfile">Update Profile</string>
+    <string name="ratingNum">4.8</string>
+    <string name="ratingText">Rating</string>
+    <string name="followingNum">35</string>
+    <string name="followingText">Following</string>
+    <string name="follerText">Follower</string>
+    <string name="follerNum">50</string>
+    <string name="aboutUserText">About user info here</string>
+    <string name="changeImage">Change Profile Image</string>
+    <string name="not_required_for_accessiblity">Not required for accessiblity</string>
+
+    <string-array name="broadcast_header_text">
+        <item>Broadcast Bluetooth</item>
+        <item>Broadcast Airplane</item>
+        <item>Broadcast Wifi</item>
+    </string-array>
+
+    <string-array name="content_provider_header_text">
+        <item>Contacts Fetched</item>
+        <item>Images Fetched</item>
+        <item>Custom Content Provider</item>
+    </string-array>
+
+    <string-array name="service_header_text">
+        <item>Counter Demo</item>
+        <item>Music Demo</item>
+    </string-array>
+
+    <string-array name="shared_pref_header">
+        <item>Shared Preferences</item>
+        <item>Secured Shared Preferences</item>
+        <item>Box Examples</item>
+    </string-array>
+
+    <string name="generic_error">Something went wrong</string>
+    <string name="email_field">Enter email</string>
+    <string name="passwordText">Password</string>
+    <string name="password_field">Enter password\n</string>
+    <string name="secure_save_pref">"Securely Save "</string>
+    <string name="sendBtn">Send</string>
+    <string name="ask_me">Ask me anything</string>
+    <string name="loading">loading</string>
+    <string name="stripe_no_url_error">You forgot to set the base URL for the backend. Stripe doesn\'t work without it.</string>
+
+</resources>

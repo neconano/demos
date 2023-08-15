@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cn.idesign.cui.testclient">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:name=".ComposeUiTestApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CUI">
+        <activity
+            android:name="cn.idesign.cui.testclient.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.banner.BannerActivity"
+            android:exported="true"
+            android:label="Banner示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.indicator.IndicatorActivity"
+            android:exported="true"
+            android:label="Indicator示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="cn.idesign.cui.testclient.actionsheet.ActionSheetActivity"
+            android:exported="true"
+            android:label="ActionSheet示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.selectcity.SelectCityActivity"
+            android:exported="true"
+            android:label="SelectCity示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="cn.idesign.cui.testclient.searchbar.SearchBarActivity"
+            android:exported="true"
+            android:label="SearchBar示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.noticebar.NoticeBarActivity"
+            android:exported="true"
+            android:label="NoticeBar示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.collapse.CollapseActivity"
+            android:exported="true"
+            android:label="Collapse示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.image.NetworkImageActivity"
+            android:exported="true"
+            android:label="NetworkImage示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.preview.PreviewTestActivity"
+            android:exported="true"
+            android:label="Preview示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.progress.ProgressActivity"
+            android:exported="true"
+            android:label="Progress示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.curtain.CurtainActivity"
+            android:exported="true"
+            android:label="Curtain示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.steps.StepsActivity"
+            android:exported="true"
+            android:label="Steps示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.statefullayout.StatefulLayoutActivity"
+            android:exported="true"
+            android:label="StatefulLayout示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.verifycode.VerifyCodeActivity"
+            android:exported="true"
+            android:label="VerifyCode示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.privacypolicy.PrivacyPolicyActivity"
+            android:exported="true"
+            android:label="PrivacyPolicy示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.annotatedtext.AnnotatedTextActivity"
+            android:exported="true"
+            android:label="AnnotatedText示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.gridcard.GridCardActivity"
+            android:exported="true"
+            android:label="GridCard示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.stepper.StepperActivity"
+            android:exported="true"
+            android:label="Stepper示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.cell.CellActivity"
+            android:exported="true"
+            android:label="Cell示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.timeselect.TimeSelectActivity"
+            android:exported="true"
+            android:label="TimeSelect示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.segmented.SegmentedActivity"
+            android:exported="true"
+            android:label="Segmented示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.skeleton.SkeletonActivity"
+            android:exported="true"
+            android:label="Skeleton示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.numberkeyboard.NumberKeyboardActivity"
+            android:exported="true"
+            android:label="NumberKeyboard示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.rate.RateActivity"
+            android:exported="true"
+            android:label="Rate示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.addresslist.AddressListActivity"
+            android:exported="true"
+            android:label="AddressList示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.swipe.SwipeActivity"
+            android:exported="true"
+            android:label="Swipe示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.signaturepad.SignaturePadActivity"
+            android:exported="true"
+            android:label="SignaturePad示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.form.FormActivity"
+            android:exported="true"
+            android:label="Form示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.category.CategoryActivity"
+            android:exported="true"
+            android:label="Category示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.idesign.cui.testclient.cascade.CascadeActivity"
+            android:exported="true"
+            android:label="Cascade示例"
+            android:theme="@style/Theme.CUI">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="cn.idesign.cui.testclient.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

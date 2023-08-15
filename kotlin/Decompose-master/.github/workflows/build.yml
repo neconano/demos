@@ -1,0 +1,52 @@
+name: Build
+
+on:
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+  workflow_dispatch:
+
+jobs:
+  linux-build:
+    name: Build on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: 17
+      - name: Update dependencies
+        run: sudo apt-get update
+      - name: Install dependencies
+        run: sudo apt-get install nodejs chromium-browser
+      - name: Build
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build -Dsplit_targets
+      - name: Android instrumentation tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 21
+          arch: x86
+          disable-animations: true
+          script: ./gradlew :extensions-compose-jetpack:connectedDebugAndroidTest --stacktrace
+  macos-build:
+    name: Build on macOS
+    runs-on: macos-11
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: 17
+      - name: Build project
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build -Dsplit_targets
+      - name: Build iOS sample
+        run: xcodebuild -project sample/app-ios/app-ios.xcodeproj -scheme app-ios -sdk iphonesimulator -arch x86_64 build

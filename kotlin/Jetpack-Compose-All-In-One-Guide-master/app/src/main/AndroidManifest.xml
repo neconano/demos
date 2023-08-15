@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.READ_MEDIA_IMAGES"
+        android:minSdkVersion="33" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:usesCleartextTraffic="true"
+        android:name=".di.MainApp"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.JetpackComposeAllInOne"
+        tools:targetApi="31">
+        <activity
+            android:name=".lessons.lesson_11.ComposeWithOldWayActivityExample"
+            android:exported="false"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${GOOGLE_MAPS_API_KEY}" />
+
+        <activity
+            android:name=".ui.views.main_ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.JetpackComposeAllInOne">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".demos.instagram.InstagramActivity"/>
+        <activity
+            android:name=".ui.views.quotes_ui.QuoteActivity"
+            android:exported="false"
+            android:label="@string/title_activity_quote"
+            android:theme="@style/Theme.JetpackComposeAllInOne" />
+
+        <service
+            android:name=".application_components.services.counter.CounterAppService"
+            android:exported="false" />
+        <service
+            android:name=".application_components.services.music_example.MusicForegroundService"
+            android:exported="false" />
+        <service
+            android:name=".application_components.services.music_example.MusicBoundService"
+            android:exported="false" />
+
+        <receiver android:name=".features.alarm.AlarmBroadcastReceiver" />
+
+        <receiver
+            android:name=".application_components.broadcastreceiver.airplanemode.AirplaneModeReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver android:name=".application_components.broadcastreceiver.bluetooth.BluetoothReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver android:name=".application_components.broadcastreceiver.wifi.WifiReceiver"
+
+            android:enabled="true"
+            android:exported="true" />
+
+
+
+        <service
+            android:name=".utils.FcmRegisterService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>
